@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.INotificationSideChannel;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -42,18 +43,24 @@ public class SetupProfile extends Fragment implements View.OnClickListener
     Button heightCm;
     Button setupNext;
     RadioGroup lifestyleField;
-    EditText ageField;
+    TextView ageField;
     TextView weightField;
     TextView heightField;
     FloatingActionButton btnMale;
     FloatingActionButton btnFemale;
     FloatingActionButton genderSelector;
-    int weightPickerPos = 0;
-    int heightPickerPos = 0;
+    int weightPickerPos = 35;
+    int heightPickerPos = 27;
+    int agePickerPos = 4;
     List<String> heightsCM;
     List<String> heightsFT;
     List<String> weightsKG;
     List<String> weightsLBS;
+    ArrayList<Integer> heightfeet;
+    ArrayList<Integer> heightinches;
+    ArrayList <String> ageList;
+
+
 
     enum life {SEDENTARY, MODERATE, ACTIVE, VERY_ACTIVE}
 
@@ -67,13 +74,28 @@ public class SetupProfile extends Fragment implements View.OnClickListener
 
         heightsCM = new ArrayList<>();
         heightsFT = new ArrayList<>();
+        heightfeet =  new ArrayList<>();
+        heightinches =  new ArrayList<>();
+        ageList = new ArrayList<>();
+        for (int i = 14;i<90;i++){
+            ageList.add(String.valueOf(i));
+        }
+        for (int i = 3 ; i<=7;i++){
+            for (int j =0;j<=12;j++){
+                heightsFT.add(""+i+"\' "+j+"\"");
+                heightfeet.add(i);
+                heightinches.add(j);
+            }
+        }
         for (int i = 120; i <= 220; i++)
         {
             heightsCM.add(Integer.toString(i));
             double inches = (i / 2.54);
             int feet = (int) inches / 12;
             inches = round(inches - (feet * 12), 1);
-            heightsFT.add(feet + "’ " + inches + "”");
+           // String temp = feet + "’ " +(int) inches + "”";
+
+
         }
 
         weightsKG = new ArrayList<>();
@@ -124,6 +146,7 @@ public class SetupProfile extends Fragment implements View.OnClickListener
         weightLbs.setOnClickListener(this);
         heightFt.setOnClickListener(this);
         heightCm.setOnClickListener(this);
+        ageField.setOnClickListener(this);
         btnMale = rootView.findViewById(R.id.get_started_profile_setup_male);
         btnFemale = rootView.findViewById(R.id.get_started_profile_setup_female);
         genderSelector = rootView.findViewById(R.id.get_started_profile_setup_gender);
@@ -192,7 +215,7 @@ public class SetupProfile extends Fragment implements View.OnClickListener
         String weight = weightField.getText().toString();
         String height = heightField.getText().toString();
         String age = ageField.getText().toString();
-        if(!age.equals("") && !height.equals("") && !weight.equals(""))
+        if(!age.equals("") && !height.equals("") && !weight.equals("")  )
         {
             setupNext.setAlpha(1.0f);
             setupNext.setEnabled(true);
@@ -207,12 +230,18 @@ public class SetupProfile extends Fragment implements View.OnClickListener
             case R.id.get_started_profile_setup_next:
             {
 
-                isFtSelected = false;
-                heightFt.setBackground(getResources().getDrawable(R.drawable.button_style_off));
-                heightFt.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                heightCm.setBackground(getResources().getDrawable(R.drawable.button_style_on));
-                heightCm.setTextColor(getResources().getColor(R.color.white));
-                heightField.setText(heightsCM.get(heightPickerPos));
+               // isFtSelected = false;
+                if(isFtSelected){
+                    heightFt.setBackground(getResources().getDrawable(R.drawable.button_style_off));
+                    heightFt.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                    heightCm.setBackground(getResources().getDrawable(R.drawable.button_style_on));
+                    heightCm.setTextColor(getResources().getColor(R.color.white));
+                    String temp = heightsFT.get(heightPickerPos);
+                    double cmFromFeet = heightfeet.get(heightPickerPos)*12*2.54+heightinches.get(heightPickerPos)*2.54;
+
+                    heightField.setText(String .valueOf((int)cmFromFeet));
+                }
+
 
                 isKgSelected = true;
                 weightKg.setBackground(getResources().getDrawable(R.drawable.button_style_on));
@@ -261,6 +290,7 @@ public class SetupProfile extends Fragment implements View.OnClickListener
             case R.id.get_started_profile_setup_cm:
             {
                 isFtSelected = false;
+                heightPickerPos =0;
                 heightFt.setBackground(getResources().getDrawable(R.drawable.button_style_off));
                 heightFt.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 heightCm.setBackground(getResources().getDrawable(R.drawable.button_style_on));
@@ -271,6 +301,7 @@ public class SetupProfile extends Fragment implements View.OnClickListener
             case R.id.get_started_profile_setup_ft:
             {
                 isFtSelected = true;
+                heightPickerPos =0;
                 heightFt.setBackground(getResources().getDrawable(R.drawable.button_style_on));
                 heightFt.setTextColor(getResources().getColor(R.color.white));
                 heightCm.setBackground(getResources().getDrawable(R.drawable.button_style_off));
@@ -344,6 +375,33 @@ public class SetupProfile extends Fragment implements View.OnClickListener
                         weightField.setText(wheelPickerWeight.getData().get(weightPickerPos).toString());
                     }
                 });
+                break;
+            }
+
+            case R.id.get_started_profile_setup_age:
+            {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+                View mView = getActivity().getLayoutInflater().inflate(R.layout.dialog_picker_height, null);
+                TextView t = mView.findViewById(R.id.title);
+                t.setText("Age");
+                Button dialogDone = mView.findViewById(R.id.dialog_done);
+                final WheelPicker wheelPickerHeight = mView.findViewById(R.id.dialog_picker_height);
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+                wheelPickerHeight.setData(ageList);
+                wheelPickerHeight.setSelectedItemPosition(agePickerPos);
+                dialogDone.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        dialog.dismiss();
+                        int agePickerPos = wheelPickerHeight.getCurrentItemPosition();
+                        ageField.setText(wheelPickerHeight.getData().get(agePickerPos).toString());
+                    }
+                });
+
                 break;
             }
         }

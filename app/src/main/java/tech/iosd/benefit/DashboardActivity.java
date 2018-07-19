@@ -128,6 +128,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             {
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
+                fm.beginTransaction().replace(R.id.dashboard_content, new Main()).addToBackStack(null).commit();
                 return true;
             }
             case R.id.nav_logout:

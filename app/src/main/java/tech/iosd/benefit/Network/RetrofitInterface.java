@@ -13,9 +13,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
+import tech.iosd.benefit.Model.BodyForChangePassword;
 import tech.iosd.benefit.Model.BodyForMealLog;
 import tech.iosd.benefit.Model.Measurements;
 import tech.iosd.benefit.Model.Response;
+import tech.iosd.benefit.Model.ResponseForChangePassword;
 import tech.iosd.benefit.Model.ResponseForChatMessage;
 import tech.iosd.benefit.Model.ResponseForFoodSearch;
 import tech.iosd.benefit.Model.ResponseForGetExcerciseVideoUrl;
@@ -27,6 +29,7 @@ import tech.iosd.benefit.Model.ResponseForUpdate;
 import tech.iosd.benefit.Model.ResponseForWorkoutForDate;
 import tech.iosd.benefit.Model.User;
 import tech.iosd.benefit.Model.UserDetails;
+import tech.iosd.benefit.Model.UserFacebookLogin;
 import tech.iosd.benefit.Model.UserForLogin;
 import tech.iosd.benefit.Model.UserGoogleLogin;
 import tech.iosd.benefit.Model.UserProfileUpdate;
@@ -41,6 +44,9 @@ public interface RetrofitInterface {
 
     @POST("auth/login/google")
     Observable<Response> loginGoogle(@Body UserGoogleLogin userGoogleLogin);
+
+    @POST("auth/login/facebook")
+    Observable<Response> loginFacebook(@Body UserFacebookLogin userGoogleLogin);
 
     @POST("profile/update")
     Observable<ResponseForUpdate> update(@Header("authorization") String token,@Body UserProfileUpdate userProfileUpdate);
@@ -69,10 +75,13 @@ public interface RetrofitInterface {
     @POST("mealLog/details")
     Observable<ResponseForSuccess> sendFoodMeal(@Body BodyForMealLog bodyForMealLog, @Header("Authorization") String token);
 
-    @GET("workout/exercise/{url}/url")
-    Observable<ResponseForGetExcerciseVideoUrl> getExerciseVideoUrl(@Path("url") String url, @Header("Authorization") String token);
+    @GET("workout/exercise/{url}/url/")
+    Observable<ResponseForGetExcerciseVideoUrl> getExerciseVideoUrl(@Path("url") String url, @Header("Authorization") String token,@Query("type") String type);
     /*@GET("users/{email}")
     Observable<User> getProfile(@Path("email") String email);*/
+
+    @POST("auth/changePassword")
+    Observable<Response> changePassword(@Header("authorization") String token, @Body BodyForChangePassword userProfileUpdate);
 
     @PUT("users/{email}")
     Observable<Response> changePassword(@Path("email") String email, @Body User user);

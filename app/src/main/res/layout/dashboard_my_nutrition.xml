@@ -138,35 +138,15 @@
                 android:paddingBottom="16dp"
                 android:background="#e6b475">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+                    android:id="@+id/my_nutrition_breakfast"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 egg whites"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4 rotis"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 glass of mix fruit juice"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Handful of nutes"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
+                    android:divider="@null"
+                    android:layout_marginEnd="10dp"/>
+
             </LinearLayout>
+
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -390,34 +370,13 @@
                 android:paddingBottom="16dp"
                 android:background="#82d0aa">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+                    android:id="@+id/my_nutrition_mid_morning"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 egg whites"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4 rotis"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 glass of mix fruit juice"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Handful of nutes"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
+                    android:divider="@null"
+                    android:layout_marginEnd="10dp"/>
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
@@ -642,34 +601,13 @@
                 android:paddingBottom="16dp"
                 android:background="#558da7">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+                    android:id="@+id/my_nutrition_lunch"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 egg whites"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4 rotis"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 glass of mix fruit juice"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Handful of nutes"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
+                    android:divider="@null"
+                    android:layout_marginEnd="10dp"/>
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
@@ -894,34 +832,12 @@
                 android:paddingBottom="16dp"
                 android:background="#d2615f">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+                    android:id="@+id/my_nutrition_snacks"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 egg whites"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4 rotis"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 glass of mix fruit juice"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Handful of nutes"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
+                    android:divider="@null"
+                    android:layout_marginEnd="10dp"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
@@ -1146,34 +1062,14 @@
                 android:paddingBottom="16dp"
                 android:background="#37474f">
 
-                <TextView
-                    android:layout_width="wrap_content"
+
+                <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+                    android:id="@+id/my_nutrition_dinner"
+                    android:divider="@null"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 egg whites"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4 rotis"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 glass of mix fruit juice"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Handful of nutes"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/proxima_nova"
-                    android:textColor="@color/white"/>
+                    android:layout_marginEnd="10dp"/>
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
@@ -1369,276 +1265,5 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#f7f7f7"
-            app:cardElevation="1dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/exercise_img"/>
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:padding="10dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_play_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Incline Bench Press"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#6b83ff"
-                    android:textStyle="bold"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="2 sets, 6-8 reps"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#565656"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="30dp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="1dp"
-            app:cardBackgroundColor="#f7f7f7"
-            app:cardElevation="1dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/exercise_img"/>
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:padding="10dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_play_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Incline Bench Press"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#6b83ff"
-                    android:textStyle="bold"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="2 sets, 6-8 reps"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#565656"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="30dp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="1dp"
-            app:cardBackgroundColor="#f7f7f7"
-            app:cardElevation="1dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/exercise_img"/>
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:padding="10dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_play_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Incline Bench Press"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#6b83ff"
-                    android:textStyle="bold"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="2 sets, 6-8 reps"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#565656"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="30dp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="1dp"
-            app:cardBackgroundColor="#f7f7f7"
-            app:cardElevation="1dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/exercise_img"/>
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:padding="10dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_play_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Incline Bench Press"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#6b83ff"
-                    android:textStyle="bold"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="2 sets, 6-8 reps"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#565656"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="30dp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="1dp"
-            app:cardBackgroundColor="#f7f7f7"
-            app:cardElevation="1dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/exercise_img"/>
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:padding="10dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_play_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Incline Bench Press"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#6b83ff"
-                    android:textStyle="bold"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="2 sets, 6-8 reps"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#565656"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="30dp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="30dp"
-            app:cardBackgroundColor="#f7f7f7"
-            app:cardElevation="1dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/exercise_img"/>
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="25dp"
-                    android:padding="10dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_play_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Incline Bench Press"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#6b83ff"
-                    android:textStyle="bold"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="2 sets, 6-8 reps"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="#565656"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="30dp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>

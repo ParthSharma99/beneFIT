@@ -47,6 +47,7 @@ public class OnBoardingActivity extends AppCompatActivity
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode,resultCode,data);
+        Toast.makeText(getApplicationContext(),"23",Toast.LENGTH_LONG).show();
 
     }
 

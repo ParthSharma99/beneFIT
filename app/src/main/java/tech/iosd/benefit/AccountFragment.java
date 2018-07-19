@@ -42,11 +42,17 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import tech.iosd.benefit.DashboardFragments.Chat;
+import tech.iosd.benefit.DashboardFragments.MyAccountChangePassword;
+import tech.iosd.benefit.Model.DatabaseHandler;
 import tech.iosd.benefit.Model.VideoPlayerItem;
+import tech.iosd.benefit.Utils.JWTUtils;
 import tech.iosd.benefit.VideoPlayer.VideoPlayerActivity;
 
 public class AccountFragment extends Fragment implements
@@ -56,7 +62,9 @@ public class AccountFragment extends Fragment implements
     Context ctx;
     FragmentManager fm;
 
-    TextView googleFit;
+    TextView googleFit, changePassword;
+
+    private DatabaseHandler db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,6 +73,22 @@ public class AccountFragment extends Fragment implements
         ctx = rootView.getContext();
         fm = getFragmentManager();
         googleFit = rootView.findViewById(R.id.googleFit);
+        db = new DatabaseHandler(getContext());
+        changePassword = rootView.findViewById(R.id.account_change_password);
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fm.beginTransaction().replace(R.id.dashboard_content, new MyAccountChangePassword()).addToBackStack(null).commit();
+            }
+        });
+
+        try {
+            Log.d("JWT_DECODED",db.getUserToken());
+
+            JWTUtils.decoded(db.getUserToken());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         TextView videoplayerTest = rootView.findViewById(R.id.videoplayerTest);
         videoplayerTest.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +108,13 @@ public class AccountFragment extends Fragment implements
                 videoItem.setCurrentSet(0);
 
                 Gson gson = new Gson();
-
+                ArrayList<String> videoItemList = new ArrayList<>();
+                videoItemList.add(gson.toJson(videoItem));
+                videoItem.setType(VideoPlayerItem.TYPE_FOLLOW);
+                videoItemList.add(gson.toJson(videoItem));
 
                 Intent intent = new Intent(getContext(), VideoPlayerActivity.class);
-                intent.putExtra("videoItem",gson.toJson(videoItem));
+                intent.putExtra("videoItemList",videoItemList);
                 startActivity(intent);
             }
         });

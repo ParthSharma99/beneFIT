@@ -43,9 +43,13 @@
             android:inputType="text"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="#000000"
             android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+
+            android:maxLines="1"
+            android:background="@drawable/edittxt_style"
+            android:textColor="@color/colorPrimary"/>
+        />
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"

@@ -17,9 +17,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.aigestudio.wheelpicker.WheelPicker;
+import com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
@@ -37,16 +40,10 @@ public class MyNutrition extends Fragment
     Context ctx;
     View rootView;
     FragmentManager fm;
-    ListView breakfastListView;
-    ArrayList<String> breakfastIngredients;
-    ListView midMorningListView;
-    ArrayList<String> midMorningIngredients;
-    ListView lunchListView;
-    ArrayList<String> lunchIngredients;
-    ListView snackListView;
-    ArrayList<String> snacksIngredients;
-    ListView dinnerListView;
-    ArrayList<String> dinnerIngredients;
+    ExpandableHeightListView breakfastListView,midMorningListView,lunchListView,snackListView,dinnerListView;
+    ArrayList<String> breakfastIngredients,midMorningIngredients,lunchIngredients,snacksIngredients,dinnerIngredients;
+    ArrayAdapter<String> breakfastAdapter,midMorningAdapter,lunchAdapter,snackAdapter,dinnerAdapter;
+
 
     @Nullable
     @Override
@@ -67,7 +64,7 @@ public class MyNutrition extends Fragment
                 .datesNumberOnScreen(7)
                 .mode(HorizontalCalendar.Mode.DAYS)
                 .configure()
-                .formatMiddleText("EEE\n").sizeMiddleText(12)
+                .formatMiddleText("EEEEE\n").sizeMiddleText(12)
                 .formatBottomText("dd").sizeBottomText(26)
                 .showTopText(false)
                 .end()
@@ -87,8 +84,69 @@ public class MyNutrition extends Fragment
             }
         });
 
+
+        breakfastListView = rootView.findViewById(R.id.my_nutrition_breakfast);
+        midMorningListView = rootView.findViewById(R.id.my_nutrition_mid_morning);
+        lunchListView = rootView.findViewById(R.id.my_nutrition_lunch);
+        snackListView = rootView.findViewById(R.id.my_nutrition_snacks);
+        dinnerListView = rootView.findViewById(R.id.my_nutrition_dinner);
+
+        initListsAndAdapters();
+
+        //add dummy data for now
+        List<String> dummyList = new ArrayList<>();
+        dummyList.add("2 egg whites");
+        dummyList.add("4 rotis");
+        dummyList.add("1 glass of mix fruit juice");
+        dummyList.add("Handful of nuts");
+
+        breakfastIngredients.addAll(dummyList);
+        midMorningIngredients.addAll(dummyList);
+        lunchIngredients.addAll(dummyList);
+        snacksIngredients.addAll(dummyList);
+        dinnerIngredients.addAll(dummyList);
+        //
+
+        updateLists();
+
         return rootView;
     }
+
+    private void initListsAndAdapters(){
+        breakfastIngredients = new ArrayList<>();
+        midMorningIngredients = new ArrayList<>();
+        lunchIngredients = new ArrayList<>();
+        snacksIngredients = new ArrayList<>();
+        dinnerIngredients = new ArrayList<>();
+
+        breakfastAdapter = new ArrayAdapter<>(ctx,R.layout.listview_text_nutritition,breakfastIngredients);
+        midMorningAdapter = new ArrayAdapter<>(ctx,R.layout.listview_text_nutritition,midMorningIngredients);
+        lunchAdapter = new ArrayAdapter<>(ctx,R.layout.listview_text_nutritition,lunchIngredients);
+        snackAdapter = new ArrayAdapter<>(ctx,R.layout.listview_text_nutritition,snacksIngredients);
+        dinnerAdapter = new ArrayAdapter<>(ctx,R.layout.listview_text_nutritition,dinnerIngredients);
+
+        breakfastListView.setAdapter(breakfastAdapter);
+        midMorningListView.setAdapter(midMorningAdapter);
+        lunchListView.setAdapter(lunchAdapter);
+        snackListView.setAdapter(snackAdapter);
+        dinnerListView.setAdapter(dinnerAdapter);
+
+        breakfastListView.setExpanded(true);
+        midMorningListView.setExpanded(true);
+        lunchListView.setExpanded(true);
+        snackListView.setExpanded(true);
+        dinnerListView.setExpanded(true);
+
+    }
+
+    private void updateLists(){
+        breakfastAdapter.notifyDataSetChanged();
+        midMorningAdapter.notifyDataSetChanged();
+        lunchAdapter.notifyDataSetChanged();
+        snackAdapter.notifyDataSetChanged();
+        dinnerAdapter.notifyDataSetChanged();
+    }
+
 /*
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)

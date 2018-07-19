@@ -291,7 +291,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="25dp"/>
 
-            <ListView
+            <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                 android:id="@+id/my_nutrition_breakfast"
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
@@ -491,7 +491,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="25dp"/>
 
-            <ListView
+            <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                 android:id="@+id/my_nutrition_mid_morning"
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
@@ -691,7 +691,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="25dp"/>
 
-            <ListView
+            <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                 android:id="@+id/my_nutrition_lunch"
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
@@ -891,7 +891,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="25dp"/>
 
-            <ListView
+            <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                 android:id="@+id/my_nutrition_snacks"
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
@@ -1091,7 +1091,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="25dp"/>
 
-            <ListView
+            <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                 android:id="@+id/my_nutrition_dinner"
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"

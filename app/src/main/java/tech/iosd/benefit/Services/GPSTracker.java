@@ -43,21 +43,21 @@ import tech.iosd.benefit.Utils.Constants;
 public class GPSTracker extends Service implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener,
-        SensorEventListener {
+        LocationListener {
     private Context mContext;
 
     private double latitude, longitude;
+    private LatLng latLng;
 
     private ArrayList<LatLng> points;
     private ArrayList<LatLng> pointsForLastDistance;
 
-    private boolean isPaused = false;
+    private boolean isPaused = true;
     ProgressDialog progressDialog;
     public boolean isGoogleAPIConnected = false;
 
 
-    private static final long INTERVAL = 1500;
+    private static final long INTERVAL = 1000;
     private static final long FASTEST_INTERVAL = 1000;
     LocationRequest mLocationRequest;
     GoogleApiClient mGoogleApiClient;
@@ -77,6 +77,13 @@ public class GPSTracker extends Service implements
     private float mAccelLast;
     boolean isMovement = false;
 
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
+    public void setLatLng(LatLng latLng) {
+        this.latLng = latLng;
+    }
 
     private final IBinder mBinder = new LocalBinder();
 
@@ -96,18 +103,8 @@ public class GPSTracker extends Service implements
         points = new ArrayList<>();
         pointsForLastDistance = new ArrayList<>();
 
-        sensorMan = (SensorManager) getSystemService(SENSOR_SERVICE);
-        if (sensorMan == null) {
-            //Toast.makeText(this,"null sensor man",Toast.LENGTH_LONG).show();
 
-        }
-        accelerometer = sensorMan.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mAccel = 0.00f;
-        mAccelCurrent = SensorManager.GRAVITY_EARTH;
-        mAccelLast = SensorManager.GRAVITY_EARTH;
 
-        sensorMan.registerListener(this, accelerometer,
-                SensorManager.SENSOR_DELAY_UI);
 
     }
 
@@ -169,11 +166,12 @@ public class GPSTracker extends Service implements
 
             latitude = location.getLatitude();
             longitude = location.getLongitude();
+            latLng =  new LatLng(latitude,longitude);
             isGoogleAPIConnected = true;
 
             Intent broadcastIntent = new Intent();
-            broadcastIntent.putExtra("key", Constants.GPS_CONNECTED);
             broadcastIntent.setAction(Constants.GPS_UPDATE);
+            broadcastIntent.putExtra("key", Constants.GPS_CONNECTED);
             sendBroadcast(broadcastIntent);
 
         } else {
@@ -198,36 +196,9 @@ public class GPSTracker extends Service implements
     }
 
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            mGravity = event.values.clone();
-            // Shake detection
-            float x = mGravity[0];
-            float y = mGravity[1];
-            float z = mGravity[2];
-            mAccelLast = mAccelCurrent;
-            mAccelCurrent = (float) Math.sqrt(x * x + y * y + z * z);
-            // Toast.makeText(this,"senser acc: "+ mAccel,Toast.LENGTH_SHORT).show();
 
-            float delta = mAccelCurrent - mAccelLast;
-            mAccel = mAccel * 0.9f + delta;
-            // Make this higher or lower according to how much
-            // motion you want to detect
-            Log.d("sensor", String.valueOf(Math.abs(mAccel)));
 
-            if (Math.abs(mAccel) > 1) {
-                // do something
-                // Toast.makeText(mContext,"senser acc: "+ Math.abs(mAccel),Toast.LENGTH_SHORT).show();
-            }
-        }
 
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // required method
-    }
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -257,24 +228,25 @@ public class GPSTracker extends Service implements
 
         latitude = mCurrentLocation.getLatitude();
         longitude = mCurrentLocation.getLongitude();
+        latLng = new LatLng(latitude, longitude);
       //  Toast.makeText(this, "Location accuracy: "+String.valueOf(mCurrentLocation.getAccuracy()), Toast.LENGTH_SHORT).show();
 
 
         if(isPaused){
             //progressDialog.hide();
         }
-        if(mCurrentLocation.getAccuracy()<20){
+        if(mCurrentLocation.getAccuracy()<30){
             progressDialog.hide();
             pointsForLastDistance.clear();
             pointsForLastDistance.add(new LatLng(latitude,longitude));
             pointsForLastDistance.add(new LatLng(lastLatitude,lastLongitude));
 
             double dist = SphericalUtil.computeLength(pointsForLastDistance);
-            if(Math.abs(dist - lastDistance) <1){
+            if(Math.abs(dist - lastDistance) <0.5){
                 Toast.makeText(this, "speed too slow have run..", Toast.LENGTH_SHORT).show();
-                lastDistance = dist;
+                /*lastDistance = dist;
                 lastLatitude =  latitude;
-                lastLongitude =  longitude;
+                lastLongitude =  longitude;*/
 
                 return;
             }
@@ -293,6 +265,7 @@ public class GPSTracker extends Service implements
 
                 sendBroadcast(broadcastIntent);
                 speed = 0;
+                return;
             }else {
                 points.add(new LatLng(mCurrentLocation.getLatitude(),mCurrentLocation.getLongitude()));
 

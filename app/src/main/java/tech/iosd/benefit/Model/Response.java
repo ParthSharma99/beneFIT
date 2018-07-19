@@ -8,6 +8,7 @@ public class Response {
 
     private String message;
     private Boolean success;
+    public String mesage;
 
 
     public static class Token{

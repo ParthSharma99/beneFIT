@@ -118,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:cardBackgroundColor="#f6f6f6"
             app:cardElevation="2dp">
 

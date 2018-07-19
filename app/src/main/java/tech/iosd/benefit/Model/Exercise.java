@@ -7,7 +7,7 @@ package tech.iosd.benefit.Model;
 public class Exercise {
     private String _id;
     private int reps;
-    private int rest;
+    private int rest,sets;
     private ExerciseWithoutID exercise;
 
     public Exercise(String _id, int reps, int rest, ExerciseWithoutID exercise) {
@@ -15,6 +15,14 @@ public class Exercise {
         this.reps = reps;
         this.rest = rest;
         this.exercise = exercise;
+    }
+
+    public int getSets() {
+        return sets;
+    }
+
+    public void setSets(int sets) {
+        this.sets = sets;
     }
 
     public String get_id() {
@@ -61,6 +69,18 @@ public class Exercise {
         private boolean videoA;
         private boolean videoB;
         private int __v;
+        private String flow;
+        public boolean isDownloaded =false;
+        public boolean isDownloading = false;
+        public Integer progess;
+
+        public String getFlow() {
+            return flow;
+        }
+
+        public void setFlow(String flow) {
+            this.flow = flow;
+        }
 
         public String get_id() {
             return _id;

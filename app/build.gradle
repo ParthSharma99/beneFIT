@@ -72,7 +72,7 @@ dependencies {
     implementation 'com.github.developer-shivam:Diagonalify:1.1'
 
     implementation 'com.sdsmdg.harjot:rotatingtext:1.0.2'
-    implementation 'com.github.stfalcon:chatkit:0.2.2'
+    implementation 'com.github.stfalcon:chatkit:0.3.0'
     implementation 'com.gelitenight.waveview:waveview:1.0.0'
     implementation 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
 
@@ -95,13 +95,16 @@ dependencies {
 
     implementation 'com.github.mirrajabi:search-dialog:1.2.2'
 
-    implementation ('io.socket:socket.io-client:0.8.3') {
+    implementation('io.socket:socket.io-client:0.8.3') {
         exclude group: 'org.json', module: 'json'
     }
 
     implementation 'com.auth0.android:jwtdecode:1.1.1'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.mani:ThinDownloadManager:1.4.0'
+
+    implementation 'com.github.paolorotolo:expandableheightlistview:1.0.0'
+
 
     testImplementation 'junit:junit:4.12'
 }

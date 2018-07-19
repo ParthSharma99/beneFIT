@@ -38,4 +38,33 @@ public class ResponseForGetExcerciseVideoUrl {
     public void setData(String data) {
         this.data = data;
     }
+    public class Data{
+        String tutorial;
+        String videoA;
+        String videoB;
+
+        public String getTutorial() {
+            return tutorial;
+        }
+
+        public void setTutorial(String tutorial) {
+            this.tutorial = tutorial;
+        }
+
+        public String getVideoA() {
+            return videoA;
+        }
+
+        public void setVideoA(String videoA) {
+            this.videoA = videoA;
+        }
+
+        public String getVideoB() {
+            return videoB;
+        }
+
+        public void setVideoB(String videoB) {
+            this.videoB = videoB;
+        }
+    }
 }

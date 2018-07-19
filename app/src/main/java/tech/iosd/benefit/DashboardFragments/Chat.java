@@ -97,9 +97,9 @@ public class Chat extends Fragment implements MessageInput.InputListener
     private MessageInput messageInput;
 
     //if changing author details also change in chatDatabase getMessages()
-    Author nutritionist = new Author("49", "Nutritionist", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/LetterN.svg/1200px-LetterN.svg.png");
-    Author coach = new Author("50", "Coach", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Letter_c.svg/1200px-Letter_c.svg.png");
-    Author me = new Author("51", "Me");
+    Author nutritionist = new Author("2", "Nutritionist", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/LetterN.svg/1200px-LetterN.svg.png");
+    Author coach = new Author("1", "Coach", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Letter_c.svg/1200px-Letter_c.svg.png");
+    Author me = new Author("0", "Me");
 
     ChatDatabase chatDatabase;
 

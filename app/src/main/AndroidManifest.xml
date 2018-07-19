@@ -27,7 +27,7 @@
         android:screenOrientation="portrait"
         android:icon="@mipmap/ic_launcher"
         android:name="tech.iosd.benefit.Chat.ChatApplication"
-
+        android:resizeableActivity="false"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

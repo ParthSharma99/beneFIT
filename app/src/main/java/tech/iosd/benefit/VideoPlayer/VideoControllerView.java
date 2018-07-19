@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 import java.util.Formatter;
@@ -120,6 +121,9 @@ public class VideoControllerView extends FrameLayout {
         prevVideoButton = v.findViewById(R.id.prev_video);
         prevVideoButton.setOnClickListener(prevListner);
 
+        mStopButton = (ImageButton)v.findViewById(R.id.stop);
+        mStopButton.setOnClickListener(mStopListener);
+
         mProgress = (ProgressBar) v.findViewById(R.id.mediacontroller_progress);
         if (mProgress != null) {
             if (mProgress instanceof SeekBar) {
@@ -137,10 +141,7 @@ public class VideoControllerView extends FrameLayout {
         mFormatBuilder = new StringBuilder();
         mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
 
-        mStopButton = (ImageButton)findViewById(R.id.stop);
-        if(mStopButton!=null) {
-            mStopButton.setOnClickListener(mStopListener);
-        }
+
 
     }
 
@@ -155,7 +156,7 @@ public class VideoControllerView extends FrameLayout {
 
         try {
             if (mPauseButton != null && !mPlayer.canPause()) {
-                mPauseButton.setEnabled(false);
+                //mPauseButton.setEnabled(false);
             }
 
         } catch (IncompatibleClassChangeError ex) {
@@ -404,7 +405,7 @@ public class VideoControllerView extends FrameLayout {
 
             // By removing these pending progress messages we make sure
             // that a) we won't update the progress while the user adjusts
-            // the seekbar and b) once the user is done dragging the thumb
+            // the seekbar and b) once the user is visibility_done dragging the thumb
             // we will post one of these messages to the queue again and
             // this ensures that there will be exactly one message queued up.
             mHandler.removeMessages(SHOW_PROGRESS);
@@ -476,21 +477,6 @@ public class VideoControllerView extends FrameLayout {
         info.setClassName(VideoControllerView.class.getName());
     }
 
-    private OnClickListener mRewListener = new OnClickListener() {
-        public void onClick(View v) {
-            if (mPlayer == null) {
-                return;
-            }
-
-            int pos = mPlayer.getCurrentPosition();
-            pos -= 5000; // milliseconds
-            mPlayer.seekTo(pos);
-            setProgress();
-
-            show(sDefaultTimeout);
-        }
-    };
-
     private OnClickListener prevListner = new OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -507,9 +493,6 @@ public class VideoControllerView extends FrameLayout {
 
     private OnClickListener mStopListener = new OnClickListener() {
         public void onClick(View v) {
-            if (mPlayer == null) {
-                return;
-            }
             mPlayer.Stop();
         }
     };

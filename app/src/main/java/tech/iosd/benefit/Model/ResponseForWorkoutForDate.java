@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class ResponseForWorkoutForDate {
     private boolean success;
     public String message;
-    private ArrayList<Data> data;
+    private Data data;
 
-    public ResponseForWorkoutForDate(boolean success,  ArrayList<Data> data) {
+    public ResponseForWorkoutForDate(boolean success,  Data data) {
         this.success = success;
         this.data = data;
     }
@@ -24,11 +24,11 @@ public class ResponseForWorkoutForDate {
         this.success = success;
     }
 
-    public  ArrayList<Data> getData() {
+    public  Data getData() {
         return data;
     }
 
-    public void setData( ArrayList<Data> data) {
+    public void setData( Data data) {
         this.data = data;
     }
 

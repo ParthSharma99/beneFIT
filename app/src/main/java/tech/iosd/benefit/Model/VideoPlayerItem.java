@@ -2,8 +2,8 @@ package tech.iosd.benefit.Model;
 
 public class VideoPlayerItem {
 
-    public static final int TYPE_FOLLOW=1000;
-    public static final int TYPE_REPETITIVE =1001;
+    public static final int TYPE_FOLLOW=1000;//sets
+    public static final int TYPE_REPETITIVE =1001;//sets+reps
 
     //type = repetitive workflow
     // Tutorial ----> singleVideo (repeated for total reps) ----> Rest --\
@@ -15,7 +15,7 @@ public class VideoPlayerItem {
 
 
     //common..............
-    private int type,sets;// type for managing control, sets for number of repetetions
+    private int type,sets;// type for managing control, sets for number of repetitions
     private String videoName;//for display
     //rest info
     private int restTimeSec;//rest time period
@@ -27,6 +27,31 @@ public class VideoPlayerItem {
     private int currentSet,currentRep;
     private Boolean introComp = false, isResting = false;//for seeing state, intro/tutorial OR singleVidLoop
 
+    public VideoPlayerItem() {
+    }
+
+    public VideoPlayerItem(Exercise exercise){
+
+        if(exercise.getExercise().getFlow().equals("repetitive")){
+            this.type = TYPE_REPETITIVE;
+        }else if(exercise.getExercise().getFlow().equals("follow")){
+            this.type = TYPE_FOLLOW;
+        }
+
+        this.sets = exercise.getSets();
+        this.videoName = exercise.getExercise().getName();
+        this.restTimeSec = exercise.getRest();
+        this.totalReps = exercise.getReps();
+
+
+        this.introVideo = exercise.getExercise().get_id()+".mp4";
+        this.singleRepVideo = exercise.getExercise().get_id()+"_a.mp4";
+
+
+        //defaults
+        this.currentRep = 0;
+        this.currentSet = 0;
+    }
 
     public int incrementCurrentSet(){
         currentSet++;

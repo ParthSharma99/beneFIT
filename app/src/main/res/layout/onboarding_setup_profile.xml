@@ -115,7 +115,7 @@
             android:layout_marginTop="48dp"
             android:text="@string/setup_profile_lbl_age"/>
 
-        <EditText
+        <TextView
             android:id="@+id/get_started_profile_setup_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

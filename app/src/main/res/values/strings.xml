@@ -41,7 +41,7 @@
     <string name="lbl_password">Password</string>
     <string name="lbl_invalid">Invalid</string>
     <string name="lbl_incorrect">Incorrect</string>
-    <string name="lbl_forget_pass">Forget password?</string>
+    <string name="lbl_forget_pass">Forgot password?</string>
     <string name="lbl_signup">Sign Up</string>
     <string name="lbl_pass_short_warning">atleast 8 characters</string>
 

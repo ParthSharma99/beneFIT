@@ -61,6 +61,7 @@ import tech.iosd.benefit.Model.DatabaseHandler;
 import tech.iosd.benefit.Model.Response;
 import tech.iosd.benefit.Model.ResponseForUpdate;
 import tech.iosd.benefit.Model.UserDetails;
+import tech.iosd.benefit.Model.UserFacebookLogin;
 import tech.iosd.benefit.Model.UserForLogin;
 import tech.iosd.benefit.Model.UserGoogleLogin;
 import tech.iosd.benefit.Model.UserProfileUpdate;
@@ -181,14 +182,17 @@ public class Login extends Fragment implements View.OnClickListener
 
         loginButton = (LoginButton) rootView.findViewById(R.id.login_button);
 
-        List< String > permissionNeeds = Arrays.asList( "email", "AccessToken");
+        List< String > permissionNeeds = Arrays.asList( "email");
+        loginButton.setReadPermissions(permissionNeeds);
         loginButton.registerCallback(callbackManager,
-                new FacebookCallback < LoginResult > () {@Override
+                new FacebookCallback < LoginResult > () {
+                @Override
                 public void onSuccess(LoginResult loginResult) {
 
                     showSnackBarMessage("Connected to facebook.");
                     String accessToken = loginResult.getAccessToken()
                             .getToken();
+                    Log.d("token",accessToken);
 
                     GraphRequest request = GraphRequest.newMeRequest(
                             loginResult.getAccessToken(),
@@ -196,13 +200,15 @@ public class Login extends Fragment implements View.OnClickListener
                             public void onCompleted(JSONObject object,
                                                     GraphResponse response) {
 
-                                Log.i("LoginActivity",
+                                Log.d("error77",
                                         response.toString());
+                                Log.d("error77",
+                                        object.toString());
 
 
                                 try {
                                     String email = object.getString("email");
-                                    checkForValidToken(object.getString("first_name"),email,loginResult.getAccessToken().toString());
+                                    checkForFacebookToken(object.getString("first_name"),email,accessToken);
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -211,7 +217,10 @@ public class Login extends Fragment implements View.OnClickListener
 
                             }
                             });
-
+                    Bundle bundle = new Bundle();
+                    bundle.putString("fields", "email,first_name");
+                    request.setParameters(bundle);
+                    request.executeAsync();
                 }
 
                     @Override
@@ -225,6 +234,8 @@ public class Login extends Fragment implements View.OnClickListener
                         showSnackBarMessage( exception.getCause().toString());
                     }
                 });
+
+        loginButton.setFragment(this);
 
         return rootView;
     }
@@ -330,6 +341,7 @@ public class Login extends Fragment implements View.OnClickListener
 
     private void facebookSignIn() {
 
+
         loginButton.performClick();
 
     }
@@ -350,6 +362,8 @@ public class Login extends Fragment implements View.OnClickListener
         super.onActivityResult(requestCode, resultCode, data);
 
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        //callbackManager.onActivityResult(requestCode, resultCode, data);
+
 
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
@@ -406,13 +420,15 @@ public class Login extends Fragment implements View.OnClickListener
 
     private void handleResponse(Response response) {
 
+        Log.d("respone",response.toString());
+
 
         try{
             if (response.getSuccess()){
                 db.addUser(response);
 
                 Toast.makeText(getContext(),"successfull operation",Toast.LENGTH_SHORT).show();
-                Log.e("login"," Token: "+response.token.token);
+                Log.d("login"," Token: "+response.token.token);
                 updateProfile(response.token.token);
                 showSnackBarMessage("Sending user details..");
 
@@ -436,6 +452,8 @@ public class Login extends Fragment implements View.OnClickListener
     }
 
     private void handleError(Throwable error) {
+
+        Log.d("error77",error.getMessage());
 
 
         if (error instanceof HttpException) {
@@ -468,6 +486,12 @@ public class Login extends Fragment implements View.OnClickListener
 
     private void checkForValidToken(String name,String email, String token){
         mSubscriptionsGoogle.add(NetworkUtil.getRetrofit().loginGoogle(new UserGoogleLogin(name, email,token))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse,this::handleError));
+    }
+    private void checkForFacebookToken(String name,String email, String token){
+        mSubscriptionsGoogle.add(NetworkUtil.getRetrofit().loginFacebook(new UserFacebookLogin(name, email,token))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponse,this::handleError));

@@ -4,9 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:textSize="18sp"
-    android:padding="10dp"
     android:fontFamily="@font/proxima_nova"
-    android:textColor="@color/dark_gray"
-    android:paddingStart="25dp"
+    android:textColor="@color/white"
+    android:paddingStart="5dp"
     android:paddingEnd="25dp"
     android:textAlignment="textStart"/>

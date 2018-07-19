@@ -22,8 +22,8 @@
 
     <color name="colorSelectedIcon">#fcde95</color>
     <color name="colorFadedWhite">#e1ffffff</color>
-
-
+    <color name="polyline_fill">#00cace</color>
+    <color name="polyline_stroke">#64000000</color>
 
     <color name="username0">#e21400</color>
     <color name="username1">#91580f</color>
@@ -38,7 +38,7 @@
     <color name="username10">#a700ff</color>
     <color name="username11">#d300e7</color>
 
-    <color name="marker_red_fill">#ff5252</color>
-    <color name="marker_red_stroke">#bf430101</color>
+    <color name="marker_red_fill">#b1ff5252</color>
+    <color name="marker_red_stroke">#a9430101</color>
 
 </resources>
