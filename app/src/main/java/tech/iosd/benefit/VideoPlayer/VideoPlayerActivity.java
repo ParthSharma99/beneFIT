@@ -56,7 +56,7 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
     Boolean isSoundOn = true;
     Gson gson = new Gson();
 
-    ArrayList<String> videoPlayerItemList;
+    ArrayList<String> videoPlayerItemList = new ArrayList<>();
     int currentItem;
     View restView;//for hiding layouts at different points
     private VideoPlayerItem videoItem = null;//has all details of items

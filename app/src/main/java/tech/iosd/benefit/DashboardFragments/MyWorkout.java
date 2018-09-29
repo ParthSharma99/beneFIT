@@ -62,8 +62,8 @@ public class MyWorkout extends Fragment
     private DatabaseHandler db;
     private RecyclerView recyclerView;
     private DashboardWorkoutAdapter adapter;
-    private ArrayList<Exercise>  exercises;
-    private ArrayList<Boolean>  secondPresent;
+    private ArrayList<Exercise>  exercises = new ArrayList<>();
+    private ArrayList<Boolean>  secondPresent = new ArrayList<>();
 
     private String type;
 
@@ -77,11 +77,10 @@ public class MyWorkout extends Fragment
     private ProgressBar progressBar;
     private TextView progressTV;
     private TextView numberOfCurrentVideo;
-
+    private ProgressBar pbar;
     private int noOfDiffId =0;
     private int noOfCurrentVideUser=0;
     boolean allVideoDownloaded = true;
-
 
     @Nullable
     @Override
@@ -111,7 +110,9 @@ public class MyWorkout extends Fragment
         mBuilder = new AlertDialog.Builder(getActivity());
         mView = getActivity().getLayoutInflater().inflate(R.layout.dialog_download, null);
         progressBar = mView.findViewById(R.id.main_progressbar);
+        pbar = mView.findViewById(R.id.pbar);
         progressTV =  mView.findViewById(R.id.percentage_tv);
+
         numberOfCurrentVideo = mView.findViewById(R.id.currentfileDownload);
         mBuilder.setView(mView);
         downloadDialog = mBuilder.create();
@@ -149,7 +150,6 @@ public class MyWorkout extends Fragment
 
         selectedDate = dateFormat.format(Calendar.getInstance().getTime());
 
-
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener()
         {
             @Override
@@ -181,16 +181,6 @@ public class MyWorkout extends Fragment
                 }else if(j== stringForCheck.size()-1){
                     stringForCheck.add(id);
                 }
-               /* if (j == i){
-                    continue;
-                }
-                if (id.equals(exercises.get(j).getExercise().get_id())){
-                    value--;
-                    break;
-                }*/
-                /*if(j == exercises.size()-1){
-                    value++;
-                }*/
             }
         }
 
@@ -239,6 +229,7 @@ public class MyWorkout extends Fragment
 
     private void handleErrorGetMeal(Throwable error) {
         progressDialog.hide();
+//        pbar.setVisibility(View.GONE);
         Log.d("error77",error.getMessage());
 
 

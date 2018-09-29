@@ -7,14 +7,13 @@ package tech.iosd.benefit.Chat;
 import android.app.Application;
 import android.util.Log;
 
+import java.net.URISyntaxException;
+
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import tech.iosd.benefit.Model.DatabaseHandler;
 
-import java.net.URISyntaxException;
-
 import static tech.iosd.benefit.Utils.Constants.CHAT_SERVER_URL;
-
 
 public class ChatApplication extends Application {
 
@@ -24,7 +23,7 @@ public class ChatApplication extends Application {
     public Socket getSocket() {
         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
         tokenS = db.getUserToken();
-        if(mSocket==null) {
+        if (mSocket == null) {
             IO.Options opts = new IO.Options();
             opts.query = "token=" + tokenS;
             try {
@@ -32,9 +31,8 @@ public class ChatApplication extends Application {
             } catch (URISyntaxException e) {
                 throw new RuntimeException(e);
             }
-            Log.w("token",tokenS);
+            Log.w("token", tokenS);
         }
-
         return mSocket;
     }
 }

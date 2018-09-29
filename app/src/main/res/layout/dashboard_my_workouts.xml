@@ -1,305 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#ededed">
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#f7f7f7">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="12dp">
-
-                <ImageView
-                    android:id="@+id/workout_icon"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_my_workout_24dp"/>
-
-                <TextView
-                    android:layout_toEndOf="@id/workout_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="My Workouts"
-                    android:textAllCaps="true"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/oswald"
-                    android:textStyle="bold"
-                    android:textColor="#181818"
-                    android:layout_marginStart="10dp"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#f4d572"/>
-                <TextView
-                    android:id="@+id/my_workout_calendar_year"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="-50dp"
-                    android:textColor="#f4cd6e"
-                    android:textSize="140sp"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="gravity"
-                    android:text="2018"/>
-                <TextView
-                    android:id="@+id/my_workout_calendar_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:textAlignment="gravity"
-                    android:fontFamily="@font/oswald"
-                    android:text="February"
-                    android:textColor="#222122"
-                    android:textAllCaps="true"/>
-            </RelativeLayout>
-
-            <devs.mulham.horizontalcalendar.HorizontalCalendarView
-                android:id="@+id/my_workout_calendar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:background="@color/colorLightGrey"
-                app:colorTopText="#8d8d8d"
-                app:colorBottomText="#313131"
-                app:selectedDateBackground="@drawable/calendar_select_round"
-                app:selectorColor="@color/transparent"/>
-        </android.support.design.widget.AppBarLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="Today's workout"
-                android:fontFamily="@font/proxima_nova"
-                android:textStyle="bold"
-                android:textColor="#595959"
-                android:layout_marginStart="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Total Body Workout"
-                android:fontFamily="@font/proxima_nova"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"/>
-        </RelativeLayout>
-
-        <TextView
+        <ProgressBar
+            android:id="@+id/pbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:textSize="16sp"
-            android:text="A specialized workout designed to make sure that you hit all muscles with high intensity."
-            android:fontFamily="@font/proxima_nova"
-            android:textStyle="bold"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:orientation="horizontal">
+            android:background="#ededed"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                app:cardBackgroundColor="#f7f7f7"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="16dp">
+
+                    <ImageView
+                        android:id="@+id/workout_icon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_my_workout_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/workout_icon"
+                        android:fontFamily="@font/oswald"
+                        android:text="My Workouts"
+                        android:textAllCaps="true"
+                        android:textColor="#181818"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#f4d572" />
+
+                    <TextView
+                        android:id="@+id/my_workout_calendar_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="-50dp"
+                        android:gravity="center_horizontal"
+                        android:text="2018"
+                        android:textAlignment="gravity"
+                        android:textColor="#f4cd6e"
+                        android:textSize="140sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/my_workout_calendar_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/oswald"
+                        android:text="February"
+                        android:textAlignment="gravity"
+                        android:textAllCaps="true"
+                        android:textColor="#222122"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                    android:id="@+id/my_workout_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorLightGrey"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    app:colorBottomText="#313131"
+                    app:colorTopText="#8d8d8d"
+                    app:selectedDateBackground="@drawable/calendar_select_round"
+                    app:selectorColor="@color/transparent" />
+            </android.support.design.widget.AppBarLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/proxima_nova"
+                    android:text="Today's workout"
+                    android:textColor="#595959"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/proxima_nova"
+                    android:text="Total Body Workout"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Intensity -"
-                android:textAllCaps="true"
-                android:fontFamily="@font/oswald"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:layout_marginStart="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/proxima_nova"
+                android:text="A specialized workout designed to make sure that you hit all muscles with high intensity."
                 android:textSize="16sp"
-                android:text="Medium"
-                android:textAllCaps="true"
-                android:fontFamily="@font/oswald"
-                android:textColor="#a2c430"
-                android:textStyle="bold"
-                android:layout_marginStart="10dp"/>
-        </LinearLayout>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#f7f7f7"
-            app:cardElevation="2dp">
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/oswald"
+                    android:text="Intensity -"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="26sp"
-                        android:text="270"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="Calories"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#565656"
-                        android:textStyle="bold"
-                        android:layout_marginStart="10dp"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="1dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="#b3b3b3"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="26sp"
-                        android:text="40"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="Minutes"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#565656"
-                        android:textStyle="bold"
-                        android:layout_marginStart="10dp"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="#b3b3b3"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="26sp"
-                        android:text="6"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="Exercises"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#565656"
-                        android:textStyle="bold"
-                        android:layout_marginStart="10dp"/>
-                </LinearLayout>
-
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/oswald"
+                    android:text="Medium"
+                    android:textAllCaps="true"
+                    android:textColor="#a2c430"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-        </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/dashboard_my_workouts_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none" />
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#f7f7f7"
+                app:cardElevation="2dp">
 
-        <Button
-            android:id="@+id/dashboard_my_workouts_start_workout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_nova"
-            android:textStyle="bold"
-            android:text="DOWNLOAD WORKOUT"
-            android:background="@drawable/button_style_grey"
-            android:textColor="@color/colorClear"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp"/>
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="270"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="#000000"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="Calories"
+                            android:textAllCaps="true"
+                            android:textColor="#565656"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="30dp"
+                        android:background="#b3b3b3" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="40"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="#000000"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="Minutes"
+                            android:textAllCaps="true"
+                            android:textColor="#565656"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="30dp"
+                        android:background="#b3b3b3" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="6"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="#000000"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="Exercises"
+                            android:textAllCaps="true"
+                            android:textColor="#565656"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/dashboard_my_workouts_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+
+            <Button
+                android:id="@+id/dashboard_my_workouts_start_workout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style_grey"
+                android:fontFamily="@font/proxima_nova"
+                android:paddingEnd="50dp"
+                android:paddingStart="50dp"
+                android:text="DOWNLOAD WORKOUT"
+                android:textColor="@color/colorClear"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </ScrollView>

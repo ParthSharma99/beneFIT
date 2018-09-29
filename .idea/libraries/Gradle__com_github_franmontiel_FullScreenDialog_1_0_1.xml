@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.franmontiel:FullScreenDialog-1.0.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/FullScreenDialog-1.0.1.aar/20f3981965deda3c61f714ceb06e47b0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/FullScreenDialog-1.0.1.aar/20f3981965deda3c61f714ceb06e47b0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.franmontiel/FullScreenDialog/1.0.1/4fa366292b99ccd2acd8063f6787d817809563d9/FullScreenDialog-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -19,6 +19,10 @@
     <color name="FABIndicatorNotSelected">#ffffff</color>
     <color name="FABIndicatorBGSelected">#70cceb</color>
     <color name="FABIndicatorBGNotSelected">#dfdfdf</color>
+    <color name="chatIncomingMessageColor">#cfd8dc</color>
+    <color name="chatIncomingDefaultColor">#9e9e9e</color>
+    <color name="chatOutgoingMessageColor">#29b6f6</color>
+    <color name="chatOutgoingDefaultColor">#0288d1</color>
 
     <color name="colorSelectedIcon">#fcde95</color>
     <color name="colorFadedWhite">#e1ffffff</color>

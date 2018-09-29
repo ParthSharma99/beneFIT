@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.stfalcon:chatkit-0.3.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/chatkit-0.3.0.aar/d51ad1ca9f790c47a496556f011b5caa/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/chatkit-0.3.0.aar/d51ad1ca9f790c47a496556f011b5caa/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/chatkit-0.3.0.aar/c7e864dd96a1c2e7a5551dea232b2f31/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/chatkit-0.3.0.aar/c7e864dd96a1c2e7a5551dea232b2f31/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
