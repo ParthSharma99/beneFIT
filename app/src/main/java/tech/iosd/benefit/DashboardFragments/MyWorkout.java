@@ -1,5 +1,6 @@
 package tech.iosd.benefit.DashboardFragments;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,6 +99,9 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
     float calory = 0;
     public ImageView i1;
     public  TextView t1,t2,t3,t4, t5;
+    private LinearLayout linear_layout_to_be_hidden;
+    private ImageView RestImageView;
+    private Button download_button;
 
     @Nullable
     @Override
@@ -129,6 +134,11 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
         progressBar = mView.findViewById(R.id.main_progressbar);
         pbar = mView.findViewById(R.id.pbar);
         progressTV =  mView.findViewById(R.id.percentage_tv);
+        linear_layout_to_be_hidden= mView.findViewById(R.id.workout_linear_layout_to_be_hidden);
+        RestImageView = mView.findViewById(R.id.workout_rest_imageView);
+        download_button= mView.findViewById(R.id.dashboard_my_workouts_start_workout);
+//        linear_layout_to_be_hidden.setVisibility(View.VISIBLE);
+  //      download_button.setVisibility(View.VISIBLE);
 
         numberOfCurrentVideo = mView.findViewById(R.id.currentfileDownload);
         mBuilder.setView(mView);
@@ -250,13 +260,20 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
 
     private void handleResponseGetMeal(ResponseForWorkoutForDate responseForWorkoutForDate) {
             progressDialog.hide();
-        if (!responseForWorkoutForDate.isSuccess()){
-            Log.d("error77", "handleResponseGetMeal: " + "eroor");
+            if(!responseForWorkoutForDate.isSuccess()){
+                Log.d("error77", "handleResponseGetMeal: " + "eroor");
+                Toast.makeText(ctx,"Error loading workouts!",Toast.LENGTH_SHORT).show();
+     //           return;
+      //      }
+      //  if (responseForWorkoutForDate.getData().getWorkout().getExercises().isEmpty()){
+
             // Ye Tab Call Hota Hai Jab Server Pe Workout Nahi Hota.
             // Yaha Pe Rest Day Wala Aayega. Cool?
-           exercises.clear();
+            //hide the layout containing info regarding workouts since there ain't any
+
+            exercises.clear();
        //    adapter.notifyDataSetChanged();
-           recyclerView.getAdapter().notifyDataSetChanged();;
+           recyclerView.getAdapter().notifyDataSetChanged();
             tcal2.setText("0");
             tmin2.setText("0");
             texc2.setText("0");
@@ -265,7 +282,7 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
 
             t1.setText(" ");
             t2.setText(" ");
-            t3.setText("Today is a rest day.\nNo workout!!");
+            t3.setText("");
             t4.setText(" ");
             t5.setText(" ");
 
@@ -273,6 +290,9 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
             return;
             //Download completes here
         }
+        linear_layout_to_be_hidden.setVisibility(View.VISIBLE);
+        RestImageView.setVisibility(View.GONE);
+        download_button.setVisibility(View.VISIBLE);
         totalVideos=responseForWorkoutForDate.getData().getVideoCount();
         sharedPreferences1.edit().putString("WORKOUT_ID",responseForWorkoutForDate.getData().get_id()).apply();
         Log.d("error77"," " +responseForWorkoutForDate.getData().getWorkout().getExercises().size());
