@@ -250,7 +250,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
             }
             case R.id.dashboard_track_water_add:
             {
-                waterTarget++;
+                waterConsumed++;
                 waveView.setWaterLevelRatio((float)waterConsumed/waterTarget);
                 waterConsumedTxt.setText(String.valueOf(waterConsumed));
                 waterTargetTxt.setText(String.valueOf(waterTarget));
@@ -261,7 +261,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                 if(waterTarget <= waterConsumed)
                     break;
 
-                waterTarget--;
+                waterConsumed--;
                 waveView.setWaterLevelRatio((float)waterConsumed/waterTarget);
                 waterConsumedTxt.setText(String.valueOf(waterConsumed));
                 waterTargetTxt.setText(String.valueOf(waterTarget));

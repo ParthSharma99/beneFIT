@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aigestudio.wheelpicker.WheelPicker;
 import com.google.gson.Gson;
@@ -135,6 +136,7 @@ public class TrackMyActivityCallisthenics extends Fragment
             }
             private void handleResponseSendActivityDetails(ResponseForSuccess responseForSuccess)
             {
+                Toast.makeText(ctx,"Success",Toast.LENGTH_SHORT).show();
                 showSnackBarMessage(responseForSuccess.getMessage());
             }
 
