@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 public class Constants {
 
     public static final String BASE_URL = "http://13.59.14.56:5000/api/v1/";
-    //public static final String BASE_URL = "http://192.168.0.107:5000/api/v1/";
+//    public static final String BASE_URL = "http://192.168.0.20:5000/api/v1/";
     public static final String TOKEN = "token";
     public static final String WEIGHT = "weight";
     public static final String HEIGHT = "height";
