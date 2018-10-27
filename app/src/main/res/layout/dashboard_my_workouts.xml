@@ -321,12 +321,26 @@
 
         </LinearLayout>
 
+
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/workout_rest_imageView"
                 android:src="@drawable/rest_img"
+                android:paddingLeft="90dp"
+                android:paddingRight="90dp"
+                android:paddingTop="30dp"
                 />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova"
+                android:text="Today is a rest day"
+                android:gravity="center_horizontal"
+                android:textColor="#414141"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/dashboard_my_workouts_recycler_view"
