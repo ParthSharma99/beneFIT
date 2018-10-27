@@ -102,6 +102,7 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
     private LinearLayout linear_layout_to_be_hidden;
     private ImageView RestImageView;
     private Button download_button;
+    private TextView rest_text_view;
 
     @Nullable
     @Override
@@ -137,6 +138,7 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
         linear_layout_to_be_hidden= mView.findViewById(R.id.workout_linear_layout_to_be_hidden);
         RestImageView = mView.findViewById(R.id.workout_rest_imageView);
         download_button= mView.findViewById(R.id.dashboard_my_workouts_start_workout);
+        rest_text_view = mView.findViewById(R.id.rest_day_text);
 //        linear_layout_to_be_hidden.setVisibility(View.VISIBLE);
   //      download_button.setVisibility(View.VISIBLE);
 
@@ -270,7 +272,16 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
             // Ye Tab Call Hota Hai Jab Server Pe Workout Nahi Hota.
             // Yaha Pe Rest Day Wala Aayega. Cool?
             //hide the layout containing info regarding workouts since there ain't any
+                Activity act = (Activity)ctx;
+                act.runOnUiThread(new Runnable(){
+                    @Override
+                    public void run() {
+                        linear_layout_to_be_hidden.setVisibility(LinearLayout.GONE);
+                        download_button.setVisibility(View.GONE);
+                        rest_text_view.setVisibility(View.VISIBLE);
+                        RestImageView.setVisibility(View.VISIBLE);
 
+                    } });
             exercises.clear();
        //    adapter.notifyDataSetChanged();
            recyclerView.getAdapter().notifyDataSetChanged();
@@ -290,9 +301,16 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
             return;
             //Download completes here
         }
-        linear_layout_to_be_hidden.setVisibility(View.VISIBLE);
-        RestImageView.setVisibility(View.GONE);
-        download_button.setVisibility(View.VISIBLE);
+        Activity act = (Activity)ctx;
+        act.runOnUiThread(new Runnable(){
+            @Override
+            public void run() {
+                linear_layout_to_be_hidden.setVisibility(LinearLayout.VISIBLE);
+                RestImageView.setVisibility(View.GONE);
+                rest_text_view.setVisibility(View.GONE);
+                download_button.setVisibility(View.VISIBLE);
+
+            } });
         totalVideos=responseForWorkoutForDate.getData().getVideoCount();
         sharedPreferences1.edit().putString("WORKOUT_ID",responseForWorkoutForDate.getData().get_id()).apply();
         Log.d("error77"," " +responseForWorkoutForDate.getData().getWorkout().getExercises().size());

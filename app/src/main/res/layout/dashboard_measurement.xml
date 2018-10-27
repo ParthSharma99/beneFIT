@@ -110,7 +110,7 @@
                 <lecho.lib.hellocharts.view.PreviewLineChartView
                     android:id="@+id/dashboard_measurement_bmi_graph"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="200dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
