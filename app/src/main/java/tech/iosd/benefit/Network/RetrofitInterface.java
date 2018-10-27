@@ -18,6 +18,7 @@ import tech.iosd.benefit.Model.BodyForMealLog;
 import tech.iosd.benefit.Model.Measurements;
 import tech.iosd.benefit.Model.PostFreeWorkoutActivity;
 import tech.iosd.benefit.Model.PostTrackActivity;
+import tech.iosd.benefit.Model.PostWaterIntake;
 import tech.iosd.benefit.Model.Response;
 import tech.iosd.benefit.Model.ResponseForChatMessage;
 import tech.iosd.benefit.Model.ResponseForFoodSearch;
@@ -30,6 +31,7 @@ import tech.iosd.benefit.Model.ResponseForUpdate;
 import tech.iosd.benefit.Model.ResponseForWorkoutForDate;
 import tech.iosd.benefit.Model.ResponseNutritionPlanForDate;
 import tech.iosd.benefit.Model.ResponseTrackingDetails;
+import tech.iosd.benefit.Model.ResponseWaterIntake;
 import tech.iosd.benefit.Model.ResponseWorkoutFree;
 import tech.iosd.benefit.Model.User;
 import tech.iosd.benefit.Model.UserDetails;
@@ -114,4 +116,9 @@ public interface RetrofitInterface {
     @POST("workout/user/complete")
     Observable<ResponseForSuccess> sendWorkoutActivity(@Body PostFreeWorkoutActivity postTrackActivity, @Header("Authorization") String token);
 
+    @POST("log/water/details")
+    Observable<ResponseForSuccess> sendWaterIntake(@Body PostWaterIntake postWaterIntake, @Header("Authorization") String token);
+
+    @GET("log/water/history")
+    Observable<ResponseWaterIntake> getWaterIntakeHistory( @Header("Authorization") String token);
 }
