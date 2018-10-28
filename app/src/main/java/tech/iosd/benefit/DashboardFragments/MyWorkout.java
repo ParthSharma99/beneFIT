@@ -2,6 +2,7 @@ package tech.iosd.benefit.DashboardFragments;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.app.ProgressDialog;
@@ -135,10 +136,10 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
         progressBar = mView.findViewById(R.id.main_progressbar);
         pbar = mView.findViewById(R.id.pbar);
         progressTV =  mView.findViewById(R.id.percentage_tv);
-        linear_layout_to_be_hidden= mView.findViewById(R.id.workout_linear_layout_to_be_hidden);
-        RestImageView = mView.findViewById(R.id.workout_rest_imageView);
-        download_button= mView.findViewById(R.id.dashboard_my_workouts_start_workout);
-        rest_text_view = mView.findViewById(R.id.rest_day_text);
+        linear_layout_to_be_hidden= rootView.findViewById(R.id.workout_linear_layout_to_be_hidden);
+        RestImageView = rootView.findViewById(R.id.workout_rest_imageView);
+        download_button= rootView.findViewById(R.id.dashboard_my_workouts_start_workout);
+        rest_text_view = rootView.findViewById(R.id.rest_day_text);
 //        linear_layout_to_be_hidden.setVisibility(View.VISIBLE);
   //      download_button.setVisibility(View.VISIBLE);
 
@@ -219,6 +220,11 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
         return rootView;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     private int getNumberOfDifferntId(){
         ArrayList <String> stringForCheck =  new ArrayList<>();
         int value =0;
@@ -272,16 +278,11 @@ public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onIte
             // Ye Tab Call Hota Hai Jab Server Pe Workout Nahi Hota.
             // Yaha Pe Rest Day Wala Aayega. Cool?
             //hide the layout containing info regarding workouts since there ain't any
-                Activity act = (Activity)ctx;
-                act.runOnUiThread(new Runnable(){
-                    @Override
-                    public void run() {
-                        linear_layout_to_be_hidden.setVisibility(LinearLayout.GONE);
-                        download_button.setVisibility(View.GONE);
-                        rest_text_view.setVisibility(View.VISIBLE);
-                        RestImageView.setVisibility(View.VISIBLE);
+                linear_layout_to_be_hidden.setVisibility(LinearLayout.GONE);
+                download_button.setVisibility(View.GONE);
+                rest_text_view.setVisibility(View.VISIBLE);
+                RestImageView.setVisibility(View.VISIBLE);
 
-                    } });
             exercises.clear();
        //    adapter.notifyDataSetChanged();
            recyclerView.getAdapter().notifyDataSetChanged();
