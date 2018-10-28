@@ -269,7 +269,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
                         .subscribe(this::handleResponseSendWaterIntake,this::handleError));
-                fm.popBackStack();
+
 
                 break;
             }
@@ -289,7 +289,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
                         .subscribe(this::handleResponseSendWaterIntake,this::handleError));
-                fm.popBackStack();
+
 
                 }
 
