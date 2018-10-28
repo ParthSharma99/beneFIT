@@ -267,7 +267,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
                         .subscribe(this::handleResponseSendWaterIntake,this::handleError));
-                fm.popBackStack();
+
 
                 break;
             }
@@ -287,7 +287,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
                         .subscribe(this::handleResponseSendWaterIntake,this::handleError));
-                fm.popBackStack();
+
 
                 }
 
@@ -345,7 +345,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
 
     private void handleError(Throwable error)
     {
-        Toast.makeText(ctx,"Error",Toast.LENGTH_SHORT).show();
+        Toast.makeText(ctx,error.getMessage(),Toast.LENGTH_SHORT).show();
         if (error instanceof HttpException) {
 
             Gson gson = new GsonBuilder().create();
