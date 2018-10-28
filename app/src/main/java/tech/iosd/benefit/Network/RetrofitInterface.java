@@ -32,6 +32,7 @@ import tech.iosd.benefit.Model.ResponseForWorkoutForDate;
 import tech.iosd.benefit.Model.ResponseNutritionPlanForDate;
 import tech.iosd.benefit.Model.ResponseTrackingDetails;
 import tech.iosd.benefit.Model.ResponseWaterIntake;
+import tech.iosd.benefit.Model.ResponseForWaterHistory;
 import tech.iosd.benefit.Model.ResponseWorkoutFree;
 import tech.iosd.benefit.Model.User;
 import tech.iosd.benefit.Model.UserDetails;
@@ -120,5 +121,5 @@ public interface RetrofitInterface {
     Observable<ResponseForSuccess> sendWaterIntake(@Body PostWaterIntake postWaterIntake, @Header("Authorization") String token);
 
     @GET("log/water/history")
-    Observable<ResponseWaterIntake> getWaterIntakeHistory( @Header("Authorization") String token);
+    Observable<ResponseForWaterHistory> getWaterIntakeHistory( @Header("Authorization") String token);
 }
