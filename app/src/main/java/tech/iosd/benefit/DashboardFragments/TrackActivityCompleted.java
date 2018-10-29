@@ -55,6 +55,7 @@ public class TrackActivityCompleted extends Fragment
             calorie = getArguments().getString("CALORIE","0");
             duration = getArguments().getString("DURATION","00:00");
             distance = getArguments().getString("DISTANCE","0.0");
+            Log.d("Tracking Debug", "onCreate: Distance " + distance );
             avgPaceText = getArguments().getString("AVG_PACE","0.0");
             trackType=getArguments().getString("TRACK_TYPE","RUNNING");
             durationSec=getArguments().getFloat("DURATION_SEC",0);
