@@ -44,11 +44,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Column;
 import lecho.lib.hellocharts.model.ColumnChartData;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.SubcolumnValue;
+import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ColumnChartView;
+import lecho.lib.hellocharts.view.LineChartView;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -81,7 +87,8 @@ public class TrackAndLog extends Fragment implements View.OnClickListener {
     private TextView waterConsumedTxt;
     private TextView waterTargetTxt;
     private CompositeSubscription mSubscriptions;
-    private ColumnChartView water_chart;
+    private List<PointValue> water_entries;
+    private LineChartView water_chart;
     private ColumnChartView steps_chart;
 
 
@@ -322,18 +329,38 @@ public class TrackAndLog extends Fragment implements View.OnClickListener {
         if (data.isEmpty())
             Toast.makeText(ctx, "No data", Toast.LENGTH_SHORT).show();
 
-        List<Column> water_columns = new ArrayList<>();
-        List<SubcolumnValue> water_values;
+        water_chart.setInteractive(false);
+        water_entries = new ArrayList<>();
+        List<AxisValue> axisValuesX = new ArrayList<AxisValue>();
 
+        int i = 0 ;
         for (Map.Entry<String, String> entry : data.entrySet()) {
+            water_entries.add((new PointValue(i,Float.parseFloat(entry.getValue()))));
             Log.d("error77", "updateGraphwaterIntake: " + entry.getKey() + " = " + entry.getValue());
-            water_values = new ArrayList<>();
-            for (int j = 0; j < 1; j++) {
-                water_values.add(new SubcolumnValue(Integer.parseInt(entry.getValue()), ChartUtils.COLOR_BLUE));
-            }
-            Column column = new Column(water_values);
-            water_columns.add(column);
+            axisValuesX.add(new AxisValue(i).setLabel(entry.getKey().substring(0, 2)));
+            i++  ;
         }
+
+
+        Line water_line = new Line(water_entries).setColor(Color.BLUE).setCubic(true);
+        List<Line> water_lines = new ArrayList<>();
+        water_line.setHasPoints(false);
+        water_line.setFilled(true);
+        water_lines.add(water_line);
+        LineChartData water_data = new LineChartData();
+        Axis bmi_axisX = new Axis(axisValuesX).setHasLines(true).setName("Date").setHasTiltedLabels(false) ;
+        Axis bmi_axisY = new Axis().setHasLines(true).setName("Consumed");
+        water_data.setLines(water_lines);
+        water_data.setAxisXBottom(bmi_axisX);
+        water_data.setAxisYLeft(bmi_axisY);
+        water_chart.setLineChartData(water_data);
+
+        final Viewport v = new Viewport(water_chart.getMaximumViewport());
+        v.bottom = 0;
+        water_chart.setMaximumViewport(v);
+        water_chart.setCurrentViewport(v);
+
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         String selectedDate = dateFormat.format(Calendar.getInstance().getTime());
 
@@ -348,28 +375,6 @@ public class TrackAndLog extends Fragment implements View.OnClickListener {
                 waveView.setWaterLevelRatio((float)waterConsumed / waterTarget);
             }
         }
-
-
-//
-//        for (int i = 0; i < data.size(); i++) {
-//
-//            water_values = new ArrayList<>();
-//            for (int j = 0; j < 1; j++) {
-//                water_values.add(new SubcolumnValue(data.get(i).getConsumed(), ChartUtils.COLOR_BLUE));
-//            }
-//
-//            Column column = new Column(water_values);
-//            water_columns.add(column);
-//        }
-
-        ColumnChartData water_data = new ColumnChartData(water_columns);
-        Axis water_axisX = new Axis();
-        Axis water_axisY = new Axis().setHasLines(true);
-        water_axisX.setName("Consumed");
-        water_axisY.setName("Date");
-        water_data.setAxisXBottom(water_axisX);
-        water_data.setAxisYLeft(water_axisY);
-        water_chart.setColumnChartData(water_data);
 
     }
 
