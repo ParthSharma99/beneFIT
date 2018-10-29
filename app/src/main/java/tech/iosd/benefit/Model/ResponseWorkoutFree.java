@@ -33,17 +33,30 @@ public class ResponseWorkoutFree
         private String _id;
         private String name;
         private String search_name;
+        private String image;
         private String description;
         private int videoCount;
+
+
+
         private ArrayList<Exercise> exercises;
 
-        public Data(String _id, String name, String search_name, String description, int videoCount, ArrayList<Exercise> exercises) {
+        public Data(String _id, String name, String search_name, String description , String image, int videoCount, ArrayList<Exercise> exercises) {
             this._id = _id;
             this.name = name;
             this.search_name = search_name;
             this.description = description;
             this.videoCount = videoCount;
             this.exercises = exercises;
+            this.image = image;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
         }
 
         public String get_id() {

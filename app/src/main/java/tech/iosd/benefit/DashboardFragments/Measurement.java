@@ -26,6 +26,7 @@ import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
+import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
@@ -191,6 +192,14 @@ public class Measurement extends Fragment
         fat_data.setAxisXBottom(fat_axisX);
         fat_data.setAxisYLeft(fat_axisY);
         fat_chart.setLineChartData(fat_data);
+
+        final Viewport v = new Viewport(fat_chart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = v.top + 5 ;
+        fat_chart.setMaximumViewport(v);
+        fat_chart.setCurrentViewport(v);
+
+
     }
     private float calculateBMR(double height, double weight, int age){
 
@@ -225,6 +234,13 @@ public class Measurement extends Fragment
         basal_data.setAxisYLeft(basal_axisY);
         basal_chart.setLineChartData(basal_data);
 
+        final Viewport v = new Viewport(basal_chart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = v.top + 100 ;
+        basal_chart.setMaximumViewport(v);
+        basal_chart.setCurrentViewport(v);
+
+
 
         }
 
@@ -251,6 +267,13 @@ public class Measurement extends Fragment
         bmi_data.setAxisXBottom(bmi_axisX);
         bmi_data.setAxisYLeft(bmi_axisY);
         bmi_chart.setLineChartData(bmi_data);
+
+        final Viewport v = new Viewport(bmi_chart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = v.top + 2 ;
+        bmi_chart.setMaximumViewport(v);
+        bmi_chart.setCurrentViewport(v);
+
     }
 
     private void handleError(Throwable error) {

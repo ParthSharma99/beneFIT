@@ -3,6 +3,7 @@ package tech.iosd.benefit.DashboardFragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -166,6 +167,7 @@ public class FreeWorkoutTraining extends Fragment implements DashboardWorkoutAda
         texc = rootView.findViewById(R.id.tvexc);
         tmin = rootView.findViewById(R.id.tvmin);
         i1 = rootView.findViewById(R.id.ivPhoto);
+
         startWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -238,6 +240,11 @@ public class FreeWorkoutTraining extends Fragment implements DashboardWorkoutAda
             return;
             //Download completes here
         }
+
+        Resources res = getActivity().getResources();
+        int resID = res.getIdentifier(responseWorkoutFree.getData().get(position).getSearch_name(), "drawable", getActivity().getPackageName());
+        i1.setImageResource(resID);
+
         videoCount = responseWorkoutFree.getData().get(position).getVideoCount();
         description_free_workouts.setText(responseWorkoutFree.getData().get(position).getDescription());
         sharedPreferences1.edit().putString("WORKOUT_ID",responseWorkoutFree.getData().get(position).get_id()).apply();

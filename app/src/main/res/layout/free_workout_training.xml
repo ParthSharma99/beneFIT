@@ -16,7 +16,7 @@
             android:layout_height="200dp"
             android:layout_marginStart="-10dp"
             android:layout_marginEnd="-10dp"
-            android:src="@drawable/fw1"
+            android:src="@drawable/placeholder"
             android:scaleType="fitXY"/>
 
         <android.support.v7.widget.CardView

@@ -48,12 +48,14 @@ public class Workout extends Fragment implements FreeWorkoutAdapter.onItemClickL
     ImageView functionallyFit;
     ImageView legedTube;
     ImageView cardioCrunch;
+    ResponseWorkoutFree freeWorkouts ;
     private ProgressDialog progressDialog;
     private CompositeSubscription compositeSubscription;
     private DatabaseHandler db;
     private RecyclerView recyclerView;
     private FreeWorkoutAdapter adapter;
     ArrayList<String> freeWorkoutName=new ArrayList<>();
+    ArrayList<String> freeWorkoutImages=new ArrayList<>();
 
     @Nullable
     @Override
@@ -73,11 +75,15 @@ public class Workout extends Fragment implements FreeWorkoutAdapter.onItemClickL
         db = new DatabaseHandler(getContext());
 
         recyclerView =  rootView.findViewById(R.id.dashboard_free_workouts_recycler_view);
-        adapter = new FreeWorkoutAdapter(getActivity(),freeWorkoutName,this);
+        adapter = new FreeWorkoutAdapter(getActivity(),freeWorkoutName , freeWorkoutImages,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
         setMyWorkoutLockCondition(isMyWorkoutLocked);
-        fetchFreeWorkOuts();
+
+        if(freeWorkouts == null){
+            fetchFreeWorkOuts();
+        }
+
         myWorkoutCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,10 +143,15 @@ public class Workout extends Fragment implements FreeWorkoutAdapter.onItemClickL
     {
         if(responseWorkoutFree.isSuccess())
         {
+
+            freeWorkouts = responseWorkoutFree ;
+
             freeWorkoutName.clear();
+            freeWorkoutImages.clear();
             for(int x=0;x<responseWorkoutFree.getData().size();x++)
             {
                 freeWorkoutName.add(responseWorkoutFree.getData().get(x).getName());
+                freeWorkoutImages.add(responseWorkoutFree.getData().get(x).getSearch_name());
             }
             adapter.notifyDataSetChanged();
             if(progressDialog.isShowing()){
