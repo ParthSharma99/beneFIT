@@ -109,11 +109,6 @@ public class SaveWorkoutActivity extends AppCompatActivity implements View.OnCli
         caloriesBurntTextView.setText(String.format("%d", caloriesBurnt));
 
 
-        //
-        ScrollView mainScrollView = (ScrollView) findViewById(R.id.workout_scroll_view);
-        mainScrollView.fullScroll(ScrollView.FOCUS_UP);
-
-
         saveActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
