@@ -48,6 +48,7 @@ public class Measurement extends Fragment
 
     private TextView bmiTextView;
     private TextView bmiMessageTextView;
+    private TextView bmrTextView;
     private TextView bmiMessageDetailedTextView;
     private TextView fatPercentageTectView;
 
@@ -60,6 +61,7 @@ public class Measurement extends Fragment
     private String gender;
 
     private double bmi;
+    private float bmr;
     private double  fatPercentage;
 
     private CompositeSubscription mSubscriptions;
@@ -83,6 +85,7 @@ public class Measurement extends Fragment
 
         bmiTextView = rootView.findViewById(R.id.dashboard_mesurements_bmi_textview);
         bmiMessageTextView = rootView.findViewById(R.id.dashboard_mesurements_bmi_message_textview);
+        bmrTextView = rootView.findViewById(R.id.dashboard_measurements_bmr_textview);
         bmiMessageDetailedTextView = rootView.findViewById(R.id.dashboard_mesurements_bmi_message_detailetextview);
         fatPercentageTectView = rootView.findViewById(R.id.dashboard_mesurements_fat_percentage_textview);
 
@@ -111,11 +114,12 @@ public class Measurement extends Fragment
 
         bmiTextView.setText(String.format("%.2f", bmi));
 
-
         fatPercentage = getFatPercentage(bmi, age, gender);
-
         fatPercentageTectView.setText(String.format("%.2f",fatPercentage));
-        Random rand = new Random();
+
+        bmr = calculateBMR(height , weight ,age );
+        bmrTextView.setText(String.valueOf(Math.round(bmr)) + " Calories");
+
         bmi_chart = rootView.findViewById(R.id.dashboard_measurement_bmi_graph);
         basal_chart = rootView.findViewById(R.id.dashboard_measurement_basal_graph);
         fat_chart = rootView.findViewById(R.id.dashboard_measurement_fat_graph);
@@ -201,7 +205,7 @@ public class Measurement extends Fragment
 
 
     }
-    private float calculateBMR(double height, double weight, int age){
+    private float calculateBMR(double height, double weight, double age){
 
         if(gender.equals("male")){
             return (float)(66.47 + (13.7*weight) + (5*height) - (6.8*age));
