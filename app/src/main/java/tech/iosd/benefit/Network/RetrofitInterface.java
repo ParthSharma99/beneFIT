@@ -18,8 +18,8 @@ import tech.iosd.benefit.Model.BodyForMealLog;
 import tech.iosd.benefit.Model.Measurements;
 import tech.iosd.benefit.Model.PostFreeWorkoutActivity;
 import tech.iosd.benefit.Model.PostTrackActivity;
+import tech.iosd.benefit.Model.PostWaterIntake;
 import tech.iosd.benefit.Model.Response;
-import tech.iosd.benefit.Model.ResponseForChangePassword;
 import tech.iosd.benefit.Model.ResponseForChatMessage;
 import tech.iosd.benefit.Model.ResponseForFoodSearch;
 import tech.iosd.benefit.Model.ResponseForGetExcerciseVideoUrl;
@@ -31,6 +31,8 @@ import tech.iosd.benefit.Model.ResponseForUpdate;
 import tech.iosd.benefit.Model.ResponseForWorkoutForDate;
 import tech.iosd.benefit.Model.ResponseNutritionPlanForDate;
 import tech.iosd.benefit.Model.ResponseTrackingDetails;
+import tech.iosd.benefit.Model.ResponseWaterIntake;
+import tech.iosd.benefit.Model.ResponseForWaterHistory;
 import tech.iosd.benefit.Model.ResponseWorkoutFree;
 import tech.iosd.benefit.Model.User;
 import tech.iosd.benefit.Model.UserDetails;
@@ -54,10 +56,10 @@ public interface RetrofitInterface {
     Observable<Response> loginFacebook(@Body UserFacebookLogin userGoogleLogin);
 
     @POST("profile/update")
-    Observable<ResponseForUpdate> update(@Header("authorization") String token,@Body UserProfileUpdate userProfileUpdate);
+    Observable<ResponseForUpdate> update(@Header("authorization") String token, @Body UserProfileUpdate userProfileUpdate);
 
     @POST("profile/measurements")
-    Observable<ResponseForMeasurementsUpdate> updateMeasurements(@Header("authorization") String token, @Body Measurements measurements );
+    Observable<ResponseForMeasurementsUpdate> updateMeasurements(@Header("authorization") String token, @Body Measurements measurements);
 
     @GET("profile")
     Observable<UserDetails> getProfile(@Header("Authorization") String token);
@@ -81,7 +83,7 @@ public interface RetrofitInterface {
     Observable<ResponseForSuccess> sendFoodMeal(@Body BodyForMealLog bodyForMealLog, @Header("Authorization") String token);
 
     @GET("workout/exercise/{url}/url/")
-    Observable<ResponseForGetExcerciseVideoUrl> getExerciseVideoUrl(@Path("url") String url, @Header("Authorization") String token,@Query("type") String type);
+    Observable<ResponseForGetExcerciseVideoUrl> getExerciseVideoUrl(@Path("url") String url, @Header("Authorization") String token, @Query("type") String type);
     /*@GET("users/{email}")
     Observable<User> getProfile(@Path("email") String email);*/
 
@@ -115,4 +117,9 @@ public interface RetrofitInterface {
     @POST("workout/user/complete")
     Observable<ResponseForSuccess> sendWorkoutActivity(@Body PostFreeWorkoutActivity postTrackActivity, @Header("Authorization") String token);
 
+    @POST("log/water/details")
+    Observable<ResponseForSuccess> sendWaterIntake(@Body PostWaterIntake postWaterIntake, @Header("Authorization") String token);
+
+    @GET("log/water/history")
+    Observable<ResponseForWaterHistory> getWaterIntakeHistory( @Header("Authorization") String token);
 }

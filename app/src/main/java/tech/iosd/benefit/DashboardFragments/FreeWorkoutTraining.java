@@ -30,6 +30,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,6 +89,12 @@ public class FreeWorkoutTraining extends Fragment implements DashboardWorkoutAda
     private int noOfCurrentVideUser=0;
     boolean allVideoDownloaded = true;
     private int position;
+    public ImageView i1;
+    public TextView tcal, texc, tmin;
+    int time =0;
+    float calory = 0;
+    public  ArrayList<Integer> photo = new ArrayList<>();
+
 
     DBDowloadList dbDowloadList;
 
@@ -105,6 +112,18 @@ public class FreeWorkoutTraining extends Fragment implements DashboardWorkoutAda
         } else {
             Toast.makeText(getActivity(), "arguments is null " , Toast.LENGTH_LONG).show();
         }
+
+        photo.add(R.drawable.abs);
+        photo.add(R.drawable.fw1);
+        photo.add(R.drawable.iron);
+        photo.add(R.drawable.legs);
+        photo.add(R.drawable.cardio);
+        photo.add(R.drawable.fw1);
+        photo.add(R.drawable.funcfit);
+        photo.add(R.drawable.cardio);
+        photo.add(R.drawable.iron);
+        photo.add(R.drawable.funcfit);
+
     }
     @Nullable
     @Override
@@ -143,6 +162,10 @@ public class FreeWorkoutTraining extends Fragment implements DashboardWorkoutAda
         downloadDialog = mBuilder.create();
         description_free_workouts=rootView.findViewById(R.id.free_workout_description);
         startWorkout = rootView.findViewById(R.id.dashboard_free_workouts_start_workout);
+        tcal = rootView.findViewById(R.id.tvcalory);
+        texc = rootView.findViewById(R.id.tvexc);
+        tmin = rootView.findViewById(R.id.tvmin);
+        i1 = rootView.findViewById(R.id.ivPhoto);
         startWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -228,7 +251,45 @@ public class FreeWorkoutTraining extends Fragment implements DashboardWorkoutAda
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         noOfDiffId = getNumberOfDifferntId();
+
+        time = calculateTime(exercises.get(position).getReps(), exercises.get(position).getTimeTaken(),
+                exercises.get(position).getRest(), exercises.get(position).getSets());
+
+
+        calory = calculateCalory(exercises.get(position).getReps(), exercises.get(position).getExercise().getTimeTaken(),
+                exercises.get(position).getExercise().getMets(), exercises.get(position).getSets());
+
+        tcal.setText(String.valueOf((int)calory));
+        tmin.setText(String.valueOf(time));
+        texc.setText(String.valueOf(exercises.size()));
         checkFiles();
+    }
+
+    int calculateTime(int reps,  int timeTaken, int rest, int sets){
+        int t = 0;
+        t += ((reps*timeTaken) +rest) * sets;
+        return  t;
+    }
+
+    float calculateCalory(int reps, float timeTaken, float mets, int sets){
+        float cal = 0;
+        int personWeight=0;
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(mets));
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(sets));
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(timeTaken));
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(reps));
+
+        cal += (reps*timeTaken*mets*sets);
+        personWeight = db.getUserWeight();
+        Log.d("CAL", "calculateCalory: " + String.valueOf(personWeight));
+        // Log.d("CAL", "calculateCalory: " + String.valueOf(cal));
+
+        cal = cal*personWeight;
+        //  Log.d("CAL", "calculateCalory: " + String.valueOf(cal));
+
+        cal = cal/36;
+        Log.d("CAL", "calculateCalory: " + String.valueOf(cal));
+        return cal;
     }
 
     private void handleErrorGetWorkoutFree(Throwable error) {

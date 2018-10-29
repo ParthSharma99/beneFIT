@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WheelPicker-1.1.2/WheelPicker-1.1.2.iml" filepath="$PROJECT_DIR$/WheelPicker-1.1.2/WheelPicker-1.1.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/beneFIT (real) (copy).iml" filepath="$PROJECT_DIR$/beneFIT (real) (copy).iml" />
+      <module fileurl="file://$PROJECT_DIR$/beneFIT.iml" filepath="$PROJECT_DIR$/beneFIT.iml" />
     </modules>
   </component>
 </project>

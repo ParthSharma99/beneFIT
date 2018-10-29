@@ -66,6 +66,7 @@ public class Measurement extends Fragment
     List<PointValue> bmi_entries;
     LineChartView bmi_chart;
     LineChartView fat_chart;
+    LineChartView basal_chart;
 
 
     @Nullable
@@ -115,29 +116,8 @@ public class Measurement extends Fragment
         fatPercentageTectView.setText(String.format("%.2f",fatPercentage));
         Random rand = new Random();
         bmi_chart = rootView.findViewById(R.id.dashboard_measurement_bmi_graph);
-        LineChartView basal_chart = rootView.findViewById(R.id.dashboard_measurement_basal_graph);
+        basal_chart = rootView.findViewById(R.id.dashboard_measurement_basal_graph);
         fat_chart = rootView.findViewById(R.id.dashboard_measurement_fat_graph);
-
-
-
-
-        basal_chart.setInteractive(false);
-        List<PointValue> basal_entries = new ArrayList<>();
-        for(int i=0; i<10; i++) basal_entries.add((new PointValue(i, rand.nextInt(30))));
-        Line basal_line = new Line(basal_entries).setColor(Color.BLUE).setCubic(true);
-        List<Line> basal_lines = new ArrayList<>();
-        basal_line.setHasPoints(false);
-        basal_line.setFilled(true);
-        basal_lines.add(basal_line);
-        LineChartData basal_data = new LineChartData();
-        Axis basal_axisX = new Axis().setHasLines(true).setName("Axis X");
-        Axis basal_axisY = new Axis().setHasLines(true).setName("Axis Y");
-        basal_data.setLines(basal_lines);
-        basal_data.setAxisXBottom(basal_axisX);
-        basal_data.setAxisYLeft(basal_axisY);
-        basal_chart.setLineChartData(basal_data);
-
-
 
         getUserHistory(db.getUserToken());
 
@@ -183,6 +163,7 @@ public class Measurement extends Fragment
         showSnackBarMessage("updating graph");
         updateGraphBMI(response.data );
         updateGraphFat(response.data);
+        updateGraphBMR(response.data);
 
     }
 
@@ -211,6 +192,41 @@ public class Measurement extends Fragment
         fat_data.setAxisYLeft(fat_axisY);
         fat_chart.setLineChartData(fat_data);
     }
+    private float calculateBMR(double height, double weight, int age){
+
+        if(gender.equals("male")){
+            return (float)(66.47 + (13.7*weight) + (5*height) - (6.8*age));
+        }
+        return (float)(655.1 + (9.6*weight) + (1.8*height) - (4.7*age));
+    }
+
+    private void updateGraphBMR(ArrayList<Data> data){
+
+
+        basal_chart.setInteractive(false);
+        List<PointValue> basal_entries = new ArrayList<>();
+        for(int i=0; i<data.size(); i++){
+            double bmrTemp = calculateBMR(data.get(i).getHeight(),data.get(i).getWeight(),db.getUserAge());
+            basal_entries.add((new PointValue(i+1,(float)bmrTemp)));
+            }
+
+
+
+        Line basal_line = new Line(basal_entries).setColor(Color.BLUE).setCubic(true);
+        List<Line> basal_lines = new ArrayList<>();
+        basal_line.setHasPoints(false);
+        basal_line.setFilled(true);
+        basal_lines.add(basal_line);
+        LineChartData basal_data = new LineChartData();
+        Axis basal_axisX = new Axis().setHasLines(true).setName("Axis X");
+        Axis basal_axisY = new Axis().setHasLines(true).setName("Axis Y");
+        basal_data.setLines(basal_lines);
+        basal_data.setAxisXBottom(basal_axisX);
+        basal_data.setAxisYLeft(basal_axisY);
+        basal_chart.setLineChartData(basal_data);
+
+
+        }
 
     private void updateGraphBMI(ArrayList<Data> data) {
 

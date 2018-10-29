@@ -14,7 +14,10 @@ import tech.iosd.benefit.R;
 
 public class FreeWorkoutAdapter extends RecyclerView.Adapter<FreeWorkoutAdapter.FreeWorkoutViewHolder>
 {
-    Activity activity;public ArrayList<String> freeWorkOutNames;
+    Activity activity;
+    public ArrayList<String> freeWorkOutNames;
+    public  ArrayList<Integer> photo = new ArrayList<>();
+
     public interface onItemClickListener
     {
         void onClick(int position);
@@ -25,6 +28,16 @@ public class FreeWorkoutAdapter extends RecyclerView.Adapter<FreeWorkoutAdapter.
         this.activity=activity;
         this.freeWorkOutNames=freeWorkOutNames;
         this.listener=listener;
+        photo.add(R.drawable.abs);
+        photo.add(R.drawable.fw1);
+        photo.add(R.drawable.iron);
+        photo.add(R.drawable.legs);
+        photo.add(R.drawable.cardio);
+        photo.add(R.drawable.fw1);
+        photo.add(R.drawable.funcfit);
+        photo.add(R.drawable.cardio);
+        photo.add(R.drawable.iron);
+        photo.add(R.drawable.funcfit);
     }
 
     @NonNull
@@ -48,7 +61,7 @@ public class FreeWorkoutAdapter extends RecyclerView.Adapter<FreeWorkoutAdapter.
         String freeWorkOutName=freeWorkOutNames.get(position);
         if(freeWorkOutName!=null)
         {
-            holder.freeWorkoutImageView.setImageResource(R.drawable.fw1);
+            holder.freeWorkoutImageView.setImageResource(photo.get(position));
             holder.freeWorkoutImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
