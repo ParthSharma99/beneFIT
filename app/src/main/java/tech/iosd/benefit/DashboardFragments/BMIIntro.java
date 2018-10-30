@@ -3,7 +3,6 @@ package tech.iosd.benefit.DashboardFragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import tech.iosd.benefit.Model.DatabaseHandler;
 import tech.iosd.benefit.R;
-import tech.iosd.benefit.Utils.Constants;
 
 public class BMIIntro extends Fragment implements View.OnClickListener
 {

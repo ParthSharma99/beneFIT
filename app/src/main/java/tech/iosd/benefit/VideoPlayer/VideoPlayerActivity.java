@@ -2,8 +2,11 @@ package tech.iosd.benefit.VideoPlayer;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -23,7 +26,7 @@ import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.support.v4.app.Fragment;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.gson.Gson;
@@ -31,28 +34,40 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Locale;
 
+import tech.iosd.benefit.DashboardFragments.SaveWorkout;
+import tech.iosd.benefit.Model.DatabaseHandler;
 import tech.iosd.benefit.Model.VideoPlayerItem;
 import tech.iosd.benefit.R;
+import tech.iosd.benefit.SaveWorkoutActivity;
 
 /**
  * Created by Prerak Mann on 28/06/18.
  */
-public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener, VideoControllerView.MediaPlayerControl, MediaPlayer.OnCompletionListener, TextToSpeech.OnInitListener {
+public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener, VideoControllerView.MediaPlayerControl, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, TextToSpeech.OnInitListener {
 
+    SharedPreferences sharedPreferences1;
     SurfaceView videoSurface;
+    Calendar c = Calendar.getInstance();
+    SimpleDateFormat df;
     MediaPlayer player;
     VideoControllerView controller;
+    FragmentManager fm;
+    VideoFormView videoFormView;
     TextView dura2, setsCounter, middleCount, restCounter, repsCounter;
     int screenTime;
+    private DatabaseHandler db;
     CountDownTimer countDownTimer;
     public static final String TAG = "chla";
     ProgressDialog progressDialog;
     Button skipIntroBtn, skipRestBtn;
     private TextToSpeech tts;
     CheckBox soundOn;
+    boolean isFreeWorkout=true;
     Boolean isSoundOn = true;
     Gson gson = new Gson();
 
@@ -65,10 +80,11 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
-
+        db = new DatabaseHandler(this);
         videoPlayerItemList = getIntent().getStringArrayListExtra("videoItemList");
+        isFreeWorkout=getIntent().getExtras().getBoolean("FREEWORKOUT",false);
         currentItem = 0;
-
+        sharedPreferences1 = getSharedPreferences("SAVE_EXERCISE", MODE_PRIVATE);
         setVideoItem();
 
         initViews();
@@ -77,10 +93,11 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
     }
     private void initViews(){
         restView = (View) findViewById(R.id.restView);
-
+        sharedPreferences = getSharedPreferences("SAVE_EXERCISE", MODE_PRIVATE);
         restCounter = (TextView) findViewById(R.id.restCounter);
         repsCounter = (TextView) findViewById(R.id.repsTextView);
         skipRestBtn = (Button) findViewById(R.id.skipRest);
+        fm = getFragmentManager();
         skipRestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,18 +135,45 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
         });
 
         controller = new VideoControllerView(this);
+        videoFormView=new VideoFormView(this);
 
+        //this prevents mediaplayerview to open when form is being displayed
+        videoFormView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
         //player is initialised after surface is created (onSurfaceCreated method)
 
     }
 
-
+    @Override
+    public void onBackPressed()
+    {
+        progressDialog.dismiss();
+        super.onBackPressed();
+    }
     private void startNextInList(){
         if(currentItem < videoPlayerItemList.size() -1 ){
             currentItem++;
             setVideoItem();
             startVideo();
         }else {
+            Intent intent=new Intent(this, SaveWorkoutActivity.class);
+            intent.putExtra("VIDEO_ITEM", videoPlayerItemList);
+            Bundle bundle=new Bundle();
+            bundle.putBoolean("FREEWORKOUT",isFreeWorkout);
+            intent.putExtras(bundle);
+            c = Calendar.getInstance();
+            df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            String fomattedTime=df.format(c.getTime());
+            Toast.makeText(this, fomattedTime, Toast.LENGTH_SHORT).show();
+            sharedPreferences1.edit().putString("END_TIME",fomattedTime).apply();
+            long time= System.currentTimeMillis();
+            sharedPreferences1.edit().putFloat("END_TIME_MILLIS",time).apply();
+
+            startActivity(intent);
             finish();
         }
     }
@@ -144,6 +188,7 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
     }
 
     private void setVideoItem(){
+        if(videoPlayerItemList.size()>currentItem)
         videoItem = gson.fromJson(videoPlayerItemList.get(currentItem),VideoPlayerItem.class);
     }
 
@@ -181,7 +226,9 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(next1prev0==1)
-                    startNextInList();
+                {
+                    showFormScreen();
+                }
                 else
                     startPreviousInList();
             }
@@ -223,26 +270,179 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
         controller.setEnabled(false); //controller disabled so that it doesn't show on touch
         hideAllViews();
         //show rest screen
-        restView.setVisibility(View.VISIBLE);
+        //restView.setVisibility(View.VISIBLE);
         videoItem.setResting(true);
-        //set timer to stop resting
-        if(countDownTimer!=null)
-            countDownTimer.cancel();
-        countDownTimer = new CountDownTimer(videoItem.getRestTimeSec()*1000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                int sec = (int)millisUntilFinished/1000;
-                int min = (int)millisUntilFinished/60000;
-                YoYo.with(Techniques.ZoomIn).duration(800).playOn(restCounter);
-                restCounter.setText(f.format(min) + ":" + f.format(sec));
-            }
+        videoFormView.hide();
+        showWeightFormScreen();
 
-            @Override
-            public void onFinish() {//skip button
-                videoItem.setResting(false);
-                startVideo();
-            }
-        }.start();
+//        if (videoFormView!=null)
+//            videoFormView.hide();
+//        videoItem.setResting(false);
+//        startVideo();
+        //set timer to stop resting
+//        if(countDownTimer!=null)
+//            countDownTimer.cancel();
+//        countDownTimer = new CountDownTimer(videoItem.getRestTimeSec()*1000,1000) {
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//                int sec = (int)millisUntilFinished/1000;
+//                int min = (int)millisUntilFinished/60000;
+//                YoYo.with(Techniques.ZoomIn).duration(800).playOn(restCounter);
+//                restCounter.setText(f.format(min) + ":" + f.format(sec));
+//            }
+//
+//            @Override
+//            public void onFinish() {//skip button
+//                videoItem.setResting(false);
+//                startVideo();
+//            }
+//        }.start();
+    }
+    boolean displaySets=true;
+    boolean isWeight=true;
+    boolean isReps=true;
+    boolean result=false;
+    private void showWeightFormScreen()
+    {
+        displaySets=false;
+        controller.setEnabled(false);
+        if (player != null) {
+            player.stop();
+        }
+        if(isWeight&&videoItem.getTypeExercise().equals("Dumbell/Barbell/Gym"))
+        {
+            Log.d("Entering..","weight");
+            //Toast.makeText(VideoPlayerActivity.this, ""+videoFormView.numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+            //sharedPreferences.edit().putInt("Weight"+videoItem.getVideoName(),videoFormView.numberPicker.getValue()).apply();
+            videoFormView.setAnchorView((FrameLayout) findViewById(R.id.videoSurfaceContainer), videoItem.getSets(), videoItem.getVideoName(), videoItem.getTotalReps(), displaySets,isWeight);
+            isWeight=false;
+            videoFormView.submitForm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(VideoPlayerActivity.this, ""+videoFormView.numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+                    sharedPreferences.edit().putInt("Weight"+videoItem.getVideoName(),videoFormView.numberPicker.getValue()).apply();
+                    videoFormView.hide();
+                    showWeightFormScreen();
+                }
+            });
+            videoFormView.show();
+        }
+        else if(isReps&&videoItem.getTotalReps()>0)
+        {
+            Log.d("Entering..","reps");
+            isReps=false;
+            videoFormView.setAnchorView((FrameLayout) findViewById(R.id.videoSurfaceContainer), videoItem.getSets(), videoItem.getVideoName(), videoItem.getTotalReps(), displaySets,false);
+            videoFormView.submitForm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(VideoPlayerActivity.this, ""+videoFormView.numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+                    sharedPreferences.edit().putInt("RepsNo"+videoItem.getVideoName(),videoFormView.numberPicker.getValue()).apply();
+                    videoFormView.hide();
+                    videoItem.setResting(false);
+                    startVideo();
+                }
+            });
+            videoFormView.show();
+        }
+        else
+        {
+            SharedPreferences sharedPreferences1 = getSharedPreferences("SAVE_EXERCISE", MODE_PRIVATE);
+            int reps=sharedPreferences1.getInt("RepsNo"+videoItem.getVideoName(),10);
+            int caloriesBurnt=sharedPreferences1.getInt("CaloriesBurnt",0);
+            float mets=videoItem.getMets();
+            float timeTaken=videoItem.getTimeTaken();
+            int weightUser=db.getUserWeight();
+            Log.d("timeTaken",timeTaken+"");
+            Log.d("mets",mets+"");
+            caloriesBurnt=(int)(caloriesBurnt+(mets*weightUser*((reps*timeTaken)/3600)));
+            Log.d("caloriesBurnt",""+caloriesBurnt);
+            sharedPreferences.edit().putInt("CaloriesBurnt",caloriesBurnt).apply();
+            result=true;
+            isWeight=true;
+            displaySets=true;
+            isReps=true;
+        }
+    }
+
+    SharedPreferences sharedPreferences;
+    private void showFormScreen()
+    {
+        controller.setEnabled(false);
+        if (player != null) {
+            player.stop();
+        }
+        if(isWeight&&videoItem.getTypeExercise().equals("Dumbell/Barbell/Gym"))
+        {
+            //Toast.makeText(VideoPlayerActivity.this, ""+videoFormView.numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+            //sharedPreferences.edit().putInt("Weight"+videoItem.getVideoName(),videoFormView.numberPicker.getValue()).apply();
+            videoFormView.setAnchorView((FrameLayout) findViewById(R.id.videoSurfaceContainer), videoItem.getSets(), videoItem.getVideoName(), videoItem.getTotalReps(), displaySets,isWeight);
+            isWeight=false;
+            videoFormView.submitForm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(VideoPlayerActivity.this, ""+videoFormView.numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+                    sharedPreferences.edit().putInt("Weight"+videoItem.getVideoName(),videoFormView.numberPicker.getValue()).apply();
+                    videoFormView.hide();
+                    showFormScreen();
+                }
+            });
+            videoFormView.show();
+        }
+        else if(displaySets && videoItem.getSets()>1)
+        {
+            videoFormView.setAnchorView((FrameLayout) findViewById(R.id.videoSurfaceContainer), videoItem.getSets(), videoItem.getVideoName(), videoItem.getTotalReps(), displaySets,false);
+            displaySets=false;
+            videoFormView.submitForm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(VideoPlayerActivity.this, ""+videoFormView.numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+                    sharedPreferences.edit().putInt("SetNo"+videoItem.getVideoName(),videoFormView.numberPicker.getValue()).apply();
+                    videoFormView.hide();
+                    showFormScreen();
+                }
+            });
+            videoFormView.show();
+        }
+        else if(isReps&&videoItem.getTotalReps()>0)
+        {
+           isReps=false;
+            videoFormView.setAnchorView((FrameLayout) findViewById(R.id.videoSurfaceContainer), videoItem.getSets(), videoItem.getVideoName(), videoItem.getTotalReps(), displaySets,false);
+            videoFormView.submitForm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(VideoPlayerActivity.this, ""+videoFormView.numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+                    sharedPreferences.edit().putInt("RepsNo"+videoItem.getVideoName(),videoFormView.numberPicker.getValue()).apply();
+                    videoFormView.hide();
+                    showFormScreen();
+                }
+            });
+            videoFormView.show();
+        }
+        else
+        {
+            Log.d("reahed else","reached else");
+            SharedPreferences sharedPreferences1 = getSharedPreferences("SAVE_EXERCISE", MODE_PRIVATE);
+            int sets=sharedPreferences1.getInt("SetNo"+videoItem.getVideoName(),1);
+            int reps=sharedPreferences1.getInt("RepsNo"+videoItem.getVideoName(),10);
+            int caloriesBurnt=sharedPreferences1.getInt("CaloriesBurnt",0);
+            float mets=videoItem.getMets();
+            float timeTaken=videoItem.getTimeTaken();
+            int weightUser=db.getUserWeight();
+            Log.d("timeTaken",timeTaken+"");
+            Log.d("mets",""+mets);
+            caloriesBurnt=(int)(caloriesBurnt+(mets*weightUser*((sets*reps*timeTaken)/3600))) ;
+            Log.d("caloriesBurnt",""+caloriesBurnt);
+            sharedPreferences.edit().putInt("CaloriesBurnt",caloriesBurnt).apply();
+            isWeight=true;
+            displaySets=true;
+            isReps=true;
+            startNextInList();
+        }
     }
 
     private void hideAllViews() {
@@ -264,7 +464,6 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
         dura2.setVisibility(View.VISIBLE);
     }
     private void showRepsViews(){
-        middleCount.setVisibility(View.VISIBLE);
         repsCounter.setVisibility(View.VISIBLE);
         setsCounter.setVisibility(View.VISIBLE);
     }
@@ -310,6 +509,16 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
     // End SurfaceHolder.Callback
 
     // Implement MediaPlayer.OnPreparedListener
+
+
+    @Override
+    public boolean onError(MediaPlayer mp, int what, int extra) {
+        if(progressDialog!=null)
+            progressDialog.cancel();
+        Toast.makeText(this,"Error Playing, file may be corrupt",Toast.LENGTH_LONG).show();
+        return false;
+    }
+
     @Override
     public void onPrepared(MediaPlayer mp) {
         //show relevant views here
@@ -321,8 +530,9 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
         controller.setMediaPlayer(this);
         controller.setAnchorView((FrameLayout) findViewById(R.id.videoSurfaceContainer), videoItem.getSets(), videoItem.getVideoName());
         player.start();
-        if (progressDialog != null)
+        if (progressDialog != null) {
             progressDialog.dismiss();
+        }
         Log.d(TAG, "onPrepared: " + getDuration());
         int duration = getDuration();
 
@@ -354,7 +564,7 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
                     dura2.setText("Total Time Remaining : \n" + f.format(hour) + ":" + f.format(min) + ":" + f.format(sec));
                 } else if (videoItem.getType() == VideoPlayerItem.TYPE_REPETITIVE) {
                     if (videoItem.getIntroComp()) {//if intro is completed
-                        repsCounter.setText("Reps: " + String.valueOf(videoItem.getCurrentRep()) + "/" + String.valueOf(videoItem.getTotalReps()));
+                        //TODO some problem in videoItem.getItroCmp time is ot displayed properly so changed the reps counter textview position
                         dura2.setText("Total Time Remaining : \n" + f.format(hour) + ":" + f.format(min) + ":" + f.format(sec));
                     } else {//for intro video
                         dura2.setText(videoItem.getVideoName() + "\n" + "Starts in " + f.format(hour) + ":" + f.format(min) + ":" + f.format(sec));
@@ -461,7 +671,7 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
                     dura2.setText("Total Time Remaining : \n" + f.format(hour) + ":" + f.format(min) + ":" + f.format(sec));
                 } else if (videoItem.getType() == VideoPlayerItem.TYPE_REPETITIVE) {
                     if (videoItem.getIntroComp()) {//if intro is completed
-                        repsCounter.setText(String.valueOf(videoItem.getCurrentRep()) + "/" + String.valueOf(videoItem.getTotalReps()));
+                        repsCounter.setText("Reps:"+String.valueOf(videoItem.getCurrentRep()) + "/" + String.valueOf(videoItem.getTotalReps()));
                         dura2.setText("Total Time Remaining : \n" + f.format(hour) + ":" + f.format(min) + ":" + f.format(sec));
                     } else {//for intro video
                         dura2.setText(videoItem.getVideoName() + "\n" + "Starts in " + f.format(hour) + ":" + f.format(min) + ":" + f.format(sec));
@@ -540,7 +750,7 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
         try {
             progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Please Wait");
-            progressDialog.setMessage("Loading ... ");
+            progressDialog.setMessage("STARTING... ");
 
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -552,6 +762,7 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
             });
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
             player.setOnPreparedListener(this);
+            player.setOnErrorListener(this);
             player.setOnCompletionListener(this);
 
         } catch (IllegalArgumentException | SecurityException | IllegalStateException e) {
@@ -559,7 +770,6 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
         }
 
         player.reset();//so that we can re-initialise player
-
         if (videoItem.getType() == VideoPlayerItem.TYPE_FOLLOW) {
             if (videoItem.getIntroComp()) {//show rest screen
                 showRestScreen();
@@ -574,8 +784,10 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
                     player.setDataSource(path);
 
                     player.prepareAsync();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+                    progressDialog.cancel();
                 }
             }
 
@@ -591,8 +803,11 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
                     player.setDataSource(path);
 
                     player.prepareAsync();
-                } catch (IOException e) {
+
+                } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+                    progressDialog.cancel();
                 }
             } else {//show intro
                 try {
@@ -605,8 +820,11 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
                     player.setDataSource(path);
 
                     player.prepareAsync();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
+
+                    Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
+                    progressDialog.cancel();
                 }
             }
         }
@@ -621,15 +839,19 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
                 //show rest screen
                 showRestScreen();
             } else {
-                startNextInList();
+                mediaPlayer.pause();
+                showFormScreen();
                 //Toast.makeText(VideoPlayerActivity.this, "End of sets", Toast.LENGTH_SHORT).show();
             }
         } else if (videoItem.getType() == VideoPlayerItem.TYPE_REPETITIVE) {
-            if (videoItem.getIntroComp()) {//if intro is complete
-                if (videoItem.incrementCurrentRep() < videoItem.getTotalReps()) {
+            if (videoItem.getIntroComp())
+            {//if intro is complete
+                if (videoItem.incrementCurrentRep() <videoItem.getTotalReps())
+                {
                     player.seekTo(0);
                     player.start();
-
+                    repsCounter.setText("Reps:"+videoItem.getCurrentRep()+"/"+videoItem.getTotalReps());
+                    repsCounter.setVisibility(View.VISIBLE);
                     middleCount.setVisibility(View.VISIBLE);
                     middleCount.setText(String.valueOf(videoItem.getCurrentRep()));
                     if (isSoundOn) {
@@ -650,7 +872,8 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
                     if (videoItem.incrementCurrentSet() < videoItem.getSets()) {
                         showRestScreen();
                     } else {
-                        startNextInList();
+                        mediaPlayer.pause();
+                        showFormScreen();
                         //Toast.makeText(VideoPlayerActivity.this, "sets finished", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -692,6 +915,20 @@ public class VideoPlayerActivity extends Activity implements SurfaceHolder.Callb
             tts.shutdown();
         }
         super.onDestroy();
+    }
+    @Override
+    public void onStop()
+    {
+        if(player.isPlaying())
+        player.pause();
+        super.onStop();
+    }
+    @Override
+    public void onPause()
+    {
+        if(player.isPlaying())
+        player.pause();
+        super.onPause();
     }
 }
 

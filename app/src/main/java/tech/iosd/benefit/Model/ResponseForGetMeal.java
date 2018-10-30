@@ -10,8 +10,16 @@ public class ResponseForGetMeal {
     private boolean success;
     private String message;
     public Data data;
-
+    private Calories calories;
     private int __v;
+
+    public Calories getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Calories calories) {
+        this.calories = calories;
+    }
 
     public class Data {
         public String _id;
@@ -60,6 +68,27 @@ public class ResponseForGetMeal {
 
         public void setFood(ArrayList<Food> food) {
             this.food = food;
+        }
+    }
+    public static class Calories
+    {
+        private int workout;
+        private int tracking;
+
+        public int getWorkout() {
+            return workout;
+        }
+
+        public void setWorkout(int workout) {
+            this.workout = workout;
+        }
+
+        public int getTracking() {
+            return tracking;
+        }
+
+        public void setTracking(int tracking) {
+            this.tracking = tracking;
         }
     }
     public static class Food {

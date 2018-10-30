@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ededed">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:src="@drawable/fn10"
+            android:scaleType="fitXY"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardElevation="2dp">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_share_24dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/oswald"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                android:text="Share this article"
+                android:textAllCaps="true"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="PRE AND POST WORKOUT NUTRITION"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="When and what to eat?"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="“What and when to eat” is an important question when you consider your pre and post workout nutrition. Well, to be honest, this answer depends on a number of factors including what level of workout you do and what your fitness goal is."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Before we proceed, let us tell you one point that is common for overall good health. It is HYDRATION! Yes! It is always important to drink enough water before your workout and quite some time after your workout. Water plays a major role in flushing out the toxins and helping you stay fresh and hydrated"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Let us now look at the pre-wok out nutrition that you must follow in order to make the most of your exercise."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="PRE-WORKOUT NUTRITION"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Eating something good before your workout can work wonders for you by fuelling your body with energy and decreasing the muscle protein breakdown. Depending on whether you are aiming for weight loss or gain, your pre-workout nutrition will vary. Let us look at each of these separately."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Nutrition for weight-loss"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="To lose weight, you must try to eat a small snack before your workout. You must go for a protein snack or optionally carbohydrates before your workout. For early morning workout, you could go for an empty stomach as it will use the stored fats."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Nutrition for mass gain"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="To gain weight, you must have a small pre-workout snack that has carbs and proteins, with more focus on carbs."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Nutrition during exercise"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="During an exercise, you must keep yourself hydrated. Have small sips of water or a sports drink during your workout."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Post-workout Nutrition"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Post-workout nutrition should aim to refill the energy that you lose during the workout. Therefore, you should fill yourself with high quality proteins and carbs. The quantity of carbs would again depend on whether you are trying to gain or lose weight."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Timing of workout nutrition"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="The timing of your nutrition actually depends on what your goal is. If you are aiming for building your body, then all the three types of nutrition i.e. pre, post and during workout nutrition is important. If you are not going for extremely rigorous exercise and say, you are only running, then you should have something immediately after the exercise! Never ever go without food after your exercise. You must refill your stomach after a proper workout."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="If you want to eat a snack prior to your workout, then you must have it 50-60 min in advance. But, it is important for you to know and keep in mind that the more closer is your snack time to your exercise time, the more uncomfortable you may feel as it will be indigestible."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="If you want to eat a big meal prior to your workout, we would say that is okay. But, the meal must be at least  2-3 hours before your training or workout. Without this, you might feel bulkier and may not work properly at all!"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="16sp"
+            android:text="We hope this guide helps you in knowing when and what to eat to make the most of your exercise and diet regime."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="italic"/>
+
+    </LinearLayout>
+</ScrollView>

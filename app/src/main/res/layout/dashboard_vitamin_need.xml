@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ededed">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:src="@drawable/fn7"
+            android:scaleType="fitXY"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardElevation="2dp">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_share_24dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/oswald"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                android:text="Share this article"
+                android:textAllCaps="true"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="The Need for Vitamins and Minerals"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Vitamins and minerals play a major role in the body. They help in maintain health and well being and their deficiency can lead to major health problems. The good news is that most of these vitamins and minerals can be obtained from day to day food. This article explores the benefits of various vitamins and minerals, the results of their deficiencies and their sources."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Vitamin A"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Benefits: This vitamin is needed for the proper functioning of the eyes, and the maintenance of healthy skin and teeth."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Deficiency: The deficiency of this vitamin can lead to blurry vision, headaches, nausea and rough and scaly skin. Excessive intake can lead to complications in pregnant women."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Sources:  carrots, sweet potato, beef, eggs"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Vitamin B"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Benefits: It boosts up the immunity (thus helping in the prevention and fighting off of many diseases), helps the body in absorbing iron and aids energy production."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Deficiency: there are various sub groups of this vitamin-B12, B9, B1, B3 etc. There are different sources of these vitamins and their deficiencies can lead to a wide range of effects-weakness in muscles, burning sensations, ulcers and mouth sores, trembles, mood swings, cognitive difficulties, digestion problems etc."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Sources: green leafy vegetables, whole grains, salmon, tuna, chicken"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Vitamin C"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Benefits: suppleness of the skin, utilization of iron by the body, helps in the strengthening of blood vessels. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Deficiency: can lead to bruises, sore or bleeding gums, swelling in the joints and the feet, dry eyes, fragile bones, difficult healing of the wounds, scurvy etc."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Sources: orange, lemon, guava, strawberries, sweet potato, pineapple etc."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Folic acid"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Benefits: it is needed in cell reproduction and maintenance. It also helps in helping genetic and birth defects in infants."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Deficiency: it can lead to birth defects and physical abnormalities."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Sources: dark green leafy vegetables, beans, lentils, nuts, corns ,etc."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Calcium"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Benefits: it helps in keeping bones and teeth healthy. It is important to know that vitamin D is needed for the absorption of calcium."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Deficiency: low bone density, brittle bones and teeth, osteoporosis, rickets"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Sources: tofu, dairy, green leafy vegetables, sardines and ladies finger"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Iron"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Benefits: muscle strength and healthy blood, it also helps in increasing the count of red blood cells."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Deficiency: Anemia, pale skin, stunted growth in children; excessive intake may lead to cancer and/ or cardiovascular diseases."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Sources: almonds, apricots, beans, green leafy vegetables, tuna, pork, chicken, dates"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Zinc"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Benefits: it helps in building up immunity, aids growth, and increases fertility in both men and women."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Deficiency: lowered immunity-leading to infections, cell damage, and delay in sexual maturation, infertility, night blindness, hair loss. Chronic alcoholics are especially susceptible to zinc deficiency."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Sources:oysters, spinach, cashews, beans, dark chocolate"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="16sp"
+            android:text="These are just a few vitamins and minerals that the body needs. There are a lot of others and there are varied sources of getting them and their deficiencies can lead to a wide range of health problems. It is however important to identify these symptoms, and consult experts to ascertain if supplements are needed."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -84,6 +84,7 @@
                 android:background="@drawable/ic_done_black_24dp"
                 android:visibility="gone" />
 
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"

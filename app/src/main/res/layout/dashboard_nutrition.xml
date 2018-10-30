@@ -107,7 +107,135 @@
                 android:id="@+id/dashboard_nutrition_protein_facts"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/fn1"/>
+                android:background="@drawable/fn1" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_food_supplements"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn2"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_rejuvenate_with_detox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn3"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_liquid_nutritional_drinks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn4"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_commom_eating_mistakes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn5"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_weight_loss_formula"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn6"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_need_of_vitamins"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn7"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_myths_facts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn8"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/dashboard_nutrition_how_to_gain_good_weight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fn9"/>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -121,10 +249,11 @@
             app:cardCornerRadius="10dp">
 
             <ImageView
-                android:id="@+id/dashboard_nutrition_food_supplements"
+                android:id="@+id/dashboard_nutrition_pre_post_workout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/fn2"/>
+                android:background="@drawable/fn10"/>
         </android.support.v7.widget.CardView>
+
     </LinearLayout>
 </ScrollView>

@@ -13,21 +13,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
-
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 import tech.iosd.benefit.OnBoardingFragments.GetStarted;
 
 public class OnBoardingActivity extends AppCompatActivity
 {
     FragmentManager fm;
     private static final int PERMISSION_REQUEST_CODE = 1;
-    String p1 = android.Manifest.permission.CAMERA, p2 = android.Manifest.permission.ACCESS_FINE_LOCATION,
-            p3 = android.Manifest.permission.ACCESS_COARSE_LOCATION, p4 = android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            p5 = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ;
+    String[] permissions = { android.Manifest.permission.CAMERA,
+        android.Manifest.permission.ACCESS_FINE_LOCATION,
+        android.Manifest.permission.ACCESS_COARSE_LOCATION,
+        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,39 +34,34 @@ public class OnBoardingActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
         getPermissions();
-
-
-
-
-
         fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.onboarding_content, new GetStarted()).commit();
     }
+    
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode,resultCode,data);
         Toast.makeText(getApplicationContext(),"23",Toast.LENGTH_LONG).show();
-
     }
 
-    public void getPermissions() {
-    /* Check and Request permission */
-        if (!checkPermission(p1)) {
-            Log.e("TAG",p1);
-            requestPermission(p1);
-        } else if (!checkPermission(p2)) {
-            Log.e("TAG",p2);
-            requestPermission(p2);
-        } else if (!checkPermission(p3)) {
-            Log.e("TAG",p3);
-            requestPermission(p3);
-        } else if (!checkPermission(p4)) {
-            Log.e("TAG",p4);
-            requestPermission(p4);
-        } else if (!checkPermission(p5)) {
-            Log.e("TAG",p5);
-            requestPermission(p5);
+    public void getPermissions()
+    {    
+        if (!checkPermission(permissions[0])) {
+            Log.e("TAG",permissions[0]);
+            requestPermission(permissions[0]);
+        } else if (!checkPermission(permissions[1])) {
+            Log.e("TAG",permissions[1]);
+            requestPermission(permissions[1]);
+        } else if (!checkPermission(permissions[2])) {
+            Log.e("TAG",permissions[2]);
+            requestPermission(permissions[2]);
+        } else if (!checkPermission(permissions[3])) {
+            Log.e("TAG",permissions[3]);
+            requestPermission(permissions[3]);
+        } else if (!checkPermission(permissions[4])) {
+            Log.e("TAG",permissions[4]);
+            requestPermission(permissions[4]);
         }else {
             Toast.makeText(OnBoardingActivity.this, "All permission granted", Toast.LENGTH_LONG).show();
         }
@@ -100,6 +94,7 @@ public class OnBoardingActivity extends AppCompatActivity
                 } else {
                     //Toast.makeText(getContext(), "Bye bye", Toast.LENGTH_LONG).show();
                     getPermissions();
+                    
                     Toast.makeText(OnBoardingActivity.this, "Permissions are required to run app", Toast.LENGTH_LONG).show();
                 }
                 break;

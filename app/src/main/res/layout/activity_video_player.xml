@@ -67,7 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="#28000000"
+                android:gravity="center"
+                android:background="@drawable/rounded_textview"
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="#fff"
                 android:textSize="130sp"
@@ -82,7 +83,7 @@
                 android:background="#28000000"
                 android:textColor="#fff"
                 android:textSize="20sp"
-                android:textStyle="italic" />
+                   android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/repsTextView"

@@ -4,7 +4,8 @@ public class VideoPlayerItem {
 
     public static final int TYPE_FOLLOW=1000;//sets
     public static final int TYPE_REPETITIVE =1001;//sets+reps
-
+    private String typeExercise;
+    private String id;
     //type = repetitive workflow
     // Tutorial ----> singleVideo (repeated for total reps) ----> Rest --\
     //                         ^----(looped for number of sets)----------/
@@ -21,7 +22,8 @@ public class VideoPlayerItem {
     private int restTimeSec;//rest time period
 
     private int totalReps;//
-
+    private float mets;
+    private float timeTaken;
     private String introVideo,singleRepVideo;
 
     private int currentSet,currentRep;
@@ -41,12 +43,13 @@ public class VideoPlayerItem {
         this.sets = exercise.getSets();
         this.videoName = exercise.getExercise().getName();
         this.restTimeSec = exercise.getRest();
+        this.timeTaken=exercise.getExercise().getTimeTaken();
         this.totalReps = exercise.getReps();
-
-
+        this.typeExercise=exercise.getExercise().getType();
+        this.mets=exercise.getExercise().getMets();
         this.introVideo = exercise.getExercise().get_id()+".mp4";
         this.singleRepVideo = exercise.getExercise().get_id()+"_a.mp4";
-
+        this.id=exercise.getExercise().get_id();
 
         //defaults
         this.currentRep = 0;
@@ -157,5 +160,37 @@ public class VideoPlayerItem {
 
     public void setTotalReps(int totalReps) {
         this.totalReps = totalReps;
+    }
+
+    public String getTypeExercise() {
+        return typeExercise;
+    }
+
+    public void setTypeExercise(String typeExercise) {
+        this.typeExercise = typeExercise;
+    }
+
+    public float getMets() {
+        return mets;
+    }
+
+    public void setMets(float mets) {
+        this.mets = mets;
+    }
+
+    public float getTimeTaken() {
+        return timeTaken;
+    }
+
+    public void setTimeTaken(float timeTaken) {
+        this.timeTaken = timeTaken;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

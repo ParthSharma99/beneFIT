@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ededed">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:src="@drawable/fn5"
+            android:scaleType="fitXY"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardElevation="2dp">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_share_24dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/oswald"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                android:text="Share this article"
+                android:textAllCaps="true"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Common Eating Mistakes"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Staying healthy is probably a priority for many of us. A lot of us make efforts to change unhealthy habits and acquire healthier ones. An important aspect of these changes eating right. Avoiding junk food and eating the supposedly “healthy substitutes” may not be enough. It is important to read up and analyze the day to day mistakes that one makes while eating. This article does precisely that-it outlines the common eating mistakes."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Eating less helps in weight reduction"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="This is a popular myth, especially amongst teenagers, who very often go on “crash diets.” The reason for this is because people link food with weight and in their desire to achieve quick results, they switch to a frugal diet. Eating too low can send the body in a panic mode. The body slows down the metabolic rate and stores calories as it assumes that food is scarce. Good fats, which help in weight loss, are burned down. It is therefore important to eat regularly, but to eat right. One is also more likely to go on a binge if one stays hungry. So fill yourself up, but with the right kind of food."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Avoiding caffeine"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Caffeine rich drinks like tea and coffee are rich in antioxidants which raise the metabolic rate and help lose weight. Instead of avoiding caffeinated drinks, try and avoid adding milk and sugar to your drinks. It is this excess sugar that people add to their drinks that has lead to the misconception that having tea or coffee leads to weight gain."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Salad dressings"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="A lot of people assume that just because they are eating salads, they are eating a healthy meal. The problem is that most people add a lot of salad dressing. These dressings are mostly high in carbohydrates (even the low fat ones) and do more harm than good. The worst is that they help in continuing the illusion of diet, sometimes increase frustration as salads are not seen as “real meals” and thus can lead to binges. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Avoiding carbohydrates altogether"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="A lot of people who want to lose weight follow the very trendy “no carbs diet.” The problem with this sought of diet is that it leads to a drop in blood sugar levels and increases craving which in turn leads to binges, which leads to weight gain. It is therefore important to replace bad carbohydrates with good carbohydrates like whole wheat and quinoa. This will reduce cravings and help avoid binges."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Overlooking calories in alcoholic beverages"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="It is well known that soft drinks are high in calories and carbohydrates. People, however, forget that other drinks have calories too, especially alcoholic beverages like beer and rum. It is therefore not uncommon to see people having a margarita with their diet food. This adds to the overlooked calories and very often does not even factor in the “calorie count of the day.” This should be avoided."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:text="Things you should do.."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="1. Drink More Water"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="After spending a long day at work when you are all set to pack up for the day, a quick glance at the water bottle kept at your table makes you realise that you didn’t gulp it all down again. Same is the case with work-outs, people fail to rehydrate themselves even after sweating it out at the gym. Another fact is that when the body falls short of water we tend to feel more hungry and as a result tend to eat more than we planned to. It’s a good practice for everyone to have a glass of water about half an hour before your meal. That’s a great way to increase your fluid intake ensure you’re not going to overeat."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="2. Eat Good Quality Foods"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="The best way to compliment a rigorous workout is to have good quality food. No point in working out and then having poor food combinations. The right kind of quality food with a balance of proteins, carbs and antioxidants is the key to a more efficient and energized body."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="It’s normal if you feel increased hunger pangs while starting a new exercise program but you also want to ensure that the food your body is taking in is the best in quality with ingredients that make you feel at your best, help you recover effectively and get good results."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="3. Use Your Hunger Signs -- As A Guide"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Most people tend to equate the calories burnt during the day with the number of calories they can consume on that particular day. Well, honestly that’s not the best of methods to ensure you achieving your fitness goals. Rather, it's good to have frequent small meals and eat only to satisfy your hunger."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="4. Plan Ahead"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Planning what all to have during the day in terms of breakfast, lunch and dinner options helps you to eat healthy stuff and avoid unhealthy meal options on the move. A good practice is also to identify some healthy snacks as per your fitness goals and keep them handy so that you don’t grab a packet of chips next time you feel hungry."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="5. Avoid 'Cheat' Meals"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="25dp"
+            android:text="Most of us tend to do additional exercises and workouts only to indulge in having some junk food we love without feeling guilty. This is the case with people who are new to the daily exercise routine and don’t enjoy it much. Food becomes a psychological reward for them once they complete their workout. This leads to slower weight loss compared to people who work-out and avoid cheat meals at all costs. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</ScrollView>

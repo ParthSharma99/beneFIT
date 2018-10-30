@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ededed">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:src="@drawable/fn8"
+            android:scaleType="fitXY"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardElevation="2dp">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_share_24dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/oswald"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                android:text="Share this article"
+                android:textAllCaps="true"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Nutrition Myths and Facts"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="The present times can be seen as the age of information exposure. There is so much available on the internet, that it is difficult to know is the fact is and what is a myth. This article seeks to explore the myths and facts associated with nutrition. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Myths Associated With Nutrition"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="1) Eating late at night makes one put on weight"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="This is a myth.Calories should ideally not be had right before sleeping, but the time of the day does not matter. In fact, having a frugal dinner can leave you hungry, and one is more likely to engage in late night snacking. It is also believed that what one has for dinner, will determine the kind of food one would crave for during the day. Instead of having a “popper’s dinner”, it is better to distribute your meals throughout the day."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Fact :"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="The food eaten is more important than the time of the day in which it is eaten."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="2) Protein alone would lead to growth in muscle tone"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="It is important to balance the protein intake with calories and muscle building exercises. It is also important to take note of the time at which the protein is had. Consuming protein during or post workout/ resistance training helps in building muscle. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Fact :"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="It is important to have a balance diet and not just load up on proteins.  It is also important to engage in proper muscle training and be disciplined about exercises."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="3) Eating cholesterol free food would guarantee a healthy heart"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="While avoiding foods rich in cholesterol is advised, it is not enough. Foods high in saturated and trans fats, pose a greater threat to the heart. It is therefore important to check the levels of saturated and trans fats in the supposedly cholesterol free food."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Fact :"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="It is therefore important to load up on foods which naturally help in cholesterol reduction like whole grains, millets, and fresh fruits and vegetables."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="4) Cravings signal deficiency"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="People hardly crave for healthy food. They mostly would want sweets or junk. Environmental cues like situations, sights and smells are more likely to induce food cravings. It is important to be aware of these and thus it enables control. It is also advised that to satiate the craving, one must first have something healthy, and then indulge in high calorie food. Healthy snacks should therefore always be available at home."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Fact :"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Cravings mostly are just emotional ways of coping or reacting. One has to be vigilant in controlling them."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="5) Dark breads are lower in carbohydrates"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Brown bread is not entirely made up of whole wheat. It is therefore advised to read the ingredients of the bread thoroughly before making a purchase. Normally, whole wheat breads go by the name of atta bread. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Fact :"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="More than the color of the bread the ingredients matter and the proportion of those ingredients matter."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="6) All herbal products are healthy"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Contrary to the popular belief, everything herbal is not healthy.  A lot of unhealthy products are derived from plants. To make matters worse, the herbal products industry is not regulated. Therefore different brands sell products of varying purity and composition."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Fact :"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="It is important to read up and research about products before purchasing them. Some herbal products can have adverse impacts on health."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#64000000"
+    android:background="@android:color/black"
     android:layout_margin="35dp">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/form_name"
         android:layout_alignParentTop="true"
         android:textColor="#ffffff"
         android:layout_centerInParent="true"
@@ -17,30 +17,32 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/question"
-        android:textColor="#ffffff"
-        android:layout_centerInParent="true"
-        android:text="How many were you able to do?"
-        android:layout_below="@+id/name"
-        android:textSize="15sp"
+        android:id="@+id/form_question"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:text="How many were you able to do?"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
 
     <NumberPicker
-        android:layout_marginTop="20dp"
         android:id="@+id/numberPicker"
-        android:layout_below="@id/question"
-        android:layout_centerInParent="true"
-        android:theme="@style/AppTheme.Picker"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="121dp"
+        android:theme="@style/AppTheme.Picker" />
 
     <Button
-        android:id="@+id/restart"
-        android:background="@drawable/ic_restart_whit_24dp"
-        android:layout_alignParentStart="true"
+        android:id="@+id/submit_form"
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_width="24dp"
-        android:layout_height="24dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp"
+        android:text="Submit" />
 
 </RelativeLayout>

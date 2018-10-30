@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ededed">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:src="@drawable/fn9"
+            android:scaleType="fitXY"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardElevation="2dp">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_share_24dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/oswald"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                android:text="Share this article"
+                android:textAllCaps="true"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="How to Gain Good Weight"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="We all have our own set of problems. While there are some of us who sweat our clothes trying to shed the excess pounds that we carry, there are many others who fret about being too skinny! Having an ideal weight is what we all want and that is what is a little tricky!"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="While there are too many ways of losing the unnecessary pounds, how do you gain weight? Some might say “Eat the whole world”. Isn’t it? You might think that having lots of soda, sweets and cakes could help you gain your weight, but is that safe? Aren’t there chances that you would be messing with your health this way?"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="So, let us look at some of the ways in which you can gain weight the “healthy” way."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Tips to gain weight"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="1. Eat more calories than what your body can burn"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="This is just reverse of the weight loss procedure. When you are underweight or skinny, you must intake a diet that is calorie surplus. Going by statistics, if you are planning to put on healthy weight slowly, you must aim for around 500-600 more calories than the number of calories you burn each day. Try referring to a tool to get an idea of the total number of calories in your food."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="2. Concentrate on proteins"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="This is something you must keep in mind. Without building up muscles, all your extra calories may end up in fat and that could be harmful for you. You must concentrate on having enough proteins and coupling it with weight training so that you build muscles. To gain weight, you can aim for at least 0.7 to 1 grams of protein per pound of your body weight."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="3. Take Gainer and Protien Shakes"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="If you are really desperate to put on some weight quickly, you can definitely try the weight gainers that are available at the nutrition stores. They are very high in calories, proteins and carbs and will work wonders for you. However, ensure that you buy them from proper shop to avoid adulteration or duplicacy and always take professional help for consuming these supplements."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="4. Concentrate on dry fruits and other high fat foods"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="You must eat a lot of surplus fat foods that help you gain the necessary weight. You can munch in dry fruits every now and then. Not only are they very tasty, but they are extremely useful for the body as well. Keep in mind to eat at least thrice a day. The meals should have a proper amount of carbs, calories and proteins in them."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="5. Avoid junk food and smoking "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Junk food is unnecessary carbs and has a bad effect on your health. It leads to accumulation of fats. On the other hand, you must concentrate on gaining lean mass. The same happens with smoking. You may feel that this is irrelevant, but believe us, smoking tends to lead to weight loss and it leads to a loss in the lean mass. If you are already into the zone, try quitting it as it will be easier for you to gain weight. With the habit of smoking, it can get really difficult for you to gain the extra weight that you want to."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="16sp"
+            android:text="Besides this, you must avoid water before meals and get a good quality of sleep. These small lifestyle changes can also help you go a long way in achieving your ideal weight."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</ScrollView>

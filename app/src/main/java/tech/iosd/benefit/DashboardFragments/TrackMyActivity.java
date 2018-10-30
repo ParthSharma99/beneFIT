@@ -36,25 +36,40 @@ public class TrackMyActivity extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view)
     {
+        TrackMyActivityRun trackMyActivity=new TrackMyActivityRun();
+        TrackMyActivityCallisthenics trackMyActivityCallisthenics = new TrackMyActivityCallisthenics();
+        Bundle args=new Bundle();
         switch (view.getId())
         {
             case R.id.dashboard_track_my_activity_running:
-                fm.beginTransaction().replace(R.id.dashboard_content, new TrackMyActivityRun()).addToBackStack(null).commit();
+                args.putString("TRACK_TYPE","RUNNING");
+                trackMyActivity.setArguments(args);
+                fm.beginTransaction().replace(R.id.dashboard_content, trackMyActivity).addToBackStack(null).commit();
                 break;
             case R.id.dashboard_track_my_activity_walking:
-                fm.beginTransaction().replace(R.id.dashboard_content, new TrackMyActivityRun()).addToBackStack(null).commit();
+                args.putString("TRACK_TYPE","WALKING");
+                trackMyActivity.setArguments(args);
+                fm.beginTransaction().replace(R.id.dashboard_content, trackMyActivity).addToBackStack(null).commit();
                 break;
             case R.id.dashboard_track_my_activity_ride:
-                fm.beginTransaction().replace(R.id.dashboard_content, new TrackMyActivityRun()).addToBackStack(null).commit();
+                args.putString("TRACK_TYPE","RIDE");
+                trackMyActivity.setArguments(args);
+                fm.beginTransaction().replace(R.id.dashboard_content, trackMyActivity).addToBackStack(null).commit();
                 break;
             case R.id.dashboard_track_my_activity_aerobics:
-                fm.beginTransaction().replace(R.id.dashboard_content, new TrackMyActivityCallisthenics()).addToBackStack(null).commit();
+                args.putString("ACTIVITY_TYPE","AEROBICS");
+                trackMyActivityCallisthenics.setArguments(args);
+                fm.beginTransaction().replace(R.id.dashboard_content,trackMyActivityCallisthenics ).addToBackStack(null).commit();
                 break;
             case R.id.dashboard_track_my_activity_swimming:
-                fm.beginTransaction().replace(R.id.dashboard_content, new TrackMyActivityCallisthenics()).addToBackStack(null).commit();
+                args.putString("ACTIVITY_TYPE","SWIMMING");
+                trackMyActivityCallisthenics.setArguments(args);
+                fm.beginTransaction().replace(R.id.dashboard_content,trackMyActivityCallisthenics).addToBackStack(null).commit();
                 break;
             case R.id.dashboard_track_my_activity_skipping:
-                fm.beginTransaction().replace(R.id.dashboard_content, new TrackMyActivityCallisthenics()).addToBackStack(null).commit();
+                args.putString("ACTIVITY_TYPE","SKIPPING");
+                trackMyActivityCallisthenics.setArguments(args);
+                fm.beginTransaction().replace(R.id.dashboard_content, trackMyActivityCallisthenics).addToBackStack(null).commit();
                 break;
         }
     }

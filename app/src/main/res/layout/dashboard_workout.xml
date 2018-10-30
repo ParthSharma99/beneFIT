@@ -93,69 +93,13 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/dashboard_free_workouts_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardElevation="3dp"
-            app:cardCornerRadius="10dp">
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:clipToPadding="false"
+            android:scrollbars="none" />
 
-            <ImageView
-                android:id="@+id/dashboard_workout_high_intensity_interval_training"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fw1"/>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardElevation="3dp"
-            app:cardCornerRadius="10dp">
-
-            <ImageView
-                android:id="@+id/dashboard_workout_functionally_fit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fw2"/>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardElevation="3dp"
-            app:cardCornerRadius="10dp">
-
-            <ImageView
-                android:id="@+id/dashboard_workout_legedtude"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fw3"/>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="30dp"
-            app:cardElevation="3dp"
-            app:cardCornerRadius="10dp">
-
-            <ImageView
-                android:id="@+id/dashboard_workout_cardio_crunch"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fw4"/>
-        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>

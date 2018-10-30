@@ -24,8 +24,8 @@ import tech.iosd.benefit.R;
  * Created by SAM33R on 28-06-2018.
  */
 
-public class DashboardWorkoutAdapter extends RecyclerView.Adapter<DashboardWorkoutAdapter.ViewHolder> {
-
+public class DashboardWorkoutAdapter extends RecyclerView.Adapter<DashboardWorkoutAdapter.ViewHolder>
+{
     ArrayList<Exercise> exercises;
     Activity activity;
     CompositeSubscription compositeSubscription;
@@ -34,9 +34,15 @@ public class DashboardWorkoutAdapter extends RecyclerView.Adapter<DashboardWorko
     private Object video;
     private ThinDownloadManager downloadManager;
 
-    public DashboardWorkoutAdapter(ArrayList<Exercise> exercises, Activity activity) {
+    public interface onItemClickListener
+    {
+        void onClick(int position);
+    }
+    onItemClickListener listener;
+    public DashboardWorkoutAdapter(ArrayList<Exercise> exercises, Activity activity,onItemClickListener listener) {
         this.exercises = exercises;
         this.activity = activity;
+        this.listener=listener;
         compositeSubscription =  new CompositeSubscription();
         db = new DatabaseHandler(activity.getApplicationContext());
         downloadManager =  new ThinDownloadManager();
@@ -63,31 +69,36 @@ public class DashboardWorkoutAdapter extends RecyclerView.Adapter<DashboardWorko
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Exercise e = exercises.get(position);
+        Exercise e = exercises.get(holder.getAdapterPosition());
         if(e!=null) {
             if (exercises.get(position).getExercise() != null)
                 holder.name.setText(exercises.get(position).getExercise().getName());
 
             holder.details.setText(e.getReps() + " reps");
-            holder.view.setOnClickListener(new View.OnClickListener() {
+            holder.view.setOnClickListener(
+                    new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(activity.getApplicationContext(), "starting download", Toast.LENGTH_SHORT).show();
-                /*File file = new File(activity.getCacheDir().toString());
-                if(file.exists()){
-
+                    listener.onClick(position);
                 }
-                else{
-
-                }*/
-                    //getExcercise(exercises.get(position).getExercise().get_id());
-                }
-            });
+//                    Toast.makeText(activity.getApplicationContext(), "starting download", Toast.LENGTH_SHORT).show();
+//                /*File file = new File(activity.getCacheDir().toString());
+//                if(file.exists()){
+//
+//                }
+//                else{
+//
+//                }*/
+//                    //getExcercise(exercises.get(position).getExercise().get_id());
+//                }
+            }
+            );
             if(e.getExercise().isDownloaded){
                 holder.progress.setVisibility(View.GONE);
                 holder.tick.setVisibility(View.VISIBLE);
+              //  holder.videoDownload.setText(e.getExercise().getTotalNoVideo()+"/"+e.getExercise().getTotalNoVideo());
             }
-            if (e.getExercise().isDownloading){
+            else if (e.getExercise().isDownloading){
                 holder.tick.setVisibility(View.GONE);
                 holder.progress.setVisibility(View.VISIBLE);
                 holder.progress.setProgress(e.getExercise().progess);
@@ -108,15 +119,16 @@ public class DashboardWorkoutAdapter extends RecyclerView.Adapter<DashboardWorko
         public View view;
         public ImageButton tick;
         public ProgressBar progress;
-
+       // public TextView videoDownload;
         public ViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.dashboard_my_workouts_list_item_name);
             details = (TextView) itemView.findViewById(R.id.dashboard_my_workouts_list_item_sets_reps);
             view =  itemView.findViewById(R.id.dashboard_my_workouts_list_item_full_view);
             note =  (TextView) itemView.findViewById(R.id.dashboard_my_workouts_list_item_note);
-            progress = itemView.findViewById(R.id.progress);
+            progress = itemView.findViewById(R.id.progress2);
             tick = (ImageButton) itemView.findViewById(R.id.tick);
+            //videoDownload=itemView.findViewById(R.id.video_downloaded);
         }
     }
 

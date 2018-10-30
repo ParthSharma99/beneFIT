@@ -69,4 +69,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_button">LOGIN</string>
+    <string name="protien_facts_text">In the present times, a lot of attention is being paid to proteins and their health value. Proteins not only regulate the metabolic rate and thus help in weight management. They also have a number of other health benefits. This article seeks to answer questions about the structure and the uses of protein, and seek out the easily available sources of protein. Proteins are comprised of smaller molecules of amino acids. Proteins with 20 molecules of amino acids are called complete proteins, and such foods are enough to fulfill all amino acid requirements of the body. They provide the body with energy. There are roughly 4 calories in each gram of protein. Essential proteins are proteins that are not produced in the body and thus have to be included in the diet. The ratio of body weight to the amount of protein one must eat is roughly 7 grams to 20 pounds. Nutritionists are also of the opinion that 30 per cent of the total calories one takes, should come from protein. Proteins are used by the body to provide structure and support to cells, help replace old or damaged cells, and control electrochemical reactions. They also strengthen the immune system and thus protect the body from diseases.</string>
+    <string name="kg">Kg</string>
+    <string name="lbs">LBS</string>
+    <string name="whats_s_your_weight">Whats\'s your weight</string>
 </resources>

@@ -1,7 +1,5 @@
 package tech.iosd.benefit.Model;
 
-import java.util.ArrayList;
-
 /**
  * Created by SAM33R on 28-06-2018.
  */
@@ -36,11 +34,12 @@ public class ResponseForWorkoutForDate {
         private String _id;
         private String client;
         private Workout workout;
-
-        public Data(String _id, String client, Workout workout) {
+        private int videoCount;
+        public Data(String _id, String client, Workout workout, int videoCount) {
             this._id = _id;
             this.client = client;
             this.workout = workout;
+            this.videoCount = videoCount;
         }
 
         public String get_id() {
@@ -65,6 +64,14 @@ public class ResponseForWorkoutForDate {
 
         public void setWorkout(Workout workout) {
             this.workout = workout;
+        }
+
+        public int getVideoCount() {
+            return videoCount;
+        }
+
+        public void setVideoCount(int videoCount) {
+            this.videoCount = videoCount;
         }
     }
 

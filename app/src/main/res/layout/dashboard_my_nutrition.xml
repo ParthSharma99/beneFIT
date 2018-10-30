@@ -113,37 +113,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#f7f7f7">
+            app:cardBackgroundColor="#f7f7f7"
+            app:cardElevation="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Breakfast"
-                android:fontFamily="@font/proxima_nova"
-                android:textStyle="bold"
-                android:textColor="#333333"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="25dp"/>
+                android:fontFamily="@font/proxima_nova"
+                android:text="Breakfast"
+                android:textColor="#333333"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:orientation="vertical"
-                android:paddingStart="25dp"
-                android:paddingEnd="25dp"
-                android:paddingTop="16dp"
                 android:paddingBottom="16dp"
-                android:background="#e6b475">
+                android:paddingEnd="25dp"
+                android:paddingStart="25dp"
+                android:paddingTop="16dp">
 
                 <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                     android:id="@+id/my_nutrition_breakfast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@null"
-                    android:layout_marginEnd="10dp"/>
+                    android:layout_marginEnd="10dp" />
 
             </LinearLayout>
 
@@ -166,10 +164,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/breakfast_calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="270"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -201,10 +200,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/breakfast_carbs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="35"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -236,10 +236,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/breakfast_protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -271,10 +272,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/breakfast_fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -285,7 +287,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        android:text="Protein"
+                        android:text="Fats"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#565656"
@@ -367,14 +369,12 @@
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
                 android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:background="#82d0aa">
+                android:paddingBottom="16dp">
 
                 <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                     android:id="@+id/my_nutrition_mid_morning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@null"
                     android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
@@ -397,16 +397,17 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/mid_morning_calorie"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
-                        android:text="270"
-                        android:textAllCaps="true"
+                        android:layout_marginStart="10dp"
                         android:fontFamily="@font/oswald"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
+                        android:text="-"
                         android:textAlignment="center"
-                        android:layout_marginStart="10dp"/>
+                        android:textAllCaps="true"
+                        android:textColor="#000000"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -432,10 +433,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/mid_morning_carbs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="35"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -467,10 +469,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/mid_morning_protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -502,10 +505,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/mid_morning_fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -516,7 +520,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        android:text="Protein"
+                        android:text="Fats"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#565656"
@@ -598,14 +602,12 @@
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
                 android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:background="#558da7">
+                android:paddingBottom="16dp">
 
                 <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                     android:id="@+id/my_nutrition_lunch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@null"
                     android:layout_marginEnd="10dp"/>
 
             </LinearLayout>
@@ -628,10 +630,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lunch_calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="270"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -663,10 +666,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lunch_carbs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="35"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -698,10 +702,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lunch_protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -733,10 +738,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lunch_fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -747,7 +753,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        android:text="Protein"
+                        android:text="Fats"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#565656"
@@ -829,14 +835,12 @@
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
                 android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:background="#d2615f">
+                android:paddingBottom="16dp">
 
                 <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                     android:id="@+id/my_nutrition_snacks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@null"
                     android:layout_marginEnd="10dp"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -858,10 +862,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/snacks_calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="270"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -893,10 +898,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/snacks_carbs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="35"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -928,10 +934,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/snacks_protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -963,10 +970,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/snacks_fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -977,7 +985,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        android:text="Protein"
+                        android:text="Fats"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#565656"
@@ -1059,13 +1067,11 @@
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
                 android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:background="#37474f">
+                android:paddingBottom="16dp">
 
 
                 <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                     android:id="@+id/my_nutrition_dinner"
-                    android:divider="@null"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"/>
@@ -1090,10 +1096,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/dinner_calories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="270"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -1125,10 +1132,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/dinner_carbs"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="35"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -1160,10 +1168,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/dinner_protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -1195,10 +1204,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/dinner_fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
-                        android:text="24"
+                        android:text="-"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#000000"
@@ -1209,7 +1219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        android:text="Protein"
+                        android:text="Fats"
                         android:textAllCaps="true"
                         android:fontFamily="@font/oswald"
                         android:textColor="#565656"

@@ -26,9 +26,7 @@ public class Nutrition extends Fragment implements View.OnClickListener
     ImageView myNutritionProceed;
     CardView myNutritionCard;
     CardView nutritionInsightCard;
-    ImageView proteinFacts;
-    ImageView FoodSupplements;
-
+    ImageView proteinFacts,FoodSupplements,rejuvDetox,liquidDrinks,eatingMistakes,weightLoss,vitaminNeed,nutritionMyths,goodWeight,prePostWorkout;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
@@ -44,14 +42,28 @@ public class Nutrition extends Fragment implements View.OnClickListener
         nutritionInsightCard = rootView.findViewById(R.id.dashboard_nutrition_insight);
         proteinFacts = rootView.findViewById(R.id.dashboard_nutrition_protein_facts);
         FoodSupplements = rootView.findViewById(R.id.dashboard_nutrition_food_supplements);
-
+        rejuvDetox=rootView.findViewById(R.id.dashboard_nutrition_rejuvenate_with_detox);
+        liquidDrinks=rootView.findViewById(R.id.dashboard_nutrition_liquid_nutritional_drinks);
+        eatingMistakes=rootView.findViewById(R.id.dashboard_nutrition_commom_eating_mistakes);
+        weightLoss=rootView.findViewById(R.id.dashboard_nutrition_weight_loss_formula);
+        vitaminNeed=rootView.findViewById(R.id.dashboard_nutrition_need_of_vitamins);
+        nutritionMyths=rootView.findViewById(R.id.dashboard_nutrition_myths_facts);
+        goodWeight=rootView.findViewById(R.id.dashboard_nutrition_how_to_gain_good_weight);
+        prePostWorkout=rootView.findViewById(R.id.dashboard_nutrition_pre_post_workout);
         setMyNutritionLockCondition(isMyNutritionLocked);
 
         myNutritionCard.setOnClickListener(this);
         nutritionInsightCard.setOnClickListener(this);
         proteinFacts.setOnClickListener(this);
         FoodSupplements.setOnClickListener(this);
-
+        rejuvDetox.setOnClickListener(this);
+        liquidDrinks.setOnClickListener(this);
+        eatingMistakes.setOnClickListener(this);
+        weightLoss.setOnClickListener(this);
+        vitaminNeed.setOnClickListener(this);
+        nutritionMyths.setOnClickListener(this);
+        goodWeight.setOnClickListener(this);
+        prePostWorkout.setOnClickListener(this);
         return rootView;
     }
 
@@ -89,6 +101,30 @@ public class Nutrition extends Fragment implements View.OnClickListener
                 break;
             case R.id.dashboard_nutrition_food_supplements:
                 fm.beginTransaction().replace(R.id.dashboard_content, new FoodSupplements()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_rejuvenate_with_detox:
+                fm.beginTransaction().replace(R.id.dashboard_content, new RejuvenateDetox()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_liquid_nutritional_drinks:
+                fm.beginTransaction().replace(R.id.dashboard_content, new LiquidDrink()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_commom_eating_mistakes:
+                fm.beginTransaction().replace(R.id.dashboard_content, new EatingMistakes()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_weight_loss_formula:
+                fm.beginTransaction().replace(R.id.dashboard_content, new WeightLossFormula()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_need_of_vitamins:
+                fm.beginTransaction().replace(R.id.dashboard_content, new VitaminNeed()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_myths_facts:
+                fm.beginTransaction().replace(R.id.dashboard_content, new NutritionMyths()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_how_to_gain_good_weight:
+                fm.beginTransaction().replace(R.id.dashboard_content, new GoodWeight()).addToBackStack(null).commit();
+                break;
+            case R.id.dashboard_nutrition_pre_post_workout:
+                fm.beginTransaction().replace(R.id.dashboard_content, new PrePostWorkout()).addToBackStack(null).commit();
                 break;
         }
     }

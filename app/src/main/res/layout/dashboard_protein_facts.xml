@@ -46,7 +46,53 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:textSize="16sp"
-            android:text="With more than two-thirds of all Americans regularly taking at least one dietary supplement, the industry is booming! Even so, rumors and questions about the industry abound. Are supplements safe? Are they tested? Do they actually do any good? Understanding dietary supplement regulations can help you become an educated and confident consumer."
+            android:textColor="@android:color/black"
+            android:text="Protein Facts and Sources"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="In the present times, a lot of attention is being paid to proteins and their health value. Proteins not only regulate the metabolic rate and thus help in weight management. They also have a number of other health benefits. This article seeks to answer questions about the structure and the uses of protein, and seek out the easily available sources of protein."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Proteins are comprised of smaller molecules of amino acids. Proteins with 20 molecules of amino acids are called complete proteins, and such foods are enough to fulfill all amino acid requirements of the body. They provide the body with energy. There are roughly 4 calories in each gram of protein. Essential proteins are proteins that are not produced in the body and thus have to be included in the diet."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="The ratio of body weight to the amount of protein one must eat is roughly 7 grams to 20 pounds. Nutritionists are also of the opinion that 30 per cent of the total calories one takes, should come from protein. Proteins are used by the body to provide structure and support to cells, help replace old or damaged cells, and control electrochemical reactions. They also strengthen the immune system and thus protect the body from diseases."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Sources of protein"
             android:fontFamily="@font/proxima_nova"
             android:textStyle="bold"/>
         <TextView
@@ -56,18 +102,118 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:textSize="16sp"
-            android:text="Are Dietary Supplements Regulated?"
+            android:text="Quinoa: This grain has all essential amino acids required by the body thus making it a “complete protein.” It is also rich in minerals like magnesium, potassium and phosphorus. It is a healthy alternative to rice, and is recommended for weight management."
             android:fontFamily="@font/proxima_nova"
             android:textStyle="bold"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginBottom="30dp"
             android:textSize="16sp"
-            android:text="Despite rumors in many contrary, dietary supplements are regulated. With more than two-thirds of all Americans regularly taking at least one dietary supplement, the industry is booming! Even so, rumors and questions about the industry abound. Are supplements safe? Are they tested? Do they actually do any good? Understanding dietary supplement regulations can help you become an educated and confident consumer."
+            android:text="Chia seeds: In addition to being a rich source of protein, these seeds are a rich source of iron, calcium, magnesium zinc and vitamins. They add fiber to the diet and thus also help relieve constipation and help in the process of digestion. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Peanut butter: A tablespoon of peanut butter contains about 4 grams of protein. It is also rich in fiber and monounsaturated fats. They are healthy and are a treat for the taste buds. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Chickpeas: they are more commonly known as chola in the Indian household. They are attuned to the Indian food habits, but the problem is that most of the times they are cooked in a very unhealthy way. Boiled chola with raw vegetables are a rich source of protein and fiber. They also help the body get rid of bad cholesterol."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Eggs: The egg white is rich in protein and is low in calories. Boiled eggs are the best, but they can also be made into other variants. It is believed that one egg yellow should be had for every three egg whites. It is good for people trying to manage weight."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Spirulina: Spirulina is a nutritious high protein food with many beneficial health-enhancing properties,Spirulina also contains decent amounts of magnesium, riboflavin, manganese, potassium and small amounts of most of the other nutrients your body need, including essential fatty acids."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Spinach: It is loaded with nutrients and antioxidants, and considered to be very healthy. Cup of Spinach has almost as much protein as a hardboiled egg for half the calorie."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Protein Shakes: If your diet lacks high-quality sources of protein, taking supplements will allow you to get the nutrients you need. Protein supplements can help you lose weight, put on lean muscle and satisfy your daily nutritional requirements. Always take a professional advice for selection of protein and its dosage."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Fish and seafood: Sea food is a good source of protein, and they are also low in fat. some varieties however, are rich in fat and thus the carbohydrate content should be checked before consumption. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Soya: Soya is rich in protein and can be used as a meat substitute by vegetarians. Soya can be had in any form- granules, curd or in the form of milk. This is also a good diary substitute."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="16sp"
+            android:text="In conclusion it can be said that protein is an essential part of one’s diet and should be taken in the recommended quantity."
             android:fontFamily="@font/proxima_nova"
             android:textStyle="bold"/>
     </LinearLayout>

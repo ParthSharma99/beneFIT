@@ -1,14 +1,17 @@
 package tech.iosd.benefit.DashboardFragments;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.design.widget.Snackbar;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +20,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,19 +47,28 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 import tech.iosd.benefit.Adapters.DashboardWorkoutAdapter;
-import tech.iosd.benefit.Model.*;
+import tech.iosd.benefit.Model.DatabaseHandler;
+import tech.iosd.benefit.Model.Exercise;
+import tech.iosd.benefit.Model.MealLogFullDay;
+import tech.iosd.benefit.Model.ResponseForGetExcerciseVideoUrl;
+import tech.iosd.benefit.Model.ResponseForWorkoutForDate;
+import tech.iosd.benefit.Model.VideoPlayerItem;
 import tech.iosd.benefit.Network.NetworkUtil;
 import tech.iosd.benefit.R;
 import tech.iosd.benefit.VideoPlayer.VideoPlayerActivity;
 
-public class MyWorkout extends Fragment
+import static android.content.Context.MODE_PRIVATE;
+
+public class MyWorkout extends Fragment implements DashboardWorkoutAdapter.onItemClickListener
 {
     public Calendar selDate;
-
+    Calendar c = Calendar.getInstance();
+    SimpleDateFormat df;
     String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     Context ctx;
     FragmentManager fm;
-
+    private int totalVideos;
+    SharedPreferences sharedPreferences1;
     private String selectedDate;
     private SimpleDateFormat dateFormat;
     private ProgressDialog progressDialog;
@@ -81,6 +95,15 @@ public class MyWorkout extends Fragment
     private int noOfDiffId =0;
     private int noOfCurrentVideUser=0;
     boolean allVideoDownloaded = true;
+    public TextView tcal2, texc2, tmin2;
+    int time =0;
+    float calory = 0;
+    public ImageView i1;
+    public  TextView t1,t2,t3,t4, t5;
+    private LinearLayout linear_layout_to_be_hidden;
+    private ImageView RestImageView;
+    private Button download_button;
+    private TextView rest_text_view;
 
     @Nullable
     @Override
@@ -99,30 +122,47 @@ public class MyWorkout extends Fragment
         mcompositeSubscription =  new CompositeSubscription();
 
         downloadManager =  new ThinDownloadManager();
+        sharedPreferences1 = getContext().getSharedPreferences("SAVE_EXERCISE", MODE_PRIVATE);
 
         db = new DatabaseHandler(getContext());
 
         recyclerView =  rootView.findViewById(R.id.dashboard_my_workouts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        adapter = new DashboardWorkoutAdapter(exercises,getActivity());
+        adapter = new DashboardWorkoutAdapter(exercises,getActivity(),this);
 
         mBuilder = new AlertDialog.Builder(getActivity());
         mView = getActivity().getLayoutInflater().inflate(R.layout.dialog_download, null);
         progressBar = mView.findViewById(R.id.main_progressbar);
         pbar = mView.findViewById(R.id.pbar);
         progressTV =  mView.findViewById(R.id.percentage_tv);
+        linear_layout_to_be_hidden= rootView.findViewById(R.id.workout_linear_layout_to_be_hidden);
+        RestImageView = rootView.findViewById(R.id.workout_rest_imageView);
+        download_button= rootView.findViewById(R.id.dashboard_my_workouts_start_workout);
+        rest_text_view = rootView.findViewById(R.id.rest_day_text);
+//        linear_layout_to_be_hidden.setVisibility(View.VISIBLE);
+  //      download_button.setVisibility(View.VISIBLE);
 
         numberOfCurrentVideo = mView.findViewById(R.id.currentfileDownload);
         mBuilder.setView(mView);
         downloadDialog = mBuilder.create();
 
         startWorkout = rootView.findViewById(R.id.dashboard_my_workouts_start_workout);
+        t1 = rootView.findViewById(R.id.tvdes1);
+        t2 = rootView.findViewById(R.id.tvdes2);
+        t3 = rootView.findViewById(R.id.tvmain);
+        t4 = rootView.findViewById(R.id.tvinten);
+        t5 = rootView.findViewById(R.id.tvintenmode);
+
+
+
         startWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 downloadDialog.show();
                // downloadDialog.setCancelable(false);
+                SharedPreferences sharedPreferences1 = getContext().getSharedPreferences("SAVE_EXERCISE", MODE_PRIVATE);
+                sharedPreferences1.edit().putInt("CaloriesBurnt",0).apply();
                 downloadFiles();
             }
         });
@@ -146,6 +186,9 @@ public class MyWorkout extends Fragment
 
         final TextView lbl_year = rootView.findViewById(R.id.my_workout_calendar_year);
         final TextView lbl_month = rootView.findViewById(R.id.my_workout_calendar_month);
+        tcal2 = rootView.findViewById(R.id.tvcalory1);
+        texc2 = rootView.findViewById(R.id.tvexc1);
+        tmin2= rootView.findViewById(R.id.tvmin1);
         dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
         selectedDate = dateFormat.format(Calendar.getInstance().getTime());
@@ -160,11 +203,26 @@ public class MyWorkout extends Fragment
                 lbl_year.setText(String.valueOf(date.get(Calendar.YEAR)));
                 lbl_month.setText(months[date.get(Calendar.MONTH)]);
                 progressDialog.show();
+                startWorkout.setText("Download Workout");
+                startWorkout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        downloadDialog.show();
+                        sharedPreferences1.edit().putInt("CaloriesBurnt",0).apply();
+                        // downloadDialog.setCancelable(false);
+                        downloadFiles();
+                    }
+                });
                 getWorkoutData(selectedDate);
             }
         });
         getWorkoutData(selectedDate);
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     private int getNumberOfDifferntId(){
@@ -201,6 +259,7 @@ public class MyWorkout extends Fragment
             progressDialog.show();
         }
 
+        Log.d("token",db.getUserToken());
         compositeSubscription.add(NetworkUtil.getRetrofit(db.getUserToken()).getWorkoutforDate(date,db.getUserToken())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -208,23 +267,105 @@ public class MyWorkout extends Fragment
     }
 
     private void handleResponseGetMeal(ResponseForWorkoutForDate responseForWorkoutForDate) {
-        progressDialog.hide();
-        if (!responseForWorkoutForDate.isSuccess()){
+            progressDialog.hide();
+            if(!responseForWorkoutForDate.isSuccess()){
+                Log.d("error77", "handleResponseGetMeal: " + "eroor");
+                Toast.makeText(ctx,"Error loading workouts!",Toast.LENGTH_SHORT).show();
+     //           return;
+      //      }
+      //  if (responseForWorkoutForDate.getData().getWorkout().getExercises().isEmpty()){
+
+            // Ye Tab Call Hota Hai Jab Server Pe Workout Nahi Hota.
+            // Yaha Pe Rest Day Wala Aayega. Cool?
+            //hide the layout containing info regarding workouts since there ain't any
+                linear_layout_to_be_hidden.setVisibility(LinearLayout.GONE);
+                download_button.setVisibility(View.GONE);
+                rest_text_view.setVisibility(View.VISIBLE);
+                RestImageView.setVisibility(View.VISIBLE);
+
+            exercises.clear();
+       //    adapter.notifyDataSetChanged();
+           recyclerView.getAdapter().notifyDataSetChanged();
+            tcal2.setText("0");
+            tmin2.setText("0");
+            texc2.setText("0");
+            startWorkout.setText(" ");
+            //i1.setImageResource(R.drawable.nowork);
+
+            t1.setText(" ");
+            t2.setText(" ");
+            t3.setText("");
+            t4.setText(" ");
+            t5.setText(" ");
+
+
             return;
             //Download completes here
         }
+        Activity act = (Activity)ctx;
+        act.runOnUiThread(new Runnable(){
+            @Override
+            public void run() {
+                linear_layout_to_be_hidden.setVisibility(LinearLayout.VISIBLE);
+                RestImageView.setVisibility(View.GONE);
+                rest_text_view.setVisibility(View.GONE);
+                download_button.setVisibility(View.VISIBLE);
 
+            } });
+        totalVideos=responseForWorkoutForDate.getData().getVideoCount();
+        sharedPreferences1.edit().putString("WORKOUT_ID",responseForWorkoutForDate.getData().get_id()).apply();
         Log.d("error77"," " +responseForWorkoutForDate.getData().getWorkout().getExercises().size());
         exercises = responseForWorkoutForDate.getData().getWorkout().getExercises();
         for (int i =0 ; i<exercises.size();i++){
 
+            time = calculateTime(exercises.get(i).getReps(), exercises.get(i).getTimeTaken(),
+                    exercises.get(i).getRest(), exercises.get(i).getSets());
+
+
+            calory = calculateCalory(exercises.get(i).getReps(), exercises.get(i).getExercise().getTimeTaken(),
+                    exercises.get(i).getExercise().getMets(), exercises.get(i).getSets());
         }
         adapter.setExercises(exercises);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         noOfDiffId = getNumberOfDifferntId();
+
+
+
+        tcal2.setText(String.valueOf((int)calory));
+        tmin2.setText(String.valueOf(time));
+        texc2.setText(String.valueOf(exercises.size()));
+
+
         checkFiles();
 
+    }
+
+    int calculateTime(int reps,  int timeTaken, int rest, int sets){
+        int t = 0;
+        t += ((reps*timeTaken) +rest) * sets;
+        return  t;
+    }
+
+    float calculateCalory(int reps, float timeTaken, float mets, int sets){
+        float cal = 0;
+        int personWeight=0;
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(mets));
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(sets));
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(timeTaken));
+        Log.d("CAL", "calculateCalory: Reps " + String.valueOf(reps));
+
+        cal += (reps*timeTaken*mets*sets);
+        personWeight = db.getUserWeight();
+        Log.d("CAL", "calculateCalory: " + String.valueOf(personWeight));
+        // Log.d("CAL", "calculateCalory: " + String.valueOf(cal));
+
+        cal = cal*personWeight;
+        //  Log.d("CAL", "calculateCalory: " + String.valueOf(cal));
+
+        cal = cal/36;
+        Log.d("CAL", "calculateCalory: " + String.valueOf(cal));
+        return cal;
     }
 
     private void handleErrorGetMeal(Throwable error) {
@@ -295,6 +436,12 @@ public class MyWorkout extends Fragment
     }
     private void downloadFiles() {
         Log.d("download","type: "+ type+"position: "+currentPosition);
+        if(exercises.size()==0 || exercises==null)
+        {
+            downloadDialog.dismiss();
+            Toast.makeText(ctx, "Workout Not Available", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (currentPosition>=exercises.size()){
           //  downloadDialog.hide();
             if(allVideoDownloaded){
@@ -331,6 +478,7 @@ public class MyWorkout extends Fragment
 
         }
         if(file.exists()){
+            adapter.notifyDataSetChanged();
             Toast.makeText(getContext(),"file arleady presenet "+type+(currentPosition+1),Toast.LENGTH_SHORT).show();
             Log.d("files",getActivity().getFilesDir().toString()+"/videos/");
             if (type.equals("tutorial")){
@@ -422,6 +570,17 @@ public class MyWorkout extends Fragment
             }
             Intent intent = new Intent(getContext(), VideoPlayerActivity.class);
             intent.putExtra("videoItemList",videoPlayerItemList);
+            Bundle bundle=new Bundle();
+            bundle.putBoolean("FREEWORKOUT",false);
+            intent.putExtras(bundle);
+            c = Calendar.getInstance();
+            df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            String fomattedTime=df.format(c.getTime());
+            Toast.makeText(ctx, fomattedTime, Toast.LENGTH_LONG).show();
+            sharedPreferences1.edit().putString("START_TIME",fomattedTime).apply();
+            long time= System.currentTimeMillis();
+            sharedPreferences1.edit().putFloat("START_TIME_MILLIS",time).apply();
+            sharedPreferences1.edit().putInt("CaloriesBurnt",0).apply();
             startActivity(intent);
         }
     };
@@ -470,9 +629,6 @@ public class MyWorkout extends Fragment
 
                         }
 
-
-
-
                     }
 
                     @Override
@@ -485,14 +641,12 @@ public class MyWorkout extends Fragment
                         downloadFiles();
 
                     }
-
                     @Override
                     public void onProgress(int id, long totalBytes, long downlaodedBytes, int progress) {
                         double p = (double)downlaodedBytes/totalBytes*100;
-                        //Toast.makeText(getActivity().getApplicationContext(),"total"+ totalBytes+"dnld "+downlaodedBytes+"progress "+p,Toast.LENGTH_SHORT).show();
                         progressBar.setProgress((int)p);
                         progressTV.setText(String.format("%.2f", (float)p));
-                        numberOfCurrentVideo.setText(String.valueOf(noOfCurrentVideUser)+"/"+noOfDiffId);
+                        numberOfCurrentVideo.setText(String.valueOf(noOfCurrentVideUser)+"/"+totalVideos);
                         exercises.get(currentPosition).getExercise().isDownloading = true;
                         exercises.get(currentPosition).getExercise().progess = (int)p;
                         adapter.notifyItemChanged(currentPosition);
@@ -502,5 +656,36 @@ public class MyWorkout extends Fragment
         int downloadId = downloadManager.add(downloadRequest);
 
 
+    }
+
+    @Override
+    public void onClick(int position)
+    {
+
+        if(exercises.get(position).getExercise().isDownloaded)
+        {
+            Gson gson = new GsonBuilder().create();
+            ArrayList<String> videoPlayerItemList = new ArrayList<>();
+            videoPlayerItemList.add(gson.toJson(new VideoPlayerItem(exercises.get(position))));
+            Intent intent = new Intent(getContext(), VideoPlayerActivity.class);
+            intent.putExtra("videoItemList", videoPlayerItemList);
+            Bundle bundle=new Bundle();
+            bundle.putBoolean("FREEWORKOUT",false);
+            intent.putExtras(bundle);
+            c = Calendar.getInstance();
+            df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            String fomattedTime=df.format(c.getTime());
+            Toast.makeText(ctx, fomattedTime, Toast.LENGTH_LONG).show();
+            sharedPreferences1.edit().putString("START_TIME",fomattedTime).apply();
+            long time= System.currentTimeMillis();
+            sharedPreferences1.edit().putFloat("START_TIME_MILLIS",time).apply();
+            sharedPreferences1.edit().putInt("CaloriesBurnt",0).apply();
+            sharedPreferences1.edit().putInt("CaloriesBurnt",0).apply();
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(ctx, "Download the Workout", Toast.LENGTH_SHORT).show();
+        }
     }
 }

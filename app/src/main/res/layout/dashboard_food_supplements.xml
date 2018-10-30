@@ -46,9 +46,11 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:textSize="16sp"
-            android:text="With more than two-thirds of all Americans regularly taking at least one dietary supplement, the industry is booming! Even so, rumors and questions about the industry abound. Are supplements safe? Are they tested? Do they actually do any good? Understanding dietary supplement regulations can help you become an educated and confident consumer."
+            android:textColor="@android:color/black"
+            android:text="Food Supplements"
             android:fontFamily="@font/proxima_nova"
             android:textStyle="bold"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,9 +58,90 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:textSize="16sp"
-            android:text="Are Dietary Supplements Regulated?"
+            android:text="A balanced diet has become almost illusionary in the modern times, with most people living away from home and following busy schedules. This has resulted in the increased need for food supplements. While consuming these supplements, it should however be kept in mind that these supplements are not a replacement for food. They just add and compensate for the deficits in our diet. They should be taken in consultation with experts. This article explores the types, uses and problems associated with the use of food supplements."
             android:fontFamily="@font/proxima_nova"
             android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Types of food supplements"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Vitamins: The human body requires thirteen vitamins, which can be taken in various combinations. The thirteen vitamins include vitamin A, C, D, E, K, B1, B2, B3, B5,B9 and B12. Deficiency in any vitamin can lead to the associated problem. For example, vitamin C deficiency leads to weakness, weight loss, and scurvy, vitamin K deficiency is associated with bone degeneration and coagulation of blood and vitamin D deficiency can cause rickets. Keeping in mind the ill effects of vitamin deficiency, it becomes imperative to include vitamin supplements in the diet."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Dietary minerals: Minerals like potassium, calcium, sodium, magnesium, iron, iodine etc. are needed to maintain a healthy body. A deficiency in these minerals can lead to multiple health problems- for example, calcium deficits can lead to brittle bones, and magnesium deficits can cause insomnia, muscle pain and fatigue, phosphorus deficiency can lead to stiff joints, breathing problems and weakness and zinc deficiency can lead to impotence, and weight loss. Dietary minerals supplements help prevent these diseases by maintaining the required levels in the body. "
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Proteins and amino acids: These supplements are usually available as powders, shakes and bars. They are quite popular in the gym going population. They help in adding to the lean muscles and are seen as an alternative to carbohydrates and thus aid in weight reduction. Some of these powders and shakes are seen as meal replacements."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:text="Fatty acids: There are certain fatty acids that the body needs to carry out biological functions. It is important to note that the body does not produce these acids, and thus they must be obtained from external sources. A deficit in these acids can lead to scaly skin, itchy rashes, brittle nails, menstrual irregularities, dry eyes, poor vision and sleep and attention problems. Supplements are thus important, if these fatty acids are not obtained from natural sources."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="Caution"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="16sp"
+            android:text="It is important to keep in mind that too much of these supplements can cause health problems. It is therefore not advisable to randomly start or stop taking supplements. They are also said to cause liver damage. They can also lead to toxicity which might lead to other health problems. These ill effects can be due to adulteration in food supplements, excessive use and recreational use of these supplements. It is therefore important to understand if these supplements are actually needed, the quantities in which they are needed and the associated benefits and harms of using them."
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +150,7 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="30dp"
             android:textSize="16sp"
-            android:text="Despite rumors in many contrary, dietary supplements are regulated. With more than two-thirds of all Americans regularly taking at least one dietary supplement, the industry is booming! Even so, rumors and questions about the industry abound. Are supplements safe? Are they tested? Do they actually do any good? Understanding dietary supplement regulations can help you become an educated and confident consumer."
+            android:text=""
             android:fontFamily="@font/proxima_nova"
             android:textStyle="bold"/>
     </LinearLayout>

@@ -158,4 +158,5 @@ public class MealLogSearch extends Fragment implements tech.iosd.benefit.Adapter
         getTargetFragment().onActivityResult(getTargetRequestCode(), RESULT_OK, intent);
         getFragmentManager().popBackStack();
     }
+
 }

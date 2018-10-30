@@ -7,13 +7,15 @@ package tech.iosd.benefit.Model;
 public class Exercise {
     private String _id;
     private int reps;
-    private int rest,sets;
+    private int rest,sets,mets,timeTaken;
     private ExerciseWithoutID exercise;
 
-    public Exercise(String _id, int reps, int rest, ExerciseWithoutID exercise) {
+    public Exercise(String _id, int reps, int rest, int mets, int timeTaken, ExerciseWithoutID exercise) {
         this._id = _id;
         this.reps = reps;
         this.rest = rest;
+        this.mets = mets;
+        this.timeTaken = timeTaken;
         this.exercise = exercise;
     }
 
@@ -57,6 +59,23 @@ public class Exercise {
         this.exercise = exercise;
     }
 
+    public int getMets() {
+        return mets;
+    }
+
+    public void setMets(int mets) {
+        this.mets = mets;
+    }
+
+    public int getTimeTaken() {
+        return timeTaken;
+    }
+
+    public void setTimeTaken(int timeTaken) {
+        this.timeTaken = timeTaken;
+    }
+
+
     public class ExerciseWithoutID{
         private String _id;
         private int sno;
@@ -70,6 +89,7 @@ public class Exercise {
         private boolean videoB;
         private int __v;
         private String flow;
+        private int totalNoVideo=1;
         public boolean isDownloaded =false;
         public boolean isDownloading = false;
         public Integer progess;
@@ -169,10 +189,19 @@ public class Exercise {
         public void set__v(int __v) {
             this.__v = __v;
         }
+
+        public int getTotalNoVideo()
+        {
+            if(videoA&&videoB)
+                totalNoVideo=3;
+            else if(videoB||videoA)
+                totalNoVideo=2;
+            return totalNoVideo;
+        }
+
+        public void setTotalNoVideo(int totalNoVideo) {
+            this.totalNoVideo = totalNoVideo;
+        }
     }
-
-
-
-
 
 }

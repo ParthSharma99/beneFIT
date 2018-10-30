@@ -62,54 +62,58 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:background="#ececec"
-        android:layout_alignParentBottom="true">
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:id="@+id/dashboard_track_my_activity_running_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
             android:layout_marginTop="2dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#5f6fec">
+            android:visibility="visible"
+            app:cardBackgroundColor="#5f6fec"
+            app:cardElevation="2dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textSize="16sp"
+                    android:fontFamily="@font/oswald"
                     android:text="Start Run"
                     android:textAllCaps="true"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
+
         <android.support.v7.widget.CardView
             android:id="@+id/dashboard_track_my_activity_running_pause"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginTop="2dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#f6f6f6">
+            android:visibility="gone"
+            app:cardBackgroundColor="#f6f6f6"
+            app:cardElevation="2dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textSize="16sp"
+                    android:fontFamily="@font/oswald"
                     android:text="Pause"
                     android:textAllCaps="true"
-                    android:fontFamily="@font/oswald"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -299,16 +303,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#f7f7f7">
+            app:cardBackgroundColor="#f7f7f7"
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginTop="6dp"
                 android:layout_marginBottom="6dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="6dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -334,127 +338,134 @@
                     android:textSize="16sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:cardElevation="2dp"
-        app:cardBackgroundColor="#f7f7f7">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="12dp"
-            android:orientation="vertical">
+            android:layout_marginTop="5dp"
+            app:cardBackgroundColor="#f7f7f7"
+            app:cardElevation="2dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/oswald"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#000000"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="Calories"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#565656"
-                        android:textStyle="bold"
-                        android:layout_marginStart="10dp"/>
-                </LinearLayout>
+                        android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="#b3b3b3"/>
+                        <TextView
+                            android:id="@+id/calories_track_my_activity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="#000000"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="Calories"
+                            android:textAllCaps="true"
+                            android:textColor="#565656"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/oswald"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#000000"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
-                    <TextView
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="30dp"
+                        android:background="#b3b3b3" />
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="Minutes"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#565656"
-                        android:textStyle="bold"
-                        android:layout_marginStart="10dp"/>
-                </LinearLayout>
+                        android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="#b3b3b3"/>
+                        <TextView
+                            android:id="@+id/track_activity_duration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="00:00"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="#000000"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="DURATION"
+                            android:textAllCaps="true"
+                            android:textColor="#565656"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/oswald"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#000000"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
-                    <TextView
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="30dp"
+                        android:background="#b3b3b3" />
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:text="Distance (KM)"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/oswald"
-                        android:textColor="#565656"
-                        android:textStyle="bold"
-                        android:layout_marginStart="10dp"/>
-                </LinearLayout>
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/track_activity_avg_pace"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="#000000"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/oswald"
+                            android:text="AVG. PACE"
+                            android:textAllCaps="true"
+                            android:textColor="#565656"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </RelativeLayout>

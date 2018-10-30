@@ -5,6 +5,7 @@ package tech.iosd.benefit.Network;
  */
 
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -79,7 +80,6 @@ public class NetworkUtil {
         });
 
         RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io());
-
         return new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .client(httpClient.build())

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    android:layout_margin="35dp">
+
+    <TextView
+        android:id="@+id/form_name"
+        android:layout_alignParentTop="true"
+        android:textColor="#ffffff"
+        android:layout_centerInParent="true"
+        android:text="Arm Circles"
+        android:textSize="25sp"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/form_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/form_question_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="67dp"
+                android:text="How much weight did you pick?"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <NumberPicker
+                android:id="@+id/numberPicker_weight"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="121dp"
+                android:theme="@style/AppTheme.Picker" />
+
+            <Button
+                android:id="@+id/submit_form_weight"
+                android:layout_width="167dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="51dp"
+                android:text="Submit" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/form_question_reps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="67dp"
+                android:gravity="center"
+                android:text="How many reps were you able to do?"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <NumberPicker
+                android:id="@+id/numberPicker_reps"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="121dp"
+                android:theme="@style/AppTheme.Picker" />
+
+            <Button
+                android:id="@+id/submit_form_reps"
+                android:layout_width="167dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="51dp"
+                android:text="Submit" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/form_name_reps"
+        android:layout_alignBottom="@+id/form_layout"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:layout_centerInParent="true"
+        android:text="Skip"
+        android:textSize="25sp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
