@@ -522,7 +522,7 @@
                     android:layout_marginTop="10dp"
                     android:background="#a7a7a7" />
 
-                <lecho.lib.hellocharts.view.ColumnChartView
+                <lecho.lib.hellocharts.view.LineChartView
                     android:id="@+id/dashboard_track_water_graph"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"

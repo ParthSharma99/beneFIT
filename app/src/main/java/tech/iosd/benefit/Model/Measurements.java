@@ -1,5 +1,10 @@
 package tech.iosd.benefit.Model;
 
+import android.util.Log;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -14,25 +19,20 @@ public class Measurements {
     int neck;
     int hip;
     int weight;
-    public  String randomString() {
-        Random generator = new Random();
-        StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(20);
-        char tempChar;
-        for (int i = 0; i < randomLength; i++){
-            tempChar = (char) (generator.nextInt(96) + 32);
-            randomStringBuilder.append(tempChar);
-        }
-        return randomStringBuilder.toString();
-    }
 
     public Measurements(int age, int height, int waist, int neck, int hip, int weight) {
+
+        // Generate Date
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        String selectedDate = dateFormat.format(Calendar.getInstance().getTime());
+        Log.d("Measurements", "Measurements: Date: " + selectedDate);
+
         this.age = age;
         this.height = height;
         this.waist = waist;
         this.neck = neck;
         this.hip = hip;
-        this.date = randomString();
+        this.date = selectedDate;
         this.weight = weight;
 
     }

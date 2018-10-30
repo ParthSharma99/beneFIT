@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 
 import com.gelitenight.waveview.library.WaveView;
@@ -43,11 +44,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Column;
 import lecho.lib.hellocharts.model.ColumnChartData;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.SubcolumnValue;
+import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ColumnChartView;
+import lecho.lib.hellocharts.view.LineChartView;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -62,8 +69,7 @@ import tech.iosd.benefit.Network.NetworkUtil;
 import tech.iosd.benefit.R;
 import tech.iosd.benefit.WaveHelper;
 
-public class TrackAndLog extends Fragment implements View.OnClickListener
-{
+public class TrackAndLog extends Fragment implements View.OnClickListener {
     public int waterConsumed = 5;
     public int waterTarget = 8;
     public static final String TAG = "StepCounter";
@@ -81,7 +87,8 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
     private TextView waterConsumedTxt;
     private TextView waterTargetTxt;
     private CompositeSubscription mSubscriptions;
-    private ColumnChartView water_chart;
+    private List<PointValue> water_entries;
+    private LineChartView water_chart;
     private ColumnChartView steps_chart;
 
 
@@ -92,12 +99,27 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.dashboard_track_and_log, container, false);
         ctx = rootView.getContext();
         fm = getFragmentManager();
         db = new DatabaseHandler(ctx);
+
+        // Water Target Formula
+        float weight = db.getUserWeight() ;
+        int age = db.getUserAge() ;
+        if(age <= 30 ){
+            weight = weight * 40 ;
+        } else if( age <= 55 ) {
+            weight = weight * 35 ;
+        } else {
+            weight = weight * 30 ;
+        }
+        weight = weight / 28.3F ;
+        waterTarget = Math.round(weight/8);
+        Log.d("TrackAndLog", "onCreateView: Water Target " + waterTarget );
+
+
         mSubscriptions = new CompositeSubscription();
         waveView = rootView.findViewById(R.id.dashboard_track_indicator_tab_water_wave);
 
@@ -106,7 +128,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                 Color.parseColor("#88b8f1ed"),
                 Color.parseColor("#FF2984FF"));
         mWaveHelper = new WaveHelper(waveView);
-        waveView.setWaterLevelRatio((float)waterConsumed/waterTarget);
+        waveView.setWaterLevelRatio((float) waterConsumed / waterTarget);
         mWaveHelper.start();
 
         stepsTabView = rootView.findViewById(R.id.dashboard_track_indicator_tab_steps);
@@ -159,7 +181,8 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
     }
 
 
-    long total=0;
+    long total = 0;
+
     private void readData() {
         try {
             Fitness.getHistoryClient(ctx, GoogleSignIn.getLastSignedInAccount(ctx))
@@ -182,15 +205,13 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                                     Log.w(TAG, "There was a problem getting the step count.", e);
                                 }
                             });
-        }
-        catch (Exception exception)
-        {
+        } catch (Exception exception) {
             Toast.makeText(ctx, "Please Provide Permissions", Toast.LENGTH_SHORT).show();
         }
 
     }
-    public static void subscribe(Context context)
-    {
+
+    public static void subscribe(Context context) {
         Fitness.getRecordingClient(context, GoogleSignIn.getLastSignedInAccount(context))
                 .subscribe(DataType.TYPE_STEP_COUNT_CUMULATIVE)
                 .addOnCompleteListener(
@@ -205,15 +226,12 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                             }
                         });
     }
+
     @Override
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
-            case R.id.dashboard_track_steps_tab_btn:
-            {
-                if(!stepsTab)
-                {
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.dashboard_track_steps_tab_btn: {
+                if (!stepsTab) {
                     stepsTabView.setVisibility(View.VISIBLE);
                     stepsTabViewIndicator.setVisibility(View.VISIBLE);
                     stepsWaterView.setVisibility(View.GONE);
@@ -227,10 +245,8 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                 }
                 break;
             }
-            case R.id.dashboard_track_water_tab_btn:
-            {
-                if(stepsTab)
-                {
+            case R.id.dashboard_track_water_tab_btn: {
+                if (stepsTab) {
                     stepsWaterView.setVisibility(View.VISIBLE);
                     stepsWaterViewIndicator.setVisibility(View.VISIBLE);
                     stepsTabView.setVisibility(View.GONE);
@@ -243,20 +259,17 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                 }
                 break;
             }
-            case R.id.dashboard_track_my_activity:
-            {
+            case R.id.dashboard_track_my_activity: {
                 fm.beginTransaction().replace(R.id.dashboard_content, new TrackMyActivity()).addToBackStack(null).commit();
                 break;
             }
-            case R.id.dashboard_track_meal_log:
-            {
+            case R.id.dashboard_track_meal_log: {
                 fm.beginTransaction().replace(R.id.dashboard_content, new MealLog()).addToBackStack(null).commit();
                 break;
             }
-            case R.id.dashboard_track_water_add:
-            {
+            case R.id.dashboard_track_water_add: {
                 waterConsumed++;
-                waveView.setWaterLevelRatio((float)waterConsumed/waterTarget);
+                waveView.setWaterLevelRatio((float) waterConsumed / waterTarget);
                 waterConsumedTxt.setText(String.valueOf(waterConsumed));
                 waterTargetTxt.setText(String.valueOf(waterTarget));
 
@@ -264,121 +277,119 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                 String selectedDate = dateFormat.format(Calendar.getInstance().getTime());
                 //post the water intake
 
-                PostWaterIntake postWaterIntake=new PostWaterIntake(selectedDate,waterTarget,waterConsumed);
-                mSubscriptions.add(NetworkUtil.getRetrofit(db.getUserToken()).sendWaterIntake(postWaterIntake,db.getUserToken())
+                PostWaterIntake postWaterIntake = new PostWaterIntake(selectedDate, waterTarget, waterConsumed);
+                mSubscriptions.add(NetworkUtil.getRetrofit(db.getUserToken()).sendWaterIntake(postWaterIntake, db.getUserToken())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
-                        .subscribe(this::handleResponseSendWaterIntake,this::handleError));
+                        .subscribe(this::handleResponseSendWaterIntake, this::handleError));
 
 
                 break;
             }
-            case R.id.dashboard_track_water_subtract:
-            {
+            case R.id.dashboard_track_water_subtract: {
 
                 waterConsumed--;
-                waveView.setWaterLevelRatio((float)waterConsumed/waterTarget);
+                waveView.setWaterLevelRatio((float) waterConsumed / waterTarget);
                 waterConsumedTxt.setText(String.valueOf(waterConsumed));
                 waterTargetTxt.setText(String.valueOf(waterTarget));
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
                 String selectedDate = dateFormat.format(Calendar.getInstance().getTime());
                 //post the water intake
 
-                PostWaterIntake postWaterIntake = new PostWaterIntake(selectedDate,waterTarget,waterConsumed);
-                mSubscriptions.add(NetworkUtil.getRetrofit(db.getUserToken()).sendWaterIntake(postWaterIntake,db.getUserToken())
+                PostWaterIntake postWaterIntake = new PostWaterIntake(selectedDate, waterTarget, waterConsumed);
+                mSubscriptions.add(NetworkUtil.getRetrofit(db.getUserToken()).sendWaterIntake(postWaterIntake, db.getUserToken())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
-                        .subscribe(this::handleResponseSendWaterIntake,this::handleError));
+                        .subscribe(this::handleResponseSendWaterIntake, this::handleError));
 
 
-                }
-
-                break;
             }
+
+            break;
         }
+    }
 
 
-    private void getUserHistory(String token){
+    private void getUserHistory(String token) {
         mSubscriptions.add(NetworkUtil.getRetrofit(token).getWaterIntakeHistory(token)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(this::handleResponse,this::handleError));
+                .subscribe(this::handleResponse, this::handleError));
     }
 
     private void handleResponse(ResponseForWaterHistory response) {
         Log.d("DHRUV", "handleResponse: " + "SUCCESS");
-        Toast.makeText(ctx,"Updating Graph!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(ctx, "Updating Graph!", Toast.LENGTH_SHORT).show();
         updateGraphwaterIntake(response.getData());
 
     }
 
-    private void updateGraphwaterIntake(Map<String , String > data) {
+    private void updateGraphwaterIntake(Map<String, String> data) {
 
-        if(data.isEmpty())
-           Toast.makeText(ctx,"No data",Toast.LENGTH_SHORT).show();
+        if (data.isEmpty())
+            Toast.makeText(ctx, "No data", Toast.LENGTH_SHORT).show();
 
-        List<Column> water_columns = new ArrayList<>();
-        List<SubcolumnValue> water_values;
+        water_chart.setInteractive(false);
+        water_entries = new ArrayList<>();
+        List<AxisValue> axisValuesX = new ArrayList<AxisValue>();
 
+        int i = 0 ;
         for (Map.Entry<String, String> entry : data.entrySet()) {
+            water_entries.add((new PointValue(i,Float.parseFloat(entry.getValue()))));
             Log.d("error77", "updateGraphwaterIntake: " + entry.getKey() + " = " + entry.getValue());
-            water_values = new ArrayList<>();
-            for (int j = 0; j < 1; j++) {
-                water_values.add(new SubcolumnValue(Integer.parseInt(entry.getValue()), ChartUtils.COLOR_BLUE));
-            }
-            Column column = new Column(water_values);
-            water_columns.add(column);
+            axisValuesX.add(new AxisValue(i).setLabel(entry.getKey().substring(0, 2)));
+            i++  ;
         }
+
+
+        Line water_line = new Line(water_entries).setColor(Color.BLUE).setCubic(true);
+        List<Line> water_lines = new ArrayList<>();
+        water_line.setHasPoints(false);
+        water_line.setFilled(true);
+        water_lines.add(water_line);
+        LineChartData water_data = new LineChartData();
+        Axis bmi_axisX = new Axis(axisValuesX).setHasLines(true).setName("Date").setHasTiltedLabels(false) ;
+        Axis bmi_axisY = new Axis().setHasLines(true).setName("Consumed");
+        water_data.setLines(water_lines);
+        water_data.setAxisXBottom(bmi_axisX);
+        water_data.setAxisYLeft(bmi_axisY);
+        water_chart.setLineChartData(water_data);
+
+        final Viewport v = new Viewport(water_chart.getMaximumViewport());
+        v.bottom = 0;
+        water_chart.setMaximumViewport(v);
+        water_chart.setCurrentViewport(v);
+
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         String selectedDate = dateFormat.format(Calendar.getInstance().getTime());
 
         Log.d("error77", "Date Today: " + selectedDate);
-        if(data.get(selectedDate) != null){
+        if (data.get(selectedDate) != null) {
             Log.d("error77", "Value Today: " + data.get(selectedDate));
             waterConsumedTxt.setText(data.get(selectedDate));
-            Float water = Float.parseFloat(data.get(selectedDate)) ;
-            waveView.setWaterLevelRatio(water/waterTarget);
+            waterConsumed = Integer.parseInt(data.get(selectedDate));
+            if (waterConsumed > waterTarget) {
+                waveView.setWaterLevelRatio(1);
+            } else {
+                waveView.setWaterLevelRatio((float)waterConsumed / waterTarget);
+            }
         }
 
-
-
-//
-//        for (int i = 0; i < data.size(); i++) {
-//
-//            water_values = new ArrayList<>();
-//            for (int j = 0; j < 1; j++) {
-//                water_values.add(new SubcolumnValue(data.get(i).getConsumed(), ChartUtils.COLOR_BLUE));
-//            }
-//
-//            Column column = new Column(water_values);
-//            water_columns.add(column);
-//        }
-
-        ColumnChartData water_data = new ColumnChartData(water_columns);
-        Axis water_axisX = new Axis();
-        Axis water_axisY = new Axis().setHasLines(true);
-        water_axisX.setName("Consumed");
-        water_axisY.setName("Date");
-        water_data.setAxisXBottom(water_axisX);
-        water_data.setAxisYLeft(water_axisY);
-        water_chart.setColumnChartData(water_data);
-
     }
 
-    private void handleResponseSendWaterIntake(ResponseForSuccess responseForSuccess)
-    {
-        Toast.makeText(ctx,responseForSuccess.getMessage(),Toast.LENGTH_SHORT).show();
+    private void handleResponseSendWaterIntake(ResponseForSuccess responseForSuccess) {
+        Toast.makeText(ctx, responseForSuccess.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
-    private void handleError(Throwable error)
-    {
-        Toast.makeText(ctx,"Error",Toast.LENGTH_SHORT).show();
+    private void handleError(Throwable error) {
+        Toast.makeText(ctx, "Error", Toast.LENGTH_SHORT).show();
         Log.d("DHRUV", "handleResponse: " + "ERROR");
 
         if (error instanceof HttpException) {
 
             Gson gson = new GsonBuilder().create();
-            Log.d("error77",error.getMessage());
+            Log.d("error77", error.getMessage());
 
             try {
 
@@ -387,7 +398,7 @@ public class TrackAndLog extends Fragment implements View.OnClickListener
                 e.printStackTrace();
             }
         } else {
-            Log.d("error77",error.getMessage());
+            Log.d("error77", error.getMessage());
 
         }
     }

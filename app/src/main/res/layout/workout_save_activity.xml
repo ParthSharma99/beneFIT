@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/workout_scroll_view"
     android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="25dp"
+        android:descendantFocusability="blocksDescendants"
         android:padding="3dp">
 
         <TextView
@@ -67,27 +69,27 @@
             <Button
                 android:id="@+id/happy"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
                 android:background="@drawable/ic_happy_off" />
 
             <Button
                 android:id="@+id/neutral"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/ic_neutral_off" />
 
             <Button
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="20dp"
                 android:id="@+id/sad"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/ic_sad_off" />
 

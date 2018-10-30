@@ -9,19 +9,28 @@ public class ResponseForMeasurementsUpdate {
     String message;
 
     public class Measure {
-        public int age;
+//        public int age;
         public int height;
+        public int weight;
         public int waist;
         public int neck;
         public int hip;
 
-        public int getAge() {
-            return age;
+        public int getWeight() {
+            return weight;
         }
 
-        public void setAge(int age) {
-            this.age = age;
+        public void setWeight(int weight) {
+            this.weight = weight;
         }
+
+//        public int getAge() {
+//            return age;
+//        }
+//
+//        public void setAge(int age) {
+//            this.age = age;
+//        }
 
         public int getHeight() {
             return height;

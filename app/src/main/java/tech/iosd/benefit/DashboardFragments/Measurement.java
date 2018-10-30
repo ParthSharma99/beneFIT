@@ -26,6 +26,7 @@ import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
+import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
@@ -47,6 +48,7 @@ public class Measurement extends Fragment
 
     private TextView bmiTextView;
     private TextView bmiMessageTextView;
+    private TextView bmrTextView;
     private TextView bmiMessageDetailedTextView;
     private TextView fatPercentageTectView;
 
@@ -59,6 +61,7 @@ public class Measurement extends Fragment
     private String gender;
 
     private double bmi;
+    private float bmr;
     private double  fatPercentage;
 
     private CompositeSubscription mSubscriptions;
@@ -82,6 +85,7 @@ public class Measurement extends Fragment
 
         bmiTextView = rootView.findViewById(R.id.dashboard_mesurements_bmi_textview);
         bmiMessageTextView = rootView.findViewById(R.id.dashboard_mesurements_bmi_message_textview);
+        bmrTextView = rootView.findViewById(R.id.dashboard_measurements_bmr_textview);
         bmiMessageDetailedTextView = rootView.findViewById(R.id.dashboard_mesurements_bmi_message_detailetextview);
         fatPercentageTectView = rootView.findViewById(R.id.dashboard_mesurements_fat_percentage_textview);
 
@@ -110,11 +114,12 @@ public class Measurement extends Fragment
 
         bmiTextView.setText(String.format("%.2f", bmi));
 
-
         fatPercentage = getFatPercentage(bmi, age, gender);
-
         fatPercentageTectView.setText(String.format("%.2f",fatPercentage));
-        Random rand = new Random();
+
+        bmr = calculateBMR(height , weight ,age );
+        bmrTextView.setText(String.valueOf(Math.round(bmr)) + " Calories");
+
         bmi_chart = rootView.findViewById(R.id.dashboard_measurement_bmi_graph);
         basal_chart = rootView.findViewById(R.id.dashboard_measurement_basal_graph);
         fat_chart = rootView.findViewById(R.id.dashboard_measurement_fat_graph);
@@ -191,8 +196,16 @@ public class Measurement extends Fragment
         fat_data.setAxisXBottom(fat_axisX);
         fat_data.setAxisYLeft(fat_axisY);
         fat_chart.setLineChartData(fat_data);
+
+        final Viewport v = new Viewport(fat_chart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = v.top + 5 ;
+        fat_chart.setMaximumViewport(v);
+        fat_chart.setCurrentViewport(v);
+
+
     }
-    private float calculateBMR(double height, double weight, int age){
+    private float calculateBMR(double height, double weight, double age){
 
         if(gender.equals("male")){
             return (float)(66.47 + (13.7*weight) + (5*height) - (6.8*age));
@@ -225,6 +238,13 @@ public class Measurement extends Fragment
         basal_data.setAxisYLeft(basal_axisY);
         basal_chart.setLineChartData(basal_data);
 
+        final Viewport v = new Viewport(basal_chart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = v.top + 100 ;
+        basal_chart.setMaximumViewport(v);
+        basal_chart.setCurrentViewport(v);
+
+
 
         }
 
@@ -251,6 +271,13 @@ public class Measurement extends Fragment
         bmi_data.setAxisXBottom(bmi_axisX);
         bmi_data.setAxisYLeft(bmi_axisY);
         bmi_chart.setLineChartData(bmi_data);
+
+        final Viewport v = new Viewport(bmi_chart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = v.top + 2 ;
+        bmi_chart.setMaximumViewport(v);
+        bmi_chart.setCurrentViewport(v);
+
     }
 
     private void handleError(Throwable error) {
