@@ -20,11 +20,11 @@ public class ChooseAGoal extends Fragment implements ViewPager.OnPageChangeListe
 {
     FragmentManager fm;
     ArrayList<ImageView> pagerIndicator;
-    int goalID =0;
+    public static int goalID =0;
     /*
-    0:
-    1:
-    2:
+    0: Build Muscle
+    1: Fat loss
+    2:  Stay fit
      */
 
     @Nullable

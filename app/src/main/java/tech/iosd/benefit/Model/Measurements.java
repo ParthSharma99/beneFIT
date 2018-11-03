@@ -36,7 +36,6 @@ public class Measurements {
         this.weight = weight;
 
     }
-
     public int getAge() {
         return age;
     }

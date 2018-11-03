@@ -48,12 +48,15 @@ import tech.iosd.benefit.Model.BodyForMealLog;
 import tech.iosd.benefit.Model.DatabaseHandler;
 import tech.iosd.benefit.Model.MealLogForOneMeal;
 import tech.iosd.benefit.Model.MealLogFood;
+import tech.iosd.benefit.Model.Measurements;
 import tech.iosd.benefit.Model.Response;
 import tech.iosd.benefit.Model.ResponseForFoodSearch;
 import tech.iosd.benefit.Model.ResponseForGetMeal;
 import tech.iosd.benefit.Model.ResponseForSuccess;
 import tech.iosd.benefit.Model.ResponseTrackingDetails;
 import tech.iosd.benefit.Network.NetworkUtil;
+import tech.iosd.benefit.OnBoardingFragments.ChooseAGoal;
+import tech.iosd.benefit.OnBoardingFragments.SetupProfile;
 import tech.iosd.benefit.R;
 import tech.iosd.benefit.Model.ResponseForGetMeal.Food;
 import tech.iosd.benefit.Utils.Constants;
@@ -63,7 +66,6 @@ import static android.app.Activity.RESULT_OK;
 public class MealLog extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     //private class MealUpdateThenUpload;
     ProgressDialog progressDialog;
-
 
     public Calendar selDate;
     SimpleDateFormat dateFormat;
@@ -104,12 +106,19 @@ public class MealLog extends Fragment implements AdapterView.OnItemClickListener
     private String selectedDate;
 
     float foodCaloriesIntake = 0;
+    String lifestyle = SetupProfile.lifestyle.toString();
+    int goalID = ChooseAGoal.goalID;
+    double goal = 0;
+    double BMR;
+    Measurements measurement = new Measurements(10,10,10,10,10,10);
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Please Wait..");
+        BMR = 6.25 * measurement.getHeight() - 5*measurement.getAge() + 5;
+        goal = calorieGoal(lifestyle,goalID,BMR);
 
         progressDialog.setCancelable(true);
         rootView = inflater.inflate(R.layout.dashboard_meal_log, container, false);
@@ -130,6 +139,8 @@ public class MealLog extends Fragment implements AdapterView.OnItemClickListener
         activityCalories = rootView.findViewById(R.id.activity_meal_log);
         remainingCalories = rootView.findViewById(R.id.remainingCalories);
         db = new DatabaseHandler(getContext());
+        goalCalories.setText(String.valueOf(goal));
+        remainingCalories.setText(String.valueOf(goal));
 
         //activityCaloriesBurnt=0;
         listItems = new ArrayList<>();
@@ -797,39 +808,41 @@ public class MealLog extends Fragment implements AdapterView.OnItemClickListener
         // activityCaloriesBurnt=0;
         if (meal.equalsIgnoreCase(Constants.BREAKFAST)) {
             breakfastCalorie.setText(String.valueOf(mealLogBreakfast.getMealCalorie()));
-            foodCaloriesIntake = foodCaloriesIntake + mealLogBreakfast.getMealCalorie();
+//            foodCaloriesIntake = foodCaloriesIntake + mealLogBreakfast.getMealCalorie();
             breakfastProtien.setText(String.valueOf(mealLogBreakfast.getMealProtien()));
             breakfastFats.setText(String.valueOf(mealLogBreakfast.getMealFat()));
             breakfastCarbs.setText(String.valueOf(mealLogBreakfast.getMealCarbs()));
-        } else if (meal.equalsIgnoreCase(Constants.MID_MORNING)) {
+        } if (meal.equalsIgnoreCase(Constants.MID_MORNING)) {
             midmorningCalorie.setText(String.valueOf(mealLogMidmorning.getMealCalorie()));
-            foodCaloriesIntake = foodCaloriesIntake + mealLogMidmorning.getMealCalorie();
+//            foodCaloriesIntake = foodCaloriesIntake + mealLogMidmorning.getMealCalorie();
             midmorningProtien.setText(String.valueOf(mealLogMidmorning.getMealProtien()));
             midmorningFats.setText(String.valueOf(mealLogMidmorning.getMealFat()));
             midmorningCarbs.setText(String.valueOf(mealLogMidmorning.getMealCarbs()));
-        } else if (meal.equalsIgnoreCase(Constants.LUNCH)) {
+        } if (meal.equalsIgnoreCase(Constants.LUNCH)) {
             lunchCalorie.setText(String.valueOf(mealLogLunch.getMealCalorie()));
-            foodCaloriesIntake = foodCaloriesIntake + mealLogLunch.getMealCalorie();
+//            foodCaloriesIntake = foodCaloriesIntake + mealLogLunch.getMealCalorie();
             lunchProtien.setText(String.valueOf(mealLogLunch.getMealProtien()));
             lunchFats.setText(String.valueOf(mealLogLunch.getMealFat()));
             lunchCarbs.setText(String.valueOf(mealLogLunch.getMealCarbs()));
-        } else if (meal.equalsIgnoreCase(Constants.SNACKS)) {
+        } if (meal.equalsIgnoreCase(Constants.SNACKS)) {
             snacksCalorie.setText(String.valueOf(mealLogSnacks.getMealCalorie()));
-            foodCaloriesIntake = foodCaloriesIntake + mealLogSnacks.getMealCalorie();
+//            foodCaloriesIntake = foodCaloriesIntake + mealLogSnacks.getMealCalorie();
             snacksProtien.setText(String.valueOf(mealLogSnacks.getMealProtien()));
             snacksFats.setText(String.valueOf(mealLogSnacks.getMealFat()));
             snacksCarbs.setText(String.valueOf(mealLogSnacks.getMealCarbs()));
-        } else if (meal.equalsIgnoreCase(Constants.DINNER)) {
+        }if (meal.equalsIgnoreCase(Constants.DINNER)) {
             dinnerCalorie.setText(String.valueOf(mealLogdinner.getMealCalorie()));
-            foodCaloriesIntake = foodCaloriesIntake + mealLogdinner.getMealCalorie();
+//            foodCaloriesIntake = foodCaloriesIntake + mealLogdinner.getMealCalorie();
             dinnerProtien.setText(String.valueOf(mealLogdinner.getMealProtien()));
             dinnerFats.setText(String.valueOf(mealLogdinner.getMealFat()));
             dinnerCarbs.setText(String.valueOf(mealLogdinner.getMealCarbs()));
         }
 
+        foodCaloriesIntake = foodCaloriesIntake + mealLogBreakfast.getMealCalorie() + + mealLogSnacks.getMealCalorie() + mealLogMidmorning.getMealCalorie() + mealLogdinner.getMealCalorie() + mealLogLunch.getMealCalorie();
+
         foodCalories.setText(String.valueOf((int) foodCaloriesIntake));
         //TODO Make goal dynamic
-        remainingCalories.setText(String.format("%d", (int) (2730 + totalCaloriesBurntWorkout - (int) foodCaloriesIntake)));
+        remainingCalories.setText(String.format("%d", (int) (goal + totalCaloriesBurntWorkout - (int) foodCaloriesIntake)));
         //getTrackActivityDetails();
     }
 
@@ -1196,6 +1209,32 @@ public class MealLog extends Fragment implements AdapterView.OnItemClickListener
             }
         });
 
+    }
+    public double calorieGoal(String lifestyle,int ID, double BMR){
+        double calorie = 0,goal= 0;
+        switch (ID){
+            case 0:
+                goal = 700;
+                break;
+            case 1:
+                goal = -500;
+                break;
+        }
+        switch (lifestyle){
+            case ("SEDENTARY"):
+                calorie = goal + (1.2 * BMR);
+                break;
+            case ("MODERATE"):
+                                calorie = goal + (1.375 * BMR);
+                break;
+            case ("ACTIVE"):
+                                calorie = goal + (1.55 * BMR);
+                break;
+            case ("VERY_ACTIVE"):
+                                calorie = goal + (1.725 * BMR);
+                break;
+        }
+        return calorie;
     }
 
 }

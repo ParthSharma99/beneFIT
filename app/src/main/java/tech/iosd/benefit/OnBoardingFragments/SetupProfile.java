@@ -2,6 +2,8 @@ package tech.iosd.benefit.OnBoardingFragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,14 +28,16 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import tech.iosd.benefit.DashboardFragments.MealLog;
 import tech.iosd.benefit.R;
 
 public class SetupProfile extends Fragment implements View.OnClickListener
 {
-    public life lifestyle = life.SEDENTARY;
+    public static life lifestyle = life.SEDENTARY;
     public Boolean isKgSelected = true;
     public Boolean isFtSelected = true;
     private String gender ;
+
 
     Context ctx;
     FragmentManager fm;
@@ -62,7 +66,7 @@ public class SetupProfile extends Fragment implements View.OnClickListener
 
 
 
-    enum life {SEDENTARY, MODERATE, ACTIVE, VERY_ACTIVE}
+    public enum life {SEDENTARY, MODERATE, ACTIVE, VERY_ACTIVE}
 
     @Nullable
     @Override
@@ -71,7 +75,6 @@ public class SetupProfile extends Fragment implements View.OnClickListener
         View rootView = inflater.inflate(R.layout.onboarding_setup_profile, container, false);
         ctx = rootView.getContext();
         fm = getFragmentManager();
-
         heightsCM = new ArrayList<>();
         heightsFT = new ArrayList<>();
         heightfeet =  new ArrayList<>();
@@ -136,6 +139,7 @@ public class SetupProfile extends Fragment implements View.OnClickListener
                         lifestyle = life.VERY_ACTIVE;
                         break;
                 }
+
             }
         });
 

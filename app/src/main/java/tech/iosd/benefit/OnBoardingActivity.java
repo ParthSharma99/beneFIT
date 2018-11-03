@@ -2,6 +2,7 @@ package tech.iosd.benefit;
 
 import android.*;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -20,6 +21,7 @@ import tech.iosd.benefit.OnBoardingFragments.GetStarted;
 public class OnBoardingActivity extends AppCompatActivity
 {
     FragmentManager fm;
+    private SharedPreferences mPreferences;
     private static final int PERMISSION_REQUEST_CODE = 1;
     String[] permissions = { android.Manifest.permission.CAMERA,
         android.Manifest.permission.ACCESS_FINE_LOCATION,
@@ -36,6 +38,7 @@ public class OnBoardingActivity extends AppCompatActivity
         getPermissions();
         fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.onboarding_content, new GetStarted()).commit();
+
     }
     
     @Override
